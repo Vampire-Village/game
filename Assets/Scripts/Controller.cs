@@ -13,6 +13,13 @@ public class Controller : MonoBehaviour
     {
         //Button btn = interactButton.GetComponent<Button>();
     }
+    void Update()
+    {
+        if (inInteractableRange && (Input.GetButtonDown("Interact")))
+        {
+            interactable.GetComponent<Interactable>().Interact();
+        }
+    }
     void FixedUpdate()
     {
         float moveXAxis = Input.GetAxis("Horizontal");
@@ -21,9 +28,7 @@ public class Controller : MonoBehaviour
         movement = Vector3.ClampMagnitude(movement, 1f);
         transform.Translate(movement * speed * Time.deltaTime);
 
-        if(inInteractableRange && (Input.GetButtonDown("Interact"))){
-            interactable.GetComponent<Interactable>().Interact();
-        }
+        
 
     }
 
