@@ -21,6 +21,8 @@ namespace Mirror
         [Tooltip("Nagle Algorithm can be disabled by enabling NoDelay")]
         public bool NoDelay = true;
 
+        public bool showLog = false;
+
         // Deprecated 04/08/2019
         [EditorBrowsable(EditorBrowsableState.Never), Obsolete("Use MaxMessageSizeFromClient or MaxMessageSizeFromServer instead.")]
         public int MaxMessageSize
@@ -50,9 +52,12 @@ namespace Mirror
         void Awake()
         {
             // tell Telepathy to use Unity's Debug.Log
-            Telepathy.Logger.Log = Debug.Log;
-            Telepathy.Logger.LogWarning = Debug.LogWarning;
-            Telepathy.Logger.LogError = Debug.LogError;
+            if (showLog)
+            {
+                Telepathy.Logger.Log = Debug.Log;
+                Telepathy.Logger.LogWarning = Debug.LogWarning;
+                Telepathy.Logger.LogError = Debug.LogError;
+            }
 
             // configure
             client.NoDelay = NoDelay;
@@ -60,7 +65,8 @@ namespace Mirror
             server.NoDelay = NoDelay;
             server.MaxMessageSize = serverMaxMessageSize;
 
-            Debug.Log("TelepathyTransport initialized!");
+            if (showLog)
+                Debug.Log("TelepathyTransport initialized!");
         }
 
         public override bool Available()
@@ -238,7 +244,8 @@ namespace Mirror
         // common
         public override void Shutdown()
         {
-            Debug.Log("TelepathyTransport Shutdown()");
+            if (showLog)
+                Debug.Log("TelepathyTransport Shutdown()");
             client.Disconnect();
             server.Stop();
         }
