@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - Vampire
+  - Villager
+  - Infected
   layers:
   - Default
   - TransparentFX
