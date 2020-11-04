@@ -18,15 +18,38 @@ public class VampireLord : MonoBehaviour
     {
         if (!(villagersInRange.Count == 0))
         {
-            Debug.Log("BITE!!"); // infect closest object with "villager" tag and change to "infected"
-            villagersInRange[0].GetComponent<Villager>().Infected(); // only accounts for first villager in range
-            villagersInRange.RemoveAt(0);
+            Debug.Log("BITE!!");
+            GameObject victim = GetClosestVillager(villagersInRange);
+            victim.GetComponent<Villager>().Infected();
+            villagersInRange.Remove(victim);
         } else
         {
+           
             Debug.Log("Nobody to infect.");
         }
 
     }
+
+
+
+
+    GameObject GetClosestVillager(List<GameObject> villagers)
+    {
+        GameObject closestVillager = null;
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach (GameObject v in villagers)
+        {
+            float dist = Vector3.Distance(v.transform.position, currentPos);
+            if (dist < minDist)
+            {
+                closestVillager = v;
+                minDist = dist;
+            }
+        }
+        return closestVillager;
+    }
+
 
 
 
