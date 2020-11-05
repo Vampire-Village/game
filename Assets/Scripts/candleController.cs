@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class candleController : MonoBehaviour
+public class candleController : Task
 {
     public GameObject PourButton;
     public GameObject candle;
@@ -31,8 +31,9 @@ public class candleController : MonoBehaviour
             if(candleTop > -225.0f)
             {
                 taskComplete = true;
+                completeTask(gameObject);
             }
-            Debug.Log(candleTop);
+            //Debug.Log(candleTop);
         }
     }
 
