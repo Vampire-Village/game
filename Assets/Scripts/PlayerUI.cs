@@ -9,6 +9,7 @@ public class PlayerUI : MonoBehaviour
 {
     public GameObject InfectButton;
     public GameObject ReportButton;
+    public GameObject InteractButton;
 
 
 
@@ -17,6 +18,7 @@ public class PlayerUI : MonoBehaviour
     {
         InfectButton.SetActive(false);
         ReportButton.SetActive(false);
+        InteractButton.SetActive(false);
 
 
         if (gameObject.tag == "Vampire")
@@ -27,6 +29,9 @@ public class PlayerUI : MonoBehaviour
         }
         else if (gameObject.tag == "Villager")
         {
+            InteractButton.SetActive(true);
+            Button interactButton = InteractButton.GetComponent<Button>();
+            interactButton.onClick.AddListener(Interact);
         }
         else if (gameObject.tag == "Infected") // This shouldn't happen in a typical game
         {
@@ -67,6 +72,10 @@ public class PlayerUI : MonoBehaviour
     void Report()
     {
         gameObject.GetComponent<Infected>().Report();
+    }
+    void Interact()
+    {
+        gameObject.GetComponent<Controller>().Interact();
     }
   
 
