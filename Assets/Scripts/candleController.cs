@@ -12,6 +12,7 @@ public class candleController : Task
     public float pourRate;
     private float candleTop;
     public bool taskComplete = false;
+    public string completeItem = "CandleBundle";
     // Start is called before the first frame update
     public RectTransform heightReference;
     public void Start()
@@ -31,7 +32,7 @@ public class candleController : Task
             if(candleTop > -225.0f)
             {
                 taskComplete = true;
-                completeTask(gameObject);
+                completeTask(gameObject, completeItem);
             }
             //Debug.Log(candleTop);
         }

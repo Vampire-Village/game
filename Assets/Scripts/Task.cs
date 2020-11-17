@@ -5,9 +5,10 @@ using UnityEngine;
 public class Task : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void completeTask(GameObject taskCanvas)
+    public void completeTask(GameObject taskCanvas, string completeItem)
     {
-        GameObject.Find("Player").GetComponent<Controller>().endTask();
+        Controller player = GameObject.Find("Player").GetComponent<Controller>();
+        player.endTask(completeItem);
         Debug.Log("Task ended!");
         Destroy(taskCanvas, 2.0f);
     }
