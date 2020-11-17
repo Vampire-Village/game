@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using Mirror;
+#if UNITY_EDITOR
 using ParrelSync;
+#endif
 
 namespace VampireVillage.Network
 {
