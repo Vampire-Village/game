@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using VampireVillage.Network;
 
 public class StartMenu : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class StartMenu : MonoBehaviour
 
     private void Awake()
     {
-        network = VampireVillageNetwork.instance;
+        network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         network.OnNetworkStart += OnNetworkStart;
     }
 
@@ -51,6 +52,19 @@ public class StartMenu : MonoBehaviour
             nameInput.onEndEdit.AddListener((newName) =>
             {
                 ApplicationManager.SetPlayerName(newName);
+            });
+
+            // Handle creating and joining room.
+            hostButton.onClick.AddListener(() =>
+            {
+                GameLogger.LogClient("Creating new room...");
+                Client.instance.CmdHostRoom();
+            });
+            joinButton.onClick.AddListener(() =>
+            {
+                string roomCode = roomInput.text;
+                GameLogger.LogClient($"Joining room {roomCode}...");
+                Client.instance.CmdJoinRoom(roomCode);
             });
 
             // Handle reconnecting.

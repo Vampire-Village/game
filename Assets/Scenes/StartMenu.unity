@@ -886,7 +886,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 981628335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClientConnected:
@@ -913,13 +913,14 @@ MonoBehaviour:
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  port: 7777
+  Port: 7777
   NoDelay: 1
-  showLog: 0
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
+  Interval: 10
+  FastResend: 0
+  CongestionWindow: 1
+  SendWindowSize: 128
+  ReceiveWindowSize: 128
+  debugGUI: 0
 --- !u!114 &981628337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,11 +946,13 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8598313953005908791, guid: 240493a0de164bd4990cc1e33ca4a33a,
+  playerPrefab: {fileID: 4160649669022795649, guid: 80d5b03057dadbd47b8940245047fb8b,
     type: 3}
-  autoCreatePlayer: 0
+  autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
+  lobbyScene: {fileID: 102900000, guid: eeab2c16ac6a1b342817a221809255c5, type: 3}
+  gameScene: {fileID: 0}
 --- !u!4 &981628338
 Transform:
   m_ObjectHideFlags: 0
