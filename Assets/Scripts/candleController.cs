@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class candleController : Task
+public class CandleController : Task
 {
     public GameObject PourButton;
     public GameObject candle;
@@ -24,7 +24,7 @@ public class candleController : Task
     // Update is called once per frame
     public void Update()
     {
-        bool buttonStatus = PourButton.GetComponent<mouseHoldController>().isMouseHeld();
+        bool buttonStatus = PourButton.GetComponent<MouseHoldController>().isMouseHeld();
         if (buttonStatus && !taskComplete)
         {
             candleTop += (pourRate * Time.deltaTime);

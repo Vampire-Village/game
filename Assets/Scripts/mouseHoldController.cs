@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class mouseHoldController : Selectable
+public class MouseHoldController : Selectable
 {
     // Start is called before the first frame update
  
