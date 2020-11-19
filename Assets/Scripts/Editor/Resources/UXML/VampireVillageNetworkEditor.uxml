@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:ue="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+>
+    <ui:VisualElement class="root">
+        <ui:VisualElement class="group">
+            <ui:Label text="Network Settings" class="header" />
+            <ue:PropertyField binding-path="networkAddress" label="Address" />
+            <ue:PropertyField binding-path="networkPort" label="Port" />
+            <ue:PropertyField binding-path="maxConnections" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="group">
+            <ui:Label text="Scene Settings" class="header" />
+            <ue:PropertyField binding-path="menuScene" label="Menu" />
+            <ue:PropertyField binding-path="lobbyScene" label="Lobby" />
+            <ue:PropertyField binding-path="gameScene" label="Game" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="group">
+            <ui:Label text="Player Settings" class="header" />
+            <ue:PropertyField binding-path="playerPrefab" label="Client Prefab" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</UXML>

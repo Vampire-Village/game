@@ -13,6 +13,7 @@ namespace VampireVillage.Network
 {
     public class VampireVillageNetwork : NetworkManager
     {
+        public ushort networkPort = 7777;
         public SceneAsset menuScene;
         public SceneAsset lobbyScene;
         public SceneAsset gameScene;
@@ -23,6 +24,22 @@ namespace VampireVillage.Network
 
         private readonly HashSet<ServerPlayer> players = new HashSet<ServerPlayer>();
         private readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
+
+        public override void Awake()
+        {
+            // Set default network settings.
+            dontDestroyOnLoad = true;
+            runInBackground = true;
+            autoStartServerBuild = true;
+            serverTickRate = 60;
+            disconnectInactiveConnections = false;
+
+            // Set transport port.
+            transport = GetComponent<Transport>();
+            ((TelepathyTransport)transport).port = networkPort;
+
+            base.Awake();
+        }
 
         public override void Start()
         {
