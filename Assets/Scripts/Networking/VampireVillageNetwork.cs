@@ -13,10 +13,11 @@ namespace VampireVillage.Network
 {
     public class VampireVillageNetwork : NetworkManager
     {
+        public SceneAsset menuScene;
         public SceneAsset lobbyScene;
         public SceneAsset gameScene;
 
-        public event Action<bool> OnNetworkStart;
+        public event Action OnNetworkStart;
         public event Action OnNetworkOnline;
         public event Action OnNetworkOffline;
 
@@ -37,7 +38,7 @@ namespace VampireVillage.Network
         public override void OnStartServer()
         {
             GameLogger.LogServer("Server started!");
-            OnNetworkStart?.Invoke(true);
+            OnNetworkStart?.Invoke();
         }
 
         public override void OnServerAddPlayer(NetworkConnection conn)
@@ -133,7 +134,7 @@ namespace VampireVillage.Network
         public override void OnStartClient()
         {
             GameLogger.LogClient("Client started!");
-            OnNetworkStart?.Invoke(false);
+            OnNetworkStart?.Invoke();
         }
 
         public override void OnClientConnect(NetworkConnection conn)
@@ -148,6 +149,7 @@ namespace VampireVillage.Network
         {
             // TODO: Enable reconnect.
             StopClient();
+            SceneManager.LoadScene(menuScene.name);
 
             GameLogger.LogClient("Client disconnected.");
             OnNetworkOffline?.Invoke();

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Mirror;
 using VampireVillage.Network;
 
 public class StartMenu : MonoBehaviour
@@ -55,11 +56,17 @@ public class StartMenu : MonoBehaviour
 
         // Handle reconnecting.
         reconnectButton.onClick.AddListener(network.StartClient);
+
+        // Show online/offline menu.
+        if (network.isNetworkActive)
+            OnNetworkStart();
+        else
+            OnNetworkOffline();
     }
 
-    private void OnNetworkStart(bool isServer)
+    private void OnNetworkStart()
     {
-        if (isServer)
+        if (network.mode == NetworkManagerMode.ServerOnly)
         {
             onlinePanel.SetActive(false);
             offlinePanel.SetActive(false);
