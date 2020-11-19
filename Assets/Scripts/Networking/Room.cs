@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.SceneManagement;
 
 namespace VampireVillage.Network
 {
@@ -8,6 +9,7 @@ namespace VampireVillage.Network
 
         public Guid id { get; private set; }
         public string code;
+        public Scene lobbyScene;
 
         public Room() {}
         

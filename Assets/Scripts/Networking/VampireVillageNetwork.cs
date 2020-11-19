@@ -73,6 +73,7 @@ namespace VampireVillage.Network
 
             // Create the lobby scene for the room in the server.
             SceneManager.LoadScene(lobbyScene.name, LoadSceneMode.Additive);
+            room.lobbyScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
 
             // Set the client's match ID to room ID.
             Client client = conn.identity.GetComponent<Client>();
@@ -80,6 +81,7 @@ namespace VampireVillage.Network
 
             // Change the client's scene to lobby.
             conn.Send(new SceneMessage{ sceneName = lobbyScene.name, sceneOperation = SceneOperation.Normal });
+            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
 
             GameLogger.LogServer($"New room created.\nCode: {room.code}", GetPlayer(conn));
             return room;
@@ -104,6 +106,7 @@ namespace VampireVillage.Network
 
             // Change the client's scene to the lobby.
             conn.Send(new SceneMessage{ sceneName = lobbyScene.name, sceneOperation = SceneOperation.Normal });
+            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
 
             return room;
         }

@@ -33,7 +33,8 @@ namespace VampireVillage.Network
                 GameLogger.LogClient("Client connected to the server.", this);
             }
 
-            DontDestroyOnLoad(gameObject);
+            if (network.mode == NetworkManagerMode.ClientOnly)
+                DontDestroyOnLoad(gameObject);
         }
 
         [Command]
