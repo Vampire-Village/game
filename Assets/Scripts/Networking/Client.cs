@@ -10,6 +10,9 @@ namespace VampireVillage.Network
         [SyncVar]
         public Guid playerId;
 
+        [SyncVar(hook = nameof(SetName))]
+        public string playerName;
+
         private NetworkMatchChecker matchChecker;
         private VampireVillageNetwork network;
 
@@ -25,11 +28,11 @@ namespace VampireVillage.Network
 
                 // Initialize the matchId as playerId (so the client is alone at the start).
                 SetMatchID(playerId);
+                name = $"Client ({playerId})";
 
                 GameLogger.LogClient("Client connected to the server.", this);
             }
 
-            name = $"Client ({playerId})";
             DontDestroyOnLoad(gameObject);
         }
 
@@ -60,6 +63,21 @@ namespace VampireVillage.Network
         public void TargetJoinRoom(Room room)
         {
             GameLogger.LogClient($"Joined a room!\nCode: {room.code}");
+        }
+
+        [Command]
+        public void CmdSetName(string newName)
+        {
+            // TODO: Some sort of name validation.
+            playerName = newName;
+            name = $"Client ({newName})";
+        }
+
+        public void SetName(string oldName, string newName)
+        {
+            name = $"Client ({newName})";
+            if (isLocalPlayer)
+                name += " [LOCAL]";
         }
 
         public void SetMatchID(Guid id)

@@ -26,8 +26,35 @@ public class StartMenu : MonoBehaviour
 
     private void Awake()
     {
+        // Handle network callbacks.
         network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         network.OnNetworkStart += OnNetworkStart;
+        network.OnNetworkOnline += OnNetworkOnline;
+        network.OnNetworkOffline += OnNetworkOffline;
+
+        // Handle getting and saving name.
+        nameInput.text = ApplicationManager.GetPlayerName();
+        nameInput.onEndEdit.AddListener(newName => ApplicationManager.SetPlayerName(newName));
+
+        // Handle creating room.
+        hostButton.onClick.AddListener(() =>
+        {
+            GameLogger.LogClient("Creating new room...");
+            SetName();
+            Client.instance.CmdHostRoom();
+        });
+
+        // Handle joining room.
+        joinButton.onClick.AddListener(() =>
+        {
+            string roomCode = roomInput.text;
+            SetName();
+            GameLogger.LogClient($"Joining room {roomCode}...");
+            Client.instance.CmdJoinRoom(roomCode);
+        });
+
+        // Handle reconnecting.
+        reconnectButton.onClick.AddListener(network.StartClient);
     }
 
     private void OnNetworkStart(bool isServer)
@@ -46,32 +73,6 @@ public class StartMenu : MonoBehaviour
             offlinePanel.SetActive(false);
             onlinePanel.SetActive(false);
             connectingPanel.SetActive(true);
-
-            // Handle getting and saving name.
-            nameInput.text = ApplicationManager.GetPlayerName();
-            nameInput.onEndEdit.AddListener((newName) =>
-            {
-                ApplicationManager.SetPlayerName(newName);
-            });
-
-            // Handle creating and joining room.
-            hostButton.onClick.AddListener(() =>
-            {
-                GameLogger.LogClient("Creating new room...");
-                Client.instance.CmdHostRoom();
-            });
-            joinButton.onClick.AddListener(() =>
-            {
-                string roomCode = roomInput.text;
-                GameLogger.LogClient($"Joining room {roomCode}...");
-                Client.instance.CmdJoinRoom(roomCode);
-            });
-
-            // Handle reconnecting.
-            reconnectButton.onClick.AddListener(() => network.StartClient());
-
-            network.OnNetworkOnline += OnNetworkOnline;
-            network.OnNetworkOffline += OnNetworkOffline;
         }
     }
 
@@ -87,6 +88,14 @@ public class StartMenu : MonoBehaviour
         connectingPanel.SetActive(false);
         onlinePanel.SetActive(false);
         offlinePanel.SetActive(true);
+    }
+
+    private void SetName()
+    {
+        if (nameInput.text.Length > 0)
+            Client.instance.CmdSetName(nameInput.text);
+        else
+            Client.instance.CmdSetName("Player");
     }
 
     private void OnDestroy()
