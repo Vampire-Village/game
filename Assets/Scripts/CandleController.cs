@@ -12,24 +12,26 @@ public class CandleController : Task
     public float pourRate;
     private float candleTop;
     public bool taskComplete = false;
-    public string completeItem = "CandleBundle";
-    // Start is called before the first frame update
+    public Item completeItem;
     public RectTransform heightReference;
+
+    public GameObject playerReference;
+
     public void Start()
     {
-        candleTop = -375.0f;
+        candleTop = 0.0f;
         heightReference = candle.GetComponent<RectTransform>();
+        //playerReference = TaskSpawner.currentPlayer();
     }
 
-    // Update is called once per frame
-    public void Update()
+    public void OnGUI()
     {
         bool buttonStatus = PourButton.GetComponent<MouseHoldController>().isMouseHeld();
         if (buttonStatus && !taskComplete)
         {
             candleTop += (pourRate * Time.deltaTime);
-            heightReference.offsetMax = new Vector2(heightReference.offsetMax.x, candleTop);
-            if(candleTop > -225.0f)
+            heightReference.sizeDelta = new Vector2(100, candleTop);
+            if(candleTop > 150.0f)
             {
                 taskComplete = true;
                 completeTask(gameObject, completeItem);

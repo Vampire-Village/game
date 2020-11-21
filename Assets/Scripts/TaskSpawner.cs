@@ -9,15 +9,24 @@ public class TaskSpawner : Interactable
     
     void Start()
     {
-        playerObject = GameObject.Find("Player");
+        //playerObject = GameObject.Find("Player");
     }
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
+        playerObject = player;
         if (!playerObject.GetComponent<Controller>().inTask)
         {
             playerObject.GetComponent<Controller>().startTask();
-            Instantiate(taskPrefab);
+            GameObject taskObject;
+            taskObject = Instantiate(taskPrefab);
+            //taskObject.playerReference = playerObject;
         }
+    }
+    public GameObject currentPlayer()
+    {
+        
+            return playerObject;
+        
     }
 }

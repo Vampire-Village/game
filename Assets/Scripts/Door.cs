@@ -53,7 +53,7 @@ public class Door : Interactable
     }
 
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
         if (!moving)
         {

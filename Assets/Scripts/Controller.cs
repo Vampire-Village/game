@@ -10,7 +10,7 @@ public class Controller : MonoBehaviour
     private bool inInteractableRange = false;
     private GameObject interactable;
     public bool inTask = false;
-    public string heldItem = "None";//Temporary solution. Thinking of having classes for items so they can be rendered when dropped
+    public Item heldItem;//Temporary solution. Thinking of having classes for items so they can be rendered when dropped
     void Start()
     {
         //Button btn = interactButton.GetComponent<Button>();
@@ -55,20 +55,20 @@ public class Controller : MonoBehaviour
     {
         inTask = true;
     }
-    public void endTask(string completeItem)
+    public void endTask(Item completeItem)
     {
         inTask = false;
-        if(completeItem != "None")
+        if(completeItem.displayName != "None")
         {
             heldItem = completeItem;
         }
-        Debug.Log(heldItem);
+        Debug.Log(heldItem.displayName);
     }
     public void Interact()
     {
         if (inInteractableRange)
         {
-            interactable.GetComponent<Interactable>().Interact();
+            interactable.GetComponent<Interactable>().Interact(gameObject);
         }
     }
     

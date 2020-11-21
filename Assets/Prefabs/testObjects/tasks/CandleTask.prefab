@@ -428,6 +428,7 @@ MonoBehaviour:
   candle: {fileID: 1390246454726808531}
   pourRate: 20
   taskComplete: 0
+  completeItem: {fileID: 11400000, guid: 27c3ce983b0646642836baf1c1986aa9, type: 2}
   heightReference: {fileID: 0}
 --- !u!1 &1390246454303916768
 GameObject:
@@ -654,11 +655,11 @@ RectTransform:
   m_Father: {fileID: 1390246454110019964}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -124.999954}
-  m_SizeDelta: {x: 100, y: -500.0001}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -125}
+  m_SizeDelta: {x: 100, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1390246454726808534
 CanvasRenderer:
   m_ObjectHideFlags: 0
