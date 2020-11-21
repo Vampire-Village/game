@@ -21,19 +21,19 @@ public class PlayerUI : MonoBehaviour
         InteractButton.SetActive(false);
 
 
-        if (gameObject.tag == "Vampire")
+        if (Player.local.gameObject.tag == "Vampire")
         {
             InfectButton.SetActive(true);
             Button infectButton = InfectButton.GetComponent<Button>();
             infectButton.onClick.AddListener(Infect);
         }
-        else if (gameObject.tag == "Villager")
+        else if (Player.local.gameObject.tag == "Villager")
         {
             InteractButton.SetActive(true);
             Button interactButton = InteractButton.GetComponent<Button>();
             interactButton.onClick.AddListener(Interact);
         }
-        else if (gameObject.tag == "Infected") // This shouldn't happen in a typical game
+        else if (Player.local.gameObject.tag == "Infected") // This shouldn't happen in a typical game
         {
             ReportButton.SetActive(true);
             Button reportButton = ReportButton.GetComponent<Button>();
@@ -66,16 +66,16 @@ public class PlayerUI : MonoBehaviour
 
     void Infect()
     {
-        gameObject.GetComponent<VampireLord>().Infect();
+        Player.local.gameObject.GetComponent<VampireLord>().Infect();
     }
 
     void Report()
     {
-        gameObject.GetComponent<Infected>().Report();
+        Player.local.gameObject.GetComponent<Infected>().Report();
     }
     void Interact()
     {
-        gameObject.GetComponent<Controller>().Interact();
+        Player.local.gameObject.GetComponent<Controller>().Interact();
     }
   
 

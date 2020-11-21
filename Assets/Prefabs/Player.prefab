@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 379157041769675414}
   - component: {fileID: 379157041769675415}
   - component: {fileID: 379157041769675413}
-  - component: {fileID: 379157041769675412}
+  - component: {fileID: 7844542241749530217}
+  - component: {fileID: 7518369389253213980}
   m_Layer: 0
   m_Name: Player
   m_TagString: Villager
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcbb49322090544fbeeec07ebe49957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!212 &379157041769675409
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -139,10 +142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4ec02a2119e3c48bfed9480fa0a071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   speed: 3
   inTask: 0
   heldItem: {fileID: 11400000, guid: 3866f0ea7e1782348a7dd825782118ed, type: 2}
---- !u!114 &379157041769675412
+--- !u!114 &7844542241749530217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,9 +156,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 379157041769675410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001d33e1666b60e47823fb9240143e70, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InfectButton: {fileID: 0}
-  ReportButton: {fileID: 0}
-  InteractButton: {fileID: 0}
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &7518369389253213980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379157041769675410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
