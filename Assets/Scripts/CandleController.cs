@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class CandleController : Task
 {
-    public GameObject PourButton;
+    public GameObject pourButton;
     public GameObject candle;
     public float pourRate;
     private float candleTop;
@@ -17,17 +17,20 @@ public class CandleController : Task
 
     public GameObject playerReference;
 
+    MouseHoldController mouseHoldController;
+
     public void Start()
     {
         candleTop = 0.0f;
         heightReference = candle.GetComponent<RectTransform>();
+        mouseHoldController = pourButton.GetComponent<MouseHoldController>();
         //playerReference = TaskSpawner.currentPlayer();
     }
 
     public void OnGUI()
     {
-        bool buttonStatus = PourButton.GetComponent<MouseHoldController>().isMouseHeld();
-        if (buttonStatus && !taskComplete)
+        //bool buttonStatus = PourButton.GetComponent<MouseHoldController>().isMouseHeld();
+        if (mouseHoldController.isMouseHeld() && !taskComplete)
         {
             candleTop += (pourRate * Time.deltaTime);
             heightReference.sizeDelta = new Vector2(100, candleTop);

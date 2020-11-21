@@ -424,12 +424,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fbdd353f111f94cad1e6f3bc4865b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PourButton: {fileID: 1390246453730480219}
+  pourButton: {fileID: 1390246453730480219}
   candle: {fileID: 1390246454726808531}
   pourRate: 20
   taskComplete: 0
   completeItem: {fileID: 11400000, guid: 27c3ce983b0646642836baf1c1986aa9, type: 2}
   heightReference: {fileID: 0}
+  playerReference: {fileID: 0}
 --- !u!1 &1390246454303916768
 GameObject:
   m_ObjectHideFlags: 0
