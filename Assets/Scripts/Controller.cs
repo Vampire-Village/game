@@ -10,7 +10,7 @@ public class Controller : MonoBehaviour
     private bool inInteractableRange = false;
     private GameObject interactable;
     public bool inTask = false;
-    public Item heldItem;//Temporary solution. Thinking of having classes for items so they can be rendered when dropped
+    public Item heldItem;
     void Start()
     {
         //Button btn = interactButton.GetComponent<Button>();
@@ -51,11 +51,11 @@ public class Controller : MonoBehaviour
         inInteractableRange = false;
     }
 
-    public void startTask()
+    public void StartTask()
     {
         inTask = true;
     }
-    public void endTask(Item completeItem)
+    public void EndTask(Item completeItem)
     {
         inTask = false;
         if(completeItem.displayName != "None")

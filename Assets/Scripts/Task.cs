@@ -9,8 +9,9 @@ public class Task : MonoBehaviour
     {
         //GameObject player = currentPlayer();
         //Controller playerController = player.GetComponent<Controller>();
-        Controller player = GameObject.Find("Player").GetComponent<Controller>();
-        player.endTask(completeItem);
+        //Controller player = GameObject.Find("Player").GetComponent<Controller>();
+        Controller player = Player.local.GetComponent<Controller>();
+        player.EndTask(completeItem);
         Debug.Log("Task ended!");
         Destroy(taskCanvas, 2.0f);
     }

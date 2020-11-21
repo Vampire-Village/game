@@ -6,6 +6,7 @@ public class WellController : Interactable
 {
     public int totalCompletionProgress;
     public GameObject playerObject;
+    public Item emptyItem;
     void Start()
     {
         //playerObject = GameObject.Find("Player");
@@ -15,6 +16,9 @@ public class WellController : Interactable
     // Update is called once per frame
     public override void Interact(GameObject player)
     {
-
+        Controller playerController = player.GetComponent<Controller>();
+        totalCompletionProgress += playerController.heldItem.completionValue;
+        playerController.heldItem = emptyItem;
+        Debug.Log(totalCompletionProgress);
     }
 }
