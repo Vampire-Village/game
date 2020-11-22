@@ -48,6 +48,7 @@ public class PlayerUI : MonoBehaviour
         else
         {
             Debug.Log("Player tag is not assigned");
+            Debug.Log(Player.local.role);
         }
     }
 

@@ -56,19 +56,25 @@ public class VampireLord : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Villager")
+        if (other.gameObject.tag == "Player")
         {
-            villagersInRange.Add(other.gameObject);
-            Debug.Log("Villager in range");
+            if (other.gameObject.GetComponent<Player>().role == Player.Role.Villager)
+            {
+                villagersInRange.Add(other.gameObject);
+                Debug.Log("Villager in range");
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Villager")
+        if (other.gameObject.tag == "Player")
         {
-            villagersInRange.Remove(other.gameObject);
-            Debug.Log("Villager lost");
+            if (other.gameObject.GetComponent<Player>().role == Player.Role.Villager)
+            {
+                villagersInRange.Remove(other.gameObject);
+                Debug.Log("Villager lost");
+            }
         }
     }
 

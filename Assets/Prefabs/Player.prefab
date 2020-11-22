@@ -16,9 +16,13 @@ GameObject:
   - component: {fileID: 379157041769675413}
   - component: {fileID: 7844542241749530217}
   - component: {fileID: 7518369389253213980}
+  - component: {fileID: 8664225587401726228}
+  - component: {fileID: 7197892016877042628}
+  - component: {fileID: 2999670654014349832}
+  - component: {fileID: 3906909135833912207}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Villager
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,3 +186,52 @@ MonoBehaviour:
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
+--- !u!114 &8664225587401726228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379157041769675410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7aa9170a341094584ad701ddb5e913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7197892016877042628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379157041769675410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6458d5d05fb3448a5490d87002ced0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2999670654014349832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379157041769675410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73467d9c4ec06d1488a676b38d72e886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &3906909135833912207
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379157041769675410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

@@ -16,12 +16,54 @@ public class Player : NetworkBehaviour
 
     public enum Role
     {
+        PlaceHolder,
         Villager,
         VampireLord,
         Infected
     }
-
+    [SyncVar(hook = nameof(SetRole))]
     public Role role;
+
+    void SetRole(Role oldRole, Role newRole)
+    {
+        gameObject.GetComponent<Villager>().enabled = false;
+        gameObject.GetComponent<VampireLord>().enabled = false;
+        gameObject.GetComponent<Infected>().enabled = false;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        
+        if (newRole == Role.Villager)
+        {
+            gameObject.GetComponent<Villager>().enabled = true;
+            //local.gameObject.tag = "Villager";
+        }
+        else if (newRole == Role.VampireLord)
+        {
+            gameObject.GetComponent<VampireLord>().enabled = true;
+            gameObject.GetComponent<SphereCollider>().enabled = true;
+            //vampireInfect.radius = 0.5f;
+            //vampireInfect.isTrigger = true;
+            //local.gameObject.tag = "Vampire";
+        }
+        else if (newRole == Role.Infected)
+        {
+            gameObject.GetComponent<Infected>().enabled = true;
+            //local.gameObject.tag = "Infected";
+        }
+
+    }
+
+    [Command]
+    public void CmdSetRole(Role targetRole)
+    {
+        role = targetRole;
+        TargetSetRole();
+    }
+
+    [TargetRpc]
+    void TargetSetRole()
+    {
+        playerSpawned.Invoke();
+    }
 
     //public void Awake()
     //{
@@ -31,27 +73,13 @@ public class Player : NetworkBehaviour
     // TODO: Switch to this once networking code catches up.
      public override void OnStartAuthority()
      {
-        role = (Role)Random.Range(0, 3);
         local = this;
-        if(local.role == Role.Villager)
-        {
-            local.gameObject.AddComponent<Villager>();
-            local.gameObject.tag = "Villager";
-        }
-        else if(local.role == Role.VampireLord)
-        {
-            local.gameObject.AddComponent<VampireLord>();
-            SphereCollider vampireInfect = local.gameObject.AddComponent<SphereCollider>();
-            vampireInfect.radius = 0.5f;
-            vampireInfect.isTrigger = true;
-            local.gameObject.tag = "Vampire";
-        }
-        else if(local.role == Role.Infected)
-        {
-            local.gameObject.AddComponent<Infected>();
-            local.gameObject.tag = "Infected";
-        }
-        playerSpawned.Invoke();
+        Role randomRole = (Role)Random.Range(1, 4);
+        CmdSetRole(randomRole);
+        
+        
+
+       
         
     }
 }

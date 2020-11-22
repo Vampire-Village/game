@@ -15,9 +15,10 @@ public class Villager : MonoBehaviour
 
     public void Infected() // Switches Villager to Infected
     {
-        gameObject.AddComponent<Infected>();
-        gameObject.tag = "Infected";
-        Destroy(this);
+        //gameObject.AddComponent<Infected>();
+        //gameObject.tag = "Infected";
+        //Destroy(this);
+        gameObject.GetComponent<Player>().CmdSetRole(Player.Role.Infected);
     }
     // Update is called once per frame
     void Update()
