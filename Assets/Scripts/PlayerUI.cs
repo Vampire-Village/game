@@ -16,24 +16,30 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player.playerSpawned.AddListener(BeginUI);
+    }
+
+
+    void BeginUI()
+    {
         InfectButton.SetActive(false);
         ReportButton.SetActive(false);
         InteractButton.SetActive(false);
 
 
-        if (Player.local.gameObject.tag == "Vampire")
+        if (Player.local.role == Player.Role.VampireLord)
         {
             InfectButton.SetActive(true);
             Button infectButton = InfectButton.GetComponent<Button>();
             infectButton.onClick.AddListener(Infect);
         }
-        else if (Player.local.gameObject.tag == "Villager")
+        else if (Player.local.role == Player.Role.Villager)
         {
             InteractButton.SetActive(true);
             Button interactButton = InteractButton.GetComponent<Button>();
             interactButton.onClick.AddListener(Interact);
         }
-        else if (Player.local.gameObject.tag == "Infected") // This shouldn't happen in a typical game
+        else if (Player.local.role == Player.Role.Infected) // This shouldn't happen in a typical game
         {
             ReportButton.SetActive(true);
             Button reportButton = ReportButton.GetComponent<Button>();

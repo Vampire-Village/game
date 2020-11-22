@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WellController : Interactable
 {
-    public int totalCompletionProgress;
+    public static int totalCompletionProgress;
     public GameObject playerObject;
     public Item emptyItem;
     void Start()

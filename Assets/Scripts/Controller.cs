@@ -70,6 +70,7 @@ public class Controller : NetworkBehaviour
             heldItem = completeItem;
         }
         Debug.Log(heldItem.displayName);
+        
     }
     public void Interact()
     {

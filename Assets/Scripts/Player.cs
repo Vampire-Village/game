@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Events;
 
 /// <summary>
 /// TODO:
@@ -11,6 +12,16 @@ using Mirror;
 public class Player : NetworkBehaviour
 {
     public static Player local;
+    public static UnityEvent playerSpawned = new UnityEvent();
+
+    public enum Role
+    {
+        Villager,
+        VampireLord,
+        Infected
+    }
+
+    public Role role;
 
     //public void Awake()
     //{
@@ -20,6 +31,9 @@ public class Player : NetworkBehaviour
     // TODO: Switch to this once networking code catches up.
      public override void OnStartAuthority()
      {
-         local = this;
-     }
+        role = (Role)Random.Range(0, 3);
+        local = this;
+        playerSpawned.Invoke();
+        
+    }
 }
