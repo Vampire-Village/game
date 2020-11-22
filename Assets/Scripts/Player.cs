@@ -33,6 +33,24 @@ public class Player : NetworkBehaviour
      {
         role = (Role)Random.Range(0, 3);
         local = this;
+        if(local.role == Role.Villager)
+        {
+            local.gameObject.AddComponent<Villager>();
+            local.gameObject.tag = "Villager";
+        }
+        else if(local.role == Role.VampireLord)
+        {
+            local.gameObject.AddComponent<VampireLord>();
+            SphereCollider vampireInfect = local.gameObject.AddComponent<SphereCollider>();
+            vampireInfect.radius = 0.5f;
+            vampireInfect.isTrigger = true;
+            local.gameObject.tag = "Vampire";
+        }
+        else if(local.role == Role.Infected)
+        {
+            local.gameObject.AddComponent<Infected>();
+            local.gameObject.tag = "Infected";
+        }
         playerSpawned.Invoke();
         
     }

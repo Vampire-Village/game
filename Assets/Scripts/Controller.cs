@@ -53,9 +53,12 @@ public class Controller : NetworkBehaviour
 
         }
     }
-    void OnTriggerExit()
+    void OnTriggerExit(Collider collider)
     {
-        inInteractableRange = false;
+        if (collider.tag == "Interactable")
+        {
+            inInteractableRange = false;
+        }
     }
 
     public void StartTask()
