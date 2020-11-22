@@ -22,6 +22,7 @@ public class PlayerUI : MonoBehaviour
 
     void BeginUI()
     {
+       
         InfectButton.SetActive(false);
         ReportButton.SetActive(false);
         InteractButton.SetActive(false);
@@ -29,18 +30,21 @@ public class PlayerUI : MonoBehaviour
 
         if (Player.local.role == Player.Role.VampireLord)
         {
+            Debug.Log("Va");
             InfectButton.SetActive(true);
             Button infectButton = InfectButton.GetComponent<Button>();
             infectButton.onClick.AddListener(Infect);
         }
         else if (Player.local.role == Player.Role.Villager)
         {
+            Debug.Log("Vi");
             InteractButton.SetActive(true);
             Button interactButton = InteractButton.GetComponent<Button>();
             interactButton.onClick.AddListener(Interact);
         }
         else if (Player.local.role == Player.Role.Infected) // This shouldn't happen in a typical game
         {
+            Debug.Log("In");
             ReportButton.SetActive(true);
             Button reportButton = ReportButton.GetComponent<Button>();
             reportButton.onClick.AddListener(Report);
