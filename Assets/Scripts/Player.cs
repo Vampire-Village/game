@@ -49,21 +49,23 @@ public class Player : NetworkBehaviour
             gameObject.GetComponent<Infected>().enabled = true;
             //local.gameObject.tag = "Infected";
         }
+        if (isLocalPlayer)
+        {
+            playerSpawned.Invoke();
+        }
+        //GameLogger.LogClient(newRole);
 
     }
 
-    [Command]
+    [Command(ignoreAuthority = true)]
     public void CmdSetRole(Role targetRole)
     {
         role = targetRole;
-        TargetSetRole();
+        //GameLogger.LogServer(role);
+       
     }
 
-    [TargetRpc]
-    void TargetSetRole()
-    {
-        playerSpawned.Invoke();
-    }
+    
 
     //public void Awake()
     //{
