@@ -1,0 +1,3 @@
+.room-list {
+    flex-grow: 1;
+}

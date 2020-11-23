@@ -37,7 +37,8 @@ namespace VampireVillage.Network
 
         private List<Scene> additiveScenes = new List<Scene>();
         private readonly HashSet<ServerPlayer> players = new HashSet<ServerPlayer>();
-        private readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
+
+        private RoomManager roomManager;
 
         public override void Awake()
         {
@@ -53,6 +54,9 @@ namespace VampireVillage.Network
             transport = GetComponent<Transport>();
             ((TelepathyTransport)transport).port = networkPort;
 
+            // Initialize reference.
+            roomManager = GetComponent<RoomManager>();
+
             base.Awake();
         }
 
@@ -64,6 +68,8 @@ namespace VampireVillage.Network
             else
                 StartServer();
 #endif
+
+            roomManager.mode = mode;
         }
 
 #region Server Methods
@@ -97,16 +103,8 @@ namespace VampireVillage.Network
 
         private IEnumerator CreateRoomAsync(NetworkConnection conn)
         {
-            // Generate a unique room code.
-            string roomCode;
-            do
-            {
-                roomCode = Room.GenerateCode();
-            } while (rooms.ContainsKey(roomCode));
-
-            // Create the room and store it.
-            Room room = new Room(roomCode);
-            rooms.Add(roomCode, room);
+            // Ask Room Manager to create a room.
+            Room room = roomManager.CreateRoom();
 
             // Load the lobby scene on the server and move the client.
             yield return SceneManager.LoadSceneAsync(lobbyScene.name, LoadSceneMode.Additive);
@@ -130,14 +128,7 @@ namespace VampireVillage.Network
         {
             GameLogger.LogServer($"A client is trying to join room {roomCode}.", GetPlayer(conn));
 
-            // Return null if room doesn't exist.
-            // TODO: Proper error handling.
-            if (!rooms.ContainsKey(roomCode))
-                return null;
-
-            // Get the room information.
-            // TODO: Check if room hasn't started game.
-            Room room = rooms[roomCode];
+            Room room = roomManager.JoinRoom(roomCode);
 
             // Set the client's match ID to room ID.
             Client client = conn.identity.GetComponent<Client>();

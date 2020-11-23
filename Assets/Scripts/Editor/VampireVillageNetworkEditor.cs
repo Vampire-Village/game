@@ -18,7 +18,7 @@ public class VampireVillageNetworkEditor : Editor
         rootElement = new VisualElement();
 
         visualTree = Resources.Load<VisualTreeAsset>("UXML/VampireVillageNetworkEditor");
-        styleSheet = Resources.Load<StyleSheet>("USS/VampireVillageNetworkEditor");
+        styleSheet = Resources.Load<StyleSheet>("USS/Styles");
         rootElement.styleSheets.Add(styleSheet);
     }
 

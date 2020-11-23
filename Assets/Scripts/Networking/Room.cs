@@ -19,10 +19,10 @@ namespace VampireVillage.Network
             id = Guid.NewGuid();
         }
 
-        public static string GenerateCode()
+        public static string GenerateCode(uint length)
         {
             string code = "";
-            for (int i = 0; i < 4; i++)
+            for (uint i = 0; i < length; i++)
             {
                 code += (char)(65 + rng.Next(0, 26));
             }
