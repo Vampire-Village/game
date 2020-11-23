@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,26 +14,40 @@ namespace VampireVillage.Network
 {
     public class VampireVillageNetwork : NetworkManager
     {
+#region Network Settings
         public ushort networkPort = 7777;
+#endregion
+
+#region Scene Settings
+        public SceneAsset networkScene;
         public SceneAsset menuScene;
         public SceneAsset lobbyScene;
         public SceneAsset gameScene;
+#endregion
 
+#region Prefabs
+        public GameObject lobbyManagerPrefab;
+#endregion
+
+#region Network Events
         public event Action OnNetworkStart;
         public event Action OnNetworkOnline;
         public event Action OnNetworkOffline;
+#endregion
 
+        private List<Scene> additiveScenes = new List<Scene>();
         private readonly HashSet<ServerPlayer> players = new HashSet<ServerPlayer>();
         private readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
 
         public override void Awake()
         {
             // Set default network settings.
-            dontDestroyOnLoad = true;
+            dontDestroyOnLoad = false;
             runInBackground = true;
             autoStartServerBuild = true;
             serverTickRate = 60;
             disconnectInactiveConnections = false;
+            autoCreatePlayer = true;
 
             // Set transport port.
             transport = GetComponent<Transport>();
@@ -75,7 +90,12 @@ namespace VampireVillage.Network
             GameLogger.LogServer("New client connected!", player);
         }
 
-        public Room CreateRoom(NetworkConnection conn)
+        public void CreateRoom(NetworkConnection conn)
+        {
+            StartCoroutine(CreateRoomAsync(conn));
+        }
+
+        private IEnumerator CreateRoomAsync(NetworkConnection conn)
         {
             // Generate a unique room code.
             string roomCode;
@@ -88,20 +108,22 @@ namespace VampireVillage.Network
             Room room = new Room(roomCode);
             rooms.Add(roomCode, room);
 
-            // Create the lobby scene for the room in the server.
-            SceneManager.LoadScene(lobbyScene.name, LoadSceneMode.Additive);
-            room.lobbyScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
-
-            // Set the client's match ID to room ID.
-            Client client = conn.identity.GetComponent<Client>();
-            client.SetMatchID(room.id);
-
-            // Change the client's scene to lobby.
-            conn.Send(new SceneMessage{ sceneName = lobbyScene.name, sceneOperation = SceneOperation.Normal });
+            // Load the lobby scene on the server and move the client.
+            yield return SceneManager.LoadSceneAsync(lobbyScene.name, LoadSceneMode.Additive);
+            Scene loadedScene = GetLastScene();
+            room.lobbyScene = loadedScene;
+            additiveScenes.Add(loadedScene);
             SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
 
+            // TODO: Move this to join room instead.
+            // Tell the client to unload start menu and load lobby scene.
+            conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.UnloadAdditive });
+            conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
+
             GameLogger.LogServer($"New room created.\nCode: {room.code}", GetPlayer(conn));
-            return room;
+
+            // Let the client know that the room has been created.
+            conn.identity.GetComponent<Client>().TargetHostRoom(room);
         }
 
         public Room JoinRoom(NetworkConnection conn, string roomCode)
@@ -119,7 +141,6 @@ namespace VampireVillage.Network
 
             // Set the client's match ID to room ID.
             Client client = conn.identity.GetComponent<Client>();
-            client.SetMatchID(room.id);
 
             // Change the client's scene to the lobby.
             conn.Send(new SceneMessage{ sceneName = lobbyScene.name, sceneOperation = SceneOperation.Normal });
@@ -153,6 +174,10 @@ namespace VampireVillage.Network
 #region Client Methods
         public override void OnStartClient()
         {
+            // Send client to start menu.
+            if (GetLastScene().name != menuScene.name)
+                SceneManager.LoadScene(menuScene.name, LoadSceneMode.Additive);
+
             GameLogger.LogClient("Client started!");
             OnNetworkStart?.Invoke();
         }
@@ -165,11 +190,30 @@ namespace VampireVillage.Network
             OnNetworkOnline?.Invoke();
         }
 
+        public override void OnClientSceneChanged(NetworkConnection conn)
+        {
+            base.OnClientSceneChanged(conn);
+
+            // Add the last scene added.
+            Scene lastScene = GetLastScene();
+            if (lastScene.name != networkScene.name)
+                additiveScenes.Add(lastScene);
+        }
+
         public override void OnClientDisconnect(NetworkConnection conn)
         {
-            // TODO: Enable reconnect.
             StopClient();
-            SceneManager.LoadScene(menuScene.name);
+            
+            // TODO: Better async handling.
+            // TODO: Enable reconnect.
+            // TODO: Error message & loading scene.
+            // Get the client back to the start menu.
+            if (GetLastScene().name != menuScene.name)
+            {
+                foreach (Scene additiveScene in additiveScenes)
+                    SceneManager.UnloadSceneAsync(additiveScene);
+                SceneManager.LoadScene(menuScene.name, LoadSceneMode.Additive);
+            }
 
             GameLogger.LogClient("Client disconnected.");
             OnNetworkOffline?.Invoke();
@@ -185,6 +229,11 @@ namespace VampireVillage.Network
         private ServerPlayer GetPlayer(NetworkConnection conn)
         {
             return players.SingleOrDefault(p => p.connectionId == conn.connectionId);
+        }
+
+        private static Scene GetLastScene()
+        {
+            return SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
         }
 #endregion
     }

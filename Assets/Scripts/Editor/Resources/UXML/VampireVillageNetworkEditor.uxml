@@ -15,14 +15,16 @@
 
         <ui:VisualElement class="group">
             <ui:Label text="Scene Settings" class="header" />
+            <ue:PropertyField binding-path="networkScene" label="Network" />
             <ue:PropertyField binding-path="menuScene" label="Menu" />
             <ue:PropertyField binding-path="lobbyScene" label="Lobby" />
             <ue:PropertyField binding-path="gameScene" label="Game" />
         </ui:VisualElement>
 
         <ui:VisualElement class="group">
-            <ui:Label text="Player Settings" class="header" />
-            <ue:PropertyField binding-path="playerPrefab" label="Client Prefab" />
+            <ui:Label text="Prefabs" class="header" />
+            <ue:PropertyField binding-path="playerPrefab" label="Client" />
+            <ue:PropertyField binding-path="lobbyManagerPrefab" label="Lobby Manager" />
         </ui:VisualElement>
     </ui:VisualElement>
 </UXML>

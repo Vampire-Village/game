@@ -13,36 +13,33 @@ namespace VampireVillage.Network
         [SyncVar(hook = nameof(SetName))]
         public string playerName;
 
-        private NetworkMatchChecker matchChecker;
         private VampireVillageNetwork network;
 
         private void Start()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
-            matchChecker = GetComponent<NetworkMatchChecker>();
 
             if (isLocalPlayer)
             {
                 // Set this client as the local client.
                 instance = this;
 
-                // Initialize the matchId as playerId (so the client is alone at the start).
-                SetMatchID(playerId);
-                name = $"Client ({playerId})";
+                // Set player gameobject name.
+                name = $"Client [LOCAL]";
 
                 GameLogger.LogClient("Client connected to the server.", this);
             }
-
-            if (network.mode == NetworkManagerMode.ClientOnly)
-                DontDestroyOnLoad(gameObject);
+            else
+            {
+                name = $"Client ({playerId})";
+            }
         }
 
         [Command]
         public void CmdHostRoom()
         {
             GameLogger.LogServer("A client requested a new room.", this);
-            Room room = network.CreateRoom(connectionToClient);
-            TargetHostRoom(room);
+            network.CreateRoom(connectionToClient);
         }
 
         [TargetRpc]
@@ -79,11 +76,6 @@ namespace VampireVillage.Network
             name = $"Client ({newName})";
             if (isLocalPlayer)
                 name += " [LOCAL]";
-        }
-
-        public void SetMatchID(Guid id)
-        {
-            matchChecker.matchId = id;
         }
     }
 }
