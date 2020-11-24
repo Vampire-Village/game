@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:ue="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+>
+    <ui:VisualElement class="group">
+        <ui:Label text="Room Information" class="header" />
+        <ui:VisualElement class="line">
+            <ui:Label text="Code: " />
+            <ui:Label name="roomCode" />
+        </ui:VisualElement>
+        <ui:VisualElement class="line">
+            <ui:Label text="Players: " />
+            <ui:Label name="playerTotal" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</UXML>

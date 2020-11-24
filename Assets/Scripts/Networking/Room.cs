@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace VampireVillage.Network
@@ -10,6 +11,9 @@ namespace VampireVillage.Network
         public string code;
         public Scene lobbyScene;
         public bool isRoomInitialized = false;
+
+        [System.NonSerialized]
+        public readonly List<ServerPlayer> players = new List<ServerPlayer>();
 
         [System.NonSerialized]
         public LobbyManager lobbyManager;

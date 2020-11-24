@@ -4,7 +4,7 @@ namespace VampireVillage.Network
 {
     public class ServerPlayer : IEquatable<ServerPlayer>
     {
-        public Guid id { get; private set; }
+        public Guid id;
         public int connectionId { get; set; }
 
         public ServerPlayer()

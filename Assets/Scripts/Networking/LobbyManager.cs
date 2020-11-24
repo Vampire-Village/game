@@ -7,9 +7,15 @@ namespace VampireVillage.Network
 {
     public class LobbyManager : NetworkBehaviour
     {
-        private Room room;
+        [SyncVar]
+        public Room room;
+
+        public readonly SyncList<ServerPlayer> players = new SyncList<ServerPlayer>();
 
         private VampireVillageNetwork network;
+
+        [System.NonSerialized]
+        public NetworkManagerMode mode = NetworkManagerMode.Offline;
 
         public void Awake()
         {
@@ -18,8 +24,15 @@ namespace VampireVillage.Network
 
         public override void OnStartServer()
         {
+            mode = NetworkManagerMode.ServerOnly;
+
             // Register the Lobby Manager to the server's Room Manager.
             network.roomManager.RegisterLobbyManager(this, gameObject.scene);
+        }
+
+        public override void OnStartClient()
+        {
+            mode = NetworkManagerMode.ClientOnly;
         }
 
         public void RegisterRoom(Room room)

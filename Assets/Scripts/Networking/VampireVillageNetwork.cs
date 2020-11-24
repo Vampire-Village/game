@@ -131,14 +131,17 @@ namespace VampireVillage.Network
 
             // Check if room is joinable.
             // TODO: Check if room has started yet or not.
-            Room room = roomManager.JoinRoom(roomCode);
+            Room room = roomManager.GetRoom(roomCode);
             if (room == null)
             {
                 client.TargetJoinRoom(null);
                 yield break;
             }
-            if (room.isRoomInitialized)
+            while (!room.isRoomInitialized)
                 yield return new WaitForSeconds(1);
+
+            // Actually join the room.
+            roomManager.JoinRoom(room, GetPlayer(conn));
 
             // Move the client to the lobby.
             SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);

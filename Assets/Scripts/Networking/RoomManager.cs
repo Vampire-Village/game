@@ -36,17 +36,22 @@ namespace VampireVillage.Network
             return room;
         }
 
-        public Room JoinRoom(string roomCode)
+        public Room GetRoom(string roomCode)
         {
             // Return null if room doesn't exist.
             // TODO: Proper error handling.
             if (!rooms.ContainsKey(roomCode))
                 return null;
 
-            // Get the room information.
-            // TODO: Check if room hasn't started game.
             Room room = rooms[roomCode];
             return room;
+        }
+
+        public void JoinRoom(Room room, ServerPlayer player)
+        {
+            room.players.Add(player);
+            Debug.Log(room.lobbyManager);
+            room.lobbyManager.players.Add(player);
         }
 
         public void RegisterLobbyManager(LobbyManager lobbyManager, Scene lobbyScene)
