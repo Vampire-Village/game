@@ -27,6 +27,7 @@ namespace VampireVillage.Network
 
 #region Prefabs
         public GameObject lobbyManagerPrefab;
+        public GameObject lobbyPlayerPrefab;
 #endregion
 
 #region Network Events
@@ -57,6 +58,10 @@ namespace VampireVillage.Network
             // Initialize reference.
             roomManager = GetComponent<RoomManager>();
 
+            // Register custom prefabs.
+            spawnPrefabs.Add(lobbyManagerPrefab);
+            spawnPrefabs.Add(lobbyPlayerPrefab);
+
             base.Awake();
         }
 
@@ -84,6 +89,7 @@ namespace VampireVillage.Network
             // Create new server player data.
             ServerPlayer player = new ServerPlayer();
             player.connectionId = conn.connectionId;
+            player.clientConnection = conn;
             players.Add(player);
 
             // Create the client.
@@ -150,6 +156,16 @@ namespace VampireVillage.Network
 
             // Let the client know that the room has been joined.
             client.TargetJoinRoom(room);
+        }
+
+        public void InstantiateLobbyPlayer(GameObject lobbyManager, ServerPlayer player)
+        {
+            // Instantiate the lobby player.
+            // First, instantiate as lobby manager child, then move it to the scene.
+            // (Because Unity doesn't support instantiate in additive scene yet)
+            GameObject lobbyPlayer = Instantiate(lobbyPlayerPrefab, lobbyManager.transform);
+            lobbyPlayer.transform.parent = null;
+            NetworkServer.Spawn(lobbyPlayer, player.clientConnection);
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)

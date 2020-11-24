@@ -18,7 +18,7 @@ public class Controller : NetworkBehaviour
     }
     void Update()
     {
-        if (isLocalPlayer)
+        if (hasAuthority)
         {
             if (Input.GetButtonDown("Interact"))
             {
@@ -28,7 +28,7 @@ public class Controller : NetworkBehaviour
     }
     void FixedUpdate()
     {
-        if (isLocalPlayer)
+        if (hasAuthority)
         {
             float moveXAxis = Input.GetAxis("Horizontal");
             float moveZAxis = Input.GetAxis("Vertical");

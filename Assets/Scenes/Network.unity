@@ -220,6 +220,9 @@ MonoBehaviour:
   gameScene: {fileID: 0}
   lobbyManagerPrefab: {fileID: 4303215239192270110, guid: 31bbe101264723643acdb9dd71daf8c5,
     type: 3}
+  lobbyPlayerPrefab: {fileID: 4602695557135484434, guid: c75ab9aee59cacf4fa4cf4905c74bfd0,
+    type: 3}
+  roomManager: {fileID: 0}
 --- !u!4 &1576988696
 Transform:
   m_ObjectHideFlags: 0

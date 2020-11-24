@@ -50,8 +50,7 @@ namespace VampireVillage.Network
         public void JoinRoom(Room room, ServerPlayer player)
         {
             room.players.Add(player);
-            Debug.Log(room.lobbyManager);
-            room.lobbyManager.players.Add(player);
+            room.lobbyManager.AddPlayer(player);
         }
 
         public void RegisterLobbyManager(LobbyManager lobbyManager, Scene lobbyScene)

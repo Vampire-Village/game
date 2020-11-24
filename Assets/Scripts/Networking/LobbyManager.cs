@@ -39,5 +39,12 @@ namespace VampireVillage.Network
         {
             this.room = room;
         }
+
+        [Server]
+        public void AddPlayer(ServerPlayer player)
+        {
+            players.Add(player);
+            network.InstantiateLobbyPlayer(gameObject, player);
+        }
     }
 }

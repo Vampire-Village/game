@@ -1,11 +1,15 @@
 ﻿using System;
+using Mirror;
 
 namespace VampireVillage.Network
 {
     public class ServerPlayer : IEquatable<ServerPlayer>
     {
         public Guid id;
-        public int connectionId { get; set; }
+        public int connectionId;
+
+        [NonSerialized]
+        public NetworkConnection clientConnection;
 
         public ServerPlayer()
         {
