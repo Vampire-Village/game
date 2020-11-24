@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Mirror;
 
 namespace VampireVillage.Network
@@ -13,6 +14,8 @@ namespace VampireVillage.Network
     {
         public uint codeLength = 4;
         public readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
+
+        private readonly List<Scene> test = new List<Scene>();
 
         [System.NonSerialized]
         public NetworkManagerMode mode = NetworkManagerMode.Offline;
@@ -44,6 +47,30 @@ namespace VampireVillage.Network
             // TODO: Check if room hasn't started game.
             Room room = rooms[roomCode];
             return room;
+        }
+
+        public void RegisterLobbyManager(LobbyManager lobbyManager, Scene lobbyScene)
+        {
+            StartCoroutine(RegisterLobbyManagerAsync(lobbyManager, lobbyScene));
+        }
+
+        private IEnumerator RegisterLobbyManagerAsync(LobbyManager lobbyManager, Scene lobbyScene)
+        {
+            // NOTE: This is just here to fix race condition between RegisterLobbyManager and setting room.lobbyScene.
+            // TODO: Better scene management.
+            yield return new WaitForSeconds(3);
+
+            // Search for the rooms scene.
+            foreach (var room in rooms.Values)
+            {
+                if (room.lobbyScene == lobbyScene)
+                {
+                    room.lobbyManager = lobbyManager;
+                    lobbyManager.RegisterRoom(room);
+                    room.isRoomInitialized = true;
+                    break;
+                }
+            }
         }
     }
 }

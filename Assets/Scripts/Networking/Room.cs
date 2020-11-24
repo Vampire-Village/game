@@ -7,16 +7,18 @@ namespace VampireVillage.Network
     {
         private static readonly Random rng = new Random();
 
-        public Guid id { get; private set; }
         public string code;
         public Scene lobbyScene;
+        public bool isRoomInitialized = false;
+
+        [System.NonSerialized]
+        public LobbyManager lobbyManager;
 
         public Room() {}
         
         public Room(string code)
         {
             this.code = code;
-            id = Guid.NewGuid();
         }
 
         public static string GenerateCode(uint length)

@@ -46,20 +46,25 @@ namespace VampireVillage.Network
         public void TargetHostRoom(Room room)
         {
             GameLogger.LogClient($"Created new room!\nCode: {room.code}");
+            CmdJoinRoom(room.code);
         }
 
         [Command]
         public void CmdJoinRoom(string roomCode)
         {
             GameLogger.LogServer("A client requested to join a room.\nCode: {roomCode}", this);
-            Room room = network.JoinRoom(connectionToClient, roomCode);
-            if (room != null)
-                TargetJoinRoom(room);
+            network.JoinRoom(connectionToClient, roomCode);
         }
 
         [TargetRpc]
         public void TargetJoinRoom(Room room)
         {
+            if (room == null)
+            {
+                GameLogger.LogClient($"Failed to join the room.");
+                return;
+            }
+
             GameLogger.LogClient($"Joined a room!\nCode: {room.code}");
         }
 

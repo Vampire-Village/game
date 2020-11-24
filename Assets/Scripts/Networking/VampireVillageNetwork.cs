@@ -38,7 +38,7 @@ namespace VampireVillage.Network
         private List<Scene> additiveScenes = new List<Scene>();
         private readonly HashSet<ServerPlayer> players = new HashSet<ServerPlayer>();
 
-        private RoomManager roomManager;
+        public RoomManager roomManager;
 
         public override void Awake()
         {
@@ -106,38 +106,47 @@ namespace VampireVillage.Network
             // Ask Room Manager to create a room.
             Room room = roomManager.CreateRoom();
 
-            // Load the lobby scene on the server and move the client.
+            // Load the lobby scene on the server.
             yield return SceneManager.LoadSceneAsync(lobbyScene.name, LoadSceneMode.Additive);
             Scene loadedScene = GetLastScene();
             room.lobbyScene = loadedScene;
             additiveScenes.Add(loadedScene);
-            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
-
-            // TODO: Move this to join room instead.
-            // Tell the client to unload start menu and load lobby scene.
-            conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.UnloadAdditive });
-            conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
-
             GameLogger.LogServer($"New room created.\nCode: {room.code}", GetPlayer(conn));
 
             // Let the client know that the room has been created.
             conn.identity.GetComponent<Client>().TargetHostRoom(room);
         }
 
-        public Room JoinRoom(NetworkConnection conn, string roomCode)
+        public void JoinRoom(NetworkConnection conn, string roomCode)
+        {
+            StartCoroutine(JoinRoomAsync(conn, roomCode));
+        }
+
+        private IEnumerator JoinRoomAsync(NetworkConnection conn, string roomCode)
         {
             GameLogger.LogServer($"A client is trying to join room {roomCode}.", GetPlayer(conn));
 
-            Room room = roomManager.JoinRoom(roomCode);
-
-            // Set the client's match ID to room ID.
+            // Get client.
             Client client = conn.identity.GetComponent<Client>();
 
-            // Change the client's scene to the lobby.
-            conn.Send(new SceneMessage{ sceneName = lobbyScene.name, sceneOperation = SceneOperation.Normal });
-            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
+            // Check if room is joinable.
+            // TODO: Check if room has started yet or not.
+            Room room = roomManager.JoinRoom(roomCode);
+            if (room == null)
+            {
+                client.TargetJoinRoom(null);
+                yield break;
+            }
+            if (room.isRoomInitialized)
+                yield return new WaitForSeconds(1);
 
-            return room;
+            // Move the client to the lobby.
+            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
+            conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.UnloadAdditive });
+            conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
+
+            // Let the client know that the room has been joined.
+            client.TargetJoinRoom(room);
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)
