@@ -96,6 +96,7 @@ namespace VampireVillage.Network
             GameObject clientObject = Instantiate(playerPrefab);
             Client client = clientObject.GetComponent<Client>();
             client.playerId = player.id;
+            player.client = client;
 
             // Add client to the server connection.
             NetworkServer.AddPlayerForConnection(conn, clientObject);
@@ -160,12 +161,16 @@ namespace VampireVillage.Network
 
         public void InstantiateLobbyPlayer(GameObject lobbyManager, ServerPlayer player)
         {
-            // Instantiate the lobby player.
-            // First, instantiate as lobby manager child, then move it to the scene.
-            // (Because Unity doesn't support instantiate in additive scene yet)
-            GameObject lobbyPlayer = Instantiate(lobbyPlayerPrefab, lobbyManager.transform);
-            lobbyPlayer.transform.parent = null;
-            NetworkServer.Spawn(lobbyPlayer, player.clientConnection);
+            // Instantiate the lobby player in the lobby scene.
+            GameObject lobbyPlayerInstance = Instantiate(lobbyPlayerPrefab, lobbyManager.transform);
+            lobbyPlayerInstance.transform.parent = null;
+
+            // Set the name of the lobby player according to client.
+            LobbyPlayer lobbyPlayer = lobbyPlayerInstance.GetComponent<LobbyPlayer>();
+            lobbyPlayer.playerName = player.client.playerName;
+
+            // Spawn the lobby player in all connected clients in the lobby.
+            NetworkServer.Spawn(lobbyPlayerInstance, player.clientConnection);
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)

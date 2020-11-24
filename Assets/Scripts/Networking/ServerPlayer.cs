@@ -7,9 +7,13 @@ namespace VampireVillage.Network
     {
         public Guid id;
         public int connectionId;
+        public string name;
 
         [NonSerialized]
         public NetworkConnection clientConnection;
+
+        [NonSerialized]
+        public Client client;
 
         public ServerPlayer()
         {

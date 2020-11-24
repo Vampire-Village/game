@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Mirror;
+﻿using Mirror;
+using TMPro;
 
 namespace VampireVillage.Network
 {
     public class LobbyManager : NetworkBehaviour
     {
-        [SyncVar]
+        [SyncVar(hook = nameof(UpdateRoom))]
         public Room room;
 
         public readonly SyncList<ServerPlayer> players = new SyncList<ServerPlayer>();
+
+        public TMP_Text roomCodeText;
 
         private VampireVillageNetwork network;
 
@@ -40,11 +40,15 @@ namespace VampireVillage.Network
             this.room = room;
         }
 
-        [Server]
         public void AddPlayer(ServerPlayer player)
         {
             players.Add(player);
             network.InstantiateLobbyPlayer(gameObject, player);
+        }
+
+        public void UpdateRoom(Room oldRoom, Room newRoom)
+        {
+            roomCodeText.text = newRoom.code;
         }
     }
 }
