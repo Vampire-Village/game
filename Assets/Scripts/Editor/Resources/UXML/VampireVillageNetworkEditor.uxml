@@ -11,6 +11,7 @@
             <ue:PropertyField binding-path="networkAddress" label="Address" />
             <ue:PropertyField binding-path="networkPort" label="Port" />
             <ue:PropertyField binding-path="maxConnections" />
+            <ue:PropertyField binding-path="forceClient" label="Force Client?" />
         </ui:VisualElement>
 
         <ui:VisualElement class="group">

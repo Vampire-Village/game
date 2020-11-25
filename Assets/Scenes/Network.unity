@@ -214,6 +214,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs: []
   networkPort: 7777
+  forceClient: 0
   networkScene: {fileID: 102900000, guid: f561d6787ff843e4f9c94699a5ef8a97, type: 3}
   menuScene: {fileID: 102900000, guid: 5ad7d09dbfc3cf5419baf121e6edfc4e, type: 3}
   lobbyScene: {fileID: 102900000, guid: eeab2c16ac6a1b342817a221809255c5, type: 3}

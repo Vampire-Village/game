@@ -16,6 +16,9 @@ namespace VampireVillage.Network
     {
 #region Network Settings
         public ushort networkPort = 7777;
+#if UNITY_EDITOR
+        public bool forceClient = false;
+#endif
 #endregion
 
 #region Scene Settings
@@ -68,7 +71,7 @@ namespace VampireVillage.Network
         public override void Start()
         {
 #if UNITY_EDITOR
-            if (ClonesManager.IsClone())
+            if (ClonesManager.IsClone() || forceClient)
                 StartClient();
             else
                 StartServer();
