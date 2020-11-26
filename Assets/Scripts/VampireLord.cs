@@ -58,7 +58,7 @@ public class VampireLord : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<Player>().role == Player.Role.Villager)
+            if (other.gameObject.GetComponent<GamePlayer>().role == GamePlayer.Role.Villager)
             {
                 villagersInRange.Add(other.gameObject);
                 Debug.Log("Villager in range");
@@ -70,7 +70,7 @@ public class VampireLord : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<Player>().role == Player.Role.Villager)
+            if (other.gameObject.GetComponent<GamePlayer>().role == GamePlayer.Role.Villager)
             {
                 villagersInRange.Remove(other.gameObject);
                 Debug.Log("Villager lost");

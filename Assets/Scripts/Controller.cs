@@ -7,15 +7,11 @@ public class Controller : NetworkBehaviour
 {
     private Rigidbody rb;
     public float speed;
-    //public Button interactButton;
     private bool inInteractableRange = false;
     private GameObject interactable;
     public bool inTask = false;
     public Item heldItem;
-    void Start()
-    {
-        //Button btn = interactButton.GetComponent<Button>();
-    }
+
     void Update()
     {
         if (hasAuthority)
@@ -39,9 +35,6 @@ public class Controller : NetworkBehaviour
                 transform.Translate(movement * speed * Time.deltaTime);
             }
         }
-
-        
-
     }
 
     void OnTriggerEnter(Collider collider)
@@ -50,7 +43,6 @@ public class Controller : NetworkBehaviour
         {
             inInteractableRange = true;
             interactable = collider.gameObject;
-
         }
     }
     void OnTriggerExit(Collider collider)

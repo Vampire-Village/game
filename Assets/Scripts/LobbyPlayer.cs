@@ -1,15 +1,18 @@
-﻿using Mirror;
-using TMPro;
+﻿using UnityEngine.Events;
 
-public class LobbyPlayer : NetworkBehaviour
+public class LobbyPlayer : BasePlayer
 {
-    [SyncVar(hook = nameof(SetName))]
-    public string playerName;
+    public new static LobbyPlayer local;
 
-    public TMP_Text nameText;
+    public new static UnityEvent OnPlayerSpawned = new UnityEvent();
 
-    public void SetName(string oldName, string newName)
+    public override void OnStartAuthority()
     {
-        nameText.text = newName;
+        // Set base player.
+        base.OnStartAuthority();
+
+        // Set lobby player.
+        local = this;
+        OnPlayerSpawned.Invoke();
     }
 }

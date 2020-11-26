@@ -1,96 +1,67 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
 
 public class PlayerUI : MonoBehaviour
 {
-    public GameObject InfectButton;
-    public GameObject ReportButton;
-    public GameObject InteractButton;
+    public Button infectButton;
+    public Button reportButton;
+    public Button interactButton;
 
+    private GamePlayer player;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Player.playerSpawned.AddListener(BeginUI);
+        GamePlayer.OnPlayerSpawned.AddListener(SetPlayer);
+        GamePlayer.OnRoleUpdated.AddListener(SetUI);
     }
 
-
-    void BeginUI()
+    private void SetPlayer()
     {
-       
-        InfectButton.SetActive(false);
-        ReportButton.SetActive(false);
-        InteractButton.SetActive(false);
+        player = GamePlayer.local;
+    }
 
+    private void SetUI()
+    {
+        infectButton.gameObject.SetActive(false);
+        reportButton.gameObject.SetActive(false);
+        interactButton.gameObject.SetActive(false);
 
-        if (Player.local.role == Player.Role.VampireLord)
+        switch (player.role)
         {
-            Debug.Log("Va");
-            InfectButton.SetActive(true);
-            Button infectButton = InfectButton.GetComponent<Button>();
-            infectButton.onClick.AddListener(Infect);
-        }
-        else if (Player.local.role == Player.Role.Villager)
-        {
-            Debug.Log("Vi");
-            InteractButton.SetActive(true);
-            Button interactButton = InteractButton.GetComponent<Button>();
-            interactButton.onClick.AddListener(Interact);
-        }
-        else if (Player.local.role == Player.Role.Infected) // This shouldn't happen in a typical game
-        {
-            Debug.Log("In");
-            ReportButton.SetActive(true);
-            Button reportButton = ReportButton.GetComponent<Button>();
-            reportButton.onClick.AddListener(Report);
-        }
-        else
-        {
-            Debug.Log("Player tag is not assigned");
-            Debug.Log(Player.local.role);
+            case GamePlayer.Role.VampireLord:
+                infectButton.gameObject.SetActive(true);
+                break;
+            case GamePlayer.Role.Villager:
+                interactButton.gameObject.SetActive(true);
+                break;
+            case GamePlayer.Role.Infected:
+                interactButton.gameObject.SetActive(true);
+                infectButton.gameObject.SetActive(true);
+                break;
+            default:
+                GameLogger.LogClient("Player role is not assigned, so UI is not initialized.");
+                break;
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void Infect()
     {
-
+        player.vampireLord.Infect();
     }
 
-    /* Note: Right now, both players are sharing the same UI; later will need to make
-    sure that each player has their own UI and buttons are being updated accordingly */
-
-
-
-
-
-
-
-
-
-
-    void Infect()
+    private void Report()
     {
-        Player.local.gameObject.GetComponent<VampireLord>().Infect();
+        player.infected.Report();
     }
 
-    void Report()
+    private void Interact()
     {
-        Player.local.gameObject.GetComponent<Infected>().Report();
+        player.controller.Interact();
     }
-    void Interact()
+
+    private void OnDestroy()
     {
-        Player.local.gameObject.GetComponent<Controller>().Interact();
+        GamePlayer.OnPlayerSpawned.RemoveListener(SetPlayer);
+        GamePlayer.OnRoleUpdated.RemoveListener(SetUI);
     }
-  
-
-
-
-
 }

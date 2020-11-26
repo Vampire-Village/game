@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 2357342938659546921}
   - component: {fileID: 2357342938659546934}
   - component: {fileID: 2357342938659546935}
+  - component: {fileID: 8285662754910357389}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -179,6 +180,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8285662754910357389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357342938659546933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001d33e1666b60e47823fb9240143e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infectButton: {fileID: 2357342938937113997}
+  reportButton: {fileID: 2357342939548786766}
+  interactButton: {fileID: 3975144816025846805}
 --- !u!1 &2357342938937113995
 GameObject:
   m_ObjectHideFlags: 0

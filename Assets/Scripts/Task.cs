@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Task : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void completeTask(GameObject taskCanvas, Item completeItem)
+    public void CompleteTask(GameObject taskCanvas, Item completeItem)
     {
         //GameObject player = currentPlayer();
         //Controller playerController = player.GetComponent<Controller>();
         //Controller player = GameObject.Find("Player").GetComponent<Controller>();
-        Controller player = Player.local.GetComponent<Controller>();
+        Controller player = GamePlayer.local.GetComponent<Controller>();
         player.EndTask(completeItem);
         Debug.Log("Task ended!");
         Destroy(taskCanvas, 2.0f);

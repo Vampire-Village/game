@@ -150,13 +150,13 @@ namespace VampireVillage.Network
             while (!room.isRoomInitialized)
                 yield return new WaitForSeconds(1);
 
-            // Actually join the room.
-            roomManager.JoinRoom(room, GetPlayer(conn));
-
             // Move the client to the lobby.
             SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
             conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.UnloadAdditive });
             conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
+
+            // Register player to the room manager.
+            roomManager.JoinRoom(room, GetPlayer(conn));
 
             // Let the client know that the room has been joined.
             client.TargetJoinRoom(room);

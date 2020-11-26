@@ -37,7 +37,7 @@ public class CandleController : Task
             if(candleTop > 150.0f)
             {
                 taskComplete = true;
-                completeTask(gameObject, completeItem);
+                CompleteTask(gameObject, completeItem);
             }
             //Debug.Log(candleTop);
         }

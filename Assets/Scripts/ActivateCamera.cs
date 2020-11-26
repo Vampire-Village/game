@@ -1,19 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using Cinemachine;
+
 public class ActivateCamera : MonoBehaviour
 {
-    void Start()
+    private CinemachineVirtualCamera vcam;
+
+    private void Awake()
     {
-        Player.playerSpawned.AddListener(FollowPlayer);
+        vcam = GetComponent<CinemachineVirtualCamera>();
+        BasePlayer.OnPlayerSpawned.AddListener(FollowPlayer);
     }
 
-    void FollowPlayer()
+    public void FollowPlayer()
     {
-        CinemachineVirtualCamera vcam = gameObject.GetComponent<CinemachineVirtualCamera>();
-        vcam.LookAt = Player.local.GetComponent<Transform>();
-        vcam.Follow = Player.local.GetComponent<Transform>();
+        vcam.LookAt = BasePlayer.local.transform;
+        vcam.Follow = BasePlayer.local.transform;
+    }
+
+    private void OnDestroy()
+    {
+        BasePlayer.OnPlayerSpawned.RemoveListener(FollowPlayer);
     }
 }
