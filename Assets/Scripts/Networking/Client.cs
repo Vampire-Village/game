@@ -52,7 +52,7 @@ namespace VampireVillage.Network
         [Command]
         public void CmdJoinRoom(string roomCode)
         {
-            GameLogger.LogServer("A client requested to join a room.\nCode: {roomCode}", this);
+            GameLogger.LogServer($"A client requested to join a room.\nCode: {roomCode}", this);
             network.JoinRoom(connectionToClient, roomCode);
         }
 
