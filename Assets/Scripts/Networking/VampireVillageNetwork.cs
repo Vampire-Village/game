@@ -19,6 +19,8 @@ namespace VampireVillage.Network
 #if UNITY_EDITOR
         public bool forceClient = false;
 #endif
+        [NonSerialized]
+        public bool isNetworkConnected = false;
 #endregion
 
 #region Scene Settings
@@ -71,13 +73,15 @@ namespace VampireVillage.Network
         public override void Start()
         {
 #if UNITY_EDITOR
+            // Start client/server based on ParrelSync settings.
             if (ClonesManager.IsClone() || forceClient)
                 StartClient();
             else
                 StartServer();
-#endif
 
+            // Set room manager mode editor.
             roomManager.mode = mode;
+#endif
         }
 
 #region Server Methods
@@ -156,13 +160,15 @@ namespace VampireVillage.Network
             conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
 
             // Register player to the room manager.
-            roomManager.JoinRoom(room, GetPlayer(conn));
+            ServerPlayer serverPlayer = GetPlayer(conn);
+            roomManager.JoinRoom(room, serverPlayer);
+            serverPlayer.room = room;
 
             // Let the client know that the room has been joined.
             client.TargetJoinRoom(room);
         }
 
-        public void InstantiateLobbyPlayer(GameObject lobbyManager, ServerPlayer player)
+        public GameObject InstantiateLobbyPlayer(GameObject lobbyManager, ServerPlayer player)
         {
             // Instantiate the lobby player in the lobby scene.
             GameObject lobbyPlayerInstance = Instantiate(lobbyPlayerPrefab, lobbyManager.transform);
@@ -174,6 +180,28 @@ namespace VampireVillage.Network
 
             // Spawn the lobby player in all connected clients in the lobby.
             NetworkServer.Spawn(lobbyPlayerInstance, player.clientConnection);
+            return lobbyPlayerInstance;
+        }
+
+        public void DestroyLobbyPlayer(GameObject lobbyPlayerInstance)
+        {
+            NetworkServer.Destroy(lobbyPlayerInstance);
+        }
+
+        public void LeaveRoom(NetworkConnection conn)
+        {
+            // Remove player from the lobby through room manager.
+            ServerPlayer player = GetPlayer(conn);
+            GameLogger.LogServer($"A client is leaving room {player.room.code}", player);
+            Room room = roomManager.LeaveRoom(player);
+
+            // Move client out of the room
+            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, gameObject.scene);
+            conn.Send(new SceneMessage { sceneName = (room.state == RoomState.Lobby ? lobbyScene.name : gameScene.name), sceneOperation = SceneOperation.UnloadAdditive });
+            conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.LoadAdditive });
+            
+            // Let the client know that they have left the room.
+            player.client.TargetLeaveRoom();
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)
@@ -187,6 +215,8 @@ namespace VampireVillage.Network
             ServerPlayer player = players.SingleOrDefault(x => x.connectionId == conn.connectionId);
             if (player != null)
             {
+                if (player.room != null)
+                    LeaveRoom(conn);
                 players.Remove(player);
                 GameLogger.LogServer("A client disconnected.", player);
             }
@@ -214,6 +244,7 @@ namespace VampireVillage.Network
             base.OnClientConnect(conn);
             
             GameLogger.LogClient("Client connected to the server!");
+            isNetworkConnected = true;
             OnNetworkOnline?.Invoke();
         }
 
@@ -243,6 +274,7 @@ namespace VampireVillage.Network
             }
 
             GameLogger.LogClient("Client disconnected.");
+            isNetworkConnected = false;
             OnNetworkOffline?.Invoke();
         }
 

@@ -80,7 +80,9 @@ public class RoomManagerEditor : Editor
     {
         var room = roomList.itemsSource[index] as Room;
         var roomCode = roomRootElement.Q<Label>("roomCode");
+        var roomPlayers = roomRootElement.Q<Label>("roomPlayers");
         roomCode.text = room.code;
+        roomPlayers.text = room.players.Count.ToString();
     }
 
     private void RefreshRooms()

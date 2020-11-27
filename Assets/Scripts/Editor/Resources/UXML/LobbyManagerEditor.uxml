@@ -8,5 +8,6 @@
     <ui:VisualElement class="group">
         <ui:Label text="UI Settings" class="header" />
         <ue:PropertyField binding-path="roomCodeText" label="Room Code" />
+        <ue:PropertyField binding-path="leaveLobbyButton" label="Leave Lobby" />
     </ui:VisualElement>
 </UXML>

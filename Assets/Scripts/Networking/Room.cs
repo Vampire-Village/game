@@ -11,6 +11,7 @@ namespace VampireVillage.Network
         public string code;
         public Scene lobbyScene;
         public bool isRoomInitialized = false;
+        public RoomState state = RoomState.Lobby;
 
         [System.NonSerialized]
         public readonly List<ServerPlayer> players = new List<ServerPlayer>();

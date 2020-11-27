@@ -7,6 +7,9 @@
 >
     <ui:VisualElement class="card">
         <ui:Label name="roomCode" class="bold" />
-        <ui:Label text="Players:" />
+        <ui:VisualElement class="line">
+            <ui:Label text="Players:" />
+            <ui:Label name="roomPlayers" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </UXML>

@@ -28,13 +28,18 @@ public class StartMenu : MonoBehaviour
     private void Awake()
     {
         // Show online/offline menu.
+        network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         if (network.isNetworkActive)
-            OnNetworkStart();
+        {
+            if (network.isNetworkConnected)
+                OnNetworkOnline();
+            else
+                OnNetworkStart();
+        }
         else
             OnNetworkOffline();
             
         // Handle network callbacks.
-        network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         network.OnNetworkStart += OnNetworkStart;
         network.OnNetworkOnline += OnNetworkOnline;
         network.OnNetworkOffline += OnNetworkOffline;

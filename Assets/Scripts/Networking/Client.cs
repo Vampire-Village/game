@@ -69,6 +69,19 @@ namespace VampireVillage.Network
         }
 
         [Command]
+        public void CmdLeaveRoom()
+        {
+            GameLogger.LogServer($"A client requested to leave a room.", this);
+            network.LeaveRoom(connectionToClient);
+        }
+
+        [TargetRpc]
+        public void TargetLeaveRoom()
+        {
+            GameLogger.LogClient("Left room successfully!");
+        }
+
+        [Command]
         public void CmdSetName(string newName)
         {
             // TODO: Some sort of name validation.

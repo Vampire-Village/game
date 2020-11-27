@@ -15,10 +15,10 @@ namespace VampireVillage.Network
         public uint codeLength = 4;
         public readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
 
-        private readonly List<Scene> test = new List<Scene>();
-
+#if UNITY_EDITOR
         [System.NonSerialized]
         public NetworkManagerMode mode = NetworkManagerMode.Offline;
+#endif
 
         public Room CreateRoom()
         {
@@ -50,7 +50,18 @@ namespace VampireVillage.Network
         public void JoinRoom(Room room, ServerPlayer player)
         {
             room.players.Add(player);
-            room.lobbyManager.AddPlayer(player);
+            if (room.state == RoomState.Lobby)
+                room.lobbyManager.AddPlayer(player);
+        }
+
+        public Room LeaveRoom(ServerPlayer player)
+        {
+            Room room = player.room;
+            player.room = null;
+            room.players.Remove(player);
+            if (room.state == RoomState.Lobby)
+                room.lobbyManager.RemovePlayer(player);
+            return room;
         }
 
         public void RegisterLobbyManager(LobbyManager lobbyManager, Scene lobbyScene)

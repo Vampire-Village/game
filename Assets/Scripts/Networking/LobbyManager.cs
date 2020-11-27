@@ -1,4 +1,8 @@
-﻿using Mirror;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using Mirror;
 using TMPro;
 
 namespace VampireVillage.Network
@@ -11,11 +15,16 @@ namespace VampireVillage.Network
         public readonly SyncList<ServerPlayer> players = new SyncList<ServerPlayer>();
 
         public TMP_Text roomCodeText;
+        public Button leaveLobbyButton;
+
+        private readonly Dictionary<ServerPlayer, GameObject> lobbyPlayers = new Dictionary<ServerPlayer, GameObject>();
 
         private VampireVillageNetwork network;
 
-        [System.NonSerialized]
-        public NetworkManagerMode mode = NetworkManagerMode.Offline;
+#if UNITY_EDITOR
+        [NonSerialized]
+        public NetworkMode mode = NetworkMode.Offline;
+#endif
 
         public void Awake()
         {
@@ -24,7 +33,9 @@ namespace VampireVillage.Network
 
         public override void OnStartServer()
         {
-            mode = NetworkManagerMode.ServerOnly;
+#if UNITY_EDITOR
+            mode = NetworkMode.Server;
+#endif
 
             // Register the Lobby Manager to the server's Room Manager.
             network.roomManager.RegisterLobbyManager(this, gameObject.scene);
@@ -32,7 +43,11 @@ namespace VampireVillage.Network
 
         public override void OnStartClient()
         {
-            mode = NetworkManagerMode.ClientOnly;
+#if UNITY_EDITOR
+            mode = NetworkMode.Client;
+#endif
+
+            leaveLobbyButton.onClick.AddListener(Client.instance.CmdLeaveRoom);
         }
 
         public void RegisterRoom(Room room)
@@ -43,7 +58,16 @@ namespace VampireVillage.Network
         public void AddPlayer(ServerPlayer player)
         {
             players.Add(player);
-            network.InstantiateLobbyPlayer(gameObject, player);
+            GameObject lobbyPlayerInstance = network.InstantiateLobbyPlayer(gameObject, player);
+            lobbyPlayers.Add(player, lobbyPlayerInstance);
+        }
+
+        public void RemovePlayer(ServerPlayer player)
+        {
+            players.Remove(player);
+            GameObject lobbyPlayerInstance = lobbyPlayers[player];
+            lobbyPlayers.Remove(player);
+            network.DestroyLobbyPlayer(lobbyPlayerInstance);
         }
 
         public void UpdateRoom(Room oldRoom, Room newRoom)

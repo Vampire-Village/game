@@ -2,7 +2,6 @@
 using UnityEngine.UIElements;
 using UnityEditor;
 using VampireVillage.Network;
-using Mirror;
 
 [CustomEditor(typeof(LobbyManager))]
 public class LobbyManagerEditor : Editor
@@ -30,7 +29,7 @@ public class LobbyManagerEditor : Editor
         rootElement.Clear();
         visualTree.CloneTree(rootElement);
 
-        if (manager.mode != NetworkManagerMode.Offline)
+        if (manager.mode != NetworkMode.Offline)
             rootElement.Add(CreateOnlineGUI());
 
         return rootElement;
