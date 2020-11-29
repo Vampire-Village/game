@@ -10,6 +10,7 @@
 .header {
     -unity-font-style: bold;
     margin-top: 8px;
+    margin-bottom: 4px;
     margin-left: 2px;
 }
 

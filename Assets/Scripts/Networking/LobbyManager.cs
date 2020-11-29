@@ -47,7 +47,7 @@ namespace VampireVillage.Network
             mode = NetworkMode.Client;
 #endif
 
-            leaveLobbyButton.onClick.AddListener(Client.instance.CmdLeaveRoom);
+            leaveLobbyButton.onClick.AddListener(Client.local.CmdLeaveRoom);
         }
 
         public void RegisterRoom(Room room)

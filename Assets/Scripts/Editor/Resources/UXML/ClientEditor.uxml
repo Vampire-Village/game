@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:ue="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+>
+    <ui:VisualElement class="group">
+        <ui:Label text="Client Information" class="header" />
+        <ui:VisualElement class="line">
+            <ui:Label text="ID:" class="bold" />
+            <ui:Label name="playerId" />
+        </ui:VisualElement>
+        <ui:VisualElement class="line">
+            <ui:Label text="Name:" class="bold" />
+            <ui:Label name="playerName" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</UXML>

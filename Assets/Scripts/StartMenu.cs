@@ -104,26 +104,23 @@ public class StartMenu : MonoBehaviour
     private void HostRoom()
     {
         GameLogger.LogClient("Creating new room...");
-        SetName();
         SetInputsAndButtonsActive(false);
-        Client.instance.CmdHostRoom();
+        SetName();
+        Client.local.CmdHostRoom();
     }
 
     private void JoinRoom()
     {
         string roomCode = roomInput.text;
         GameLogger.LogClient($"Joining room {roomCode}...");
-        SetName();
         SetInputsAndButtonsActive(false);
-        Client.instance.CmdJoinRoom(roomCode);
+        SetName();
+        Client.local.CmdJoinRoom(roomCode);
     }
 
     private void SetName()
     {
-        if (nameInput.text.Length > 0)
-            Client.instance.CmdSetName(nameInput.text);
-        else
-            Client.instance.CmdSetName("Player");
+        Client.local.CmdSetName(nameInput.text);
     }
 
     private void SetInputsAndButtonsActive(bool isActive)

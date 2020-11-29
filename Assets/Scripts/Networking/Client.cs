@@ -3,43 +3,91 @@ using Mirror;
 
 namespace VampireVillage.Network
 {
+    /// <summary>
+    /// Holds the client identity across scenes and handles client requests to the server.
+    /// </summary>
     public class Client : NetworkBehaviour
     {
-        public static Client instance { get; private set; }
+        /// <summary>
+        /// The local client.
+        /// </summary>
+        public static Client local { get; private set; }
 
+        /// <summary>
+        /// The ServerPlayer ID that this client belongs to.
+        /// </summary>
         [SyncVar]
         public Guid playerId;
 
+        /// <summary>
+        /// The player name.
+        /// </summary>
         [SyncVar(hook = nameof(SetName))]
         public string playerName;
 
         private VampireVillageNetwork network;
 
-        private void Start()
+        private void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
+            syncMode = SyncMode.Observers;
+            syncInterval = 0.1f;
+        }
 
-            if (isLocalPlayer)
-            {
-                // Set this client as the local client.
-                instance = this;
+#region Server Methods
+        public override void OnStartServer()
+        {
+#if UNITY_SERVER || UNITY_EDITOR
+            name = $"Client ({playerId})";
+#endif    
+        }
 
-                // Set player gameobject name.
-                name = $"Client [LOCAL]";
-
-                GameLogger.LogClient("Client connected to the server.", this);
-            }
+        [Command]
+        public void CmdSetName(string newName)
+        {
+#if UNITY_SERVER || UNITY_EDITOR
+            if (newName.Length > 0)
+                playerName = newName;
             else
-            {
-                name = $"Client ({playerId})";
-            }
+                playerName = "Player";
+            name = $"Client ({playerName})";
+#endif
         }
 
         [Command]
         public void CmdHostRoom()
         {
+#if UNITY_SERVER || UNITY_EDITOR
             GameLogger.LogServer("A client requested a new room.", this);
             network.CreateRoom(connectionToClient);
+#endif
+        }
+
+        [Command]
+        public void CmdJoinRoom(string roomCode)
+        {
+#if UNITY_SERVER || UNITY_EDITOR
+            GameLogger.LogServer($"A client requested to join a room.\nCode: {roomCode}", this);
+            network.JoinRoom(connectionToClient, roomCode);
+#endif
+        }
+
+        [Command]
+        public void CmdLeaveRoom()
+        {
+#if UNITY_SERVER || UNITY_EDITOR
+            GameLogger.LogServer($"A client requested to leave a room.", this);
+            network.LeaveRoom(connectionToClient);
+#endif
+        }
+#endregion
+
+#region Client Methods
+        public override void OnStartAuthority()
+        {
+            local = this;
+            name = "Client";
+            GameLogger.LogClient("Client connected to the server.", this);
         }
 
         [TargetRpc]
@@ -47,13 +95,6 @@ namespace VampireVillage.Network
         {
             GameLogger.LogClient($"Created new room!\nCode: {room.code}");
             CmdJoinRoom(room.code);
-        }
-
-        [Command]
-        public void CmdJoinRoom(string roomCode)
-        {
-            GameLogger.LogServer($"A client requested to join a room.\nCode: {roomCode}", this);
-            network.JoinRoom(connectionToClient, roomCode);
         }
 
         [TargetRpc]
@@ -68,32 +109,16 @@ namespace VampireVillage.Network
             GameLogger.LogClient($"Joined a room!\nCode: {room.code}");
         }
 
-        [Command]
-        public void CmdLeaveRoom()
-        {
-            GameLogger.LogServer($"A client requested to leave a room.", this);
-            network.LeaveRoom(connectionToClient);
-        }
-
         [TargetRpc]
         public void TargetLeaveRoom()
         {
             GameLogger.LogClient("Left room successfully!");
         }
 
-        [Command]
-        public void CmdSetName(string newName)
-        {
-            // TODO: Some sort of name validation.
-            playerName = newName;
-            name = $"Client ({newName})";
-        }
-
-        public void SetName(string oldName, string newName)
+        private void SetName(string oldName, string newName)
         {
             name = $"Client ({newName})";
-            if (isLocalPlayer)
-                name += " [LOCAL]";
         }
+#endregion
     }
 }
