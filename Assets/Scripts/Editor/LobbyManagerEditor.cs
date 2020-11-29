@@ -43,6 +43,9 @@ public class LobbyManagerEditor : Editor
         var roomCode = onlineRootElement.Q<Label>("roomCode");
         roomCode.text = manager.room?.code;
 
+        var host = onlineRootElement.Q<Label>("host");
+        host.text = manager.room?.host?.client?.playerName;
+
         var playerTotal = onlineRootElement.Q<Label>("playerTotal");
         playerTotal.text = manager.players.Count.ToString();
 

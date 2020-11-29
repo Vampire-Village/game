@@ -78,7 +78,7 @@ namespace VampireVillage.Network
             // Search for the rooms scene.
             foreach (var room in rooms.Values)
             {
-                if (room.lobbyScene == lobbyScene)
+                if (room.scene == lobbyScene)
                 {
                     room.lobbyManager = lobbyManager;
                     lobbyManager.RegisterRoom(room);

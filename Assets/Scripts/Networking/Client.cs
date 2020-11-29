@@ -103,15 +103,26 @@ namespace VampireVillage.Network
         }
 
         [TargetRpc]
-        public void TargetHostRoom(Room room)
+        public void TargetHostRoom(Room room, NetworkCode code)
         {
-            // TODO: Better error message.
+            // Return error.
             if (room == null)
             {
-                GameLogger.LogClient("Failed to create a room.");
+                string message;
+                switch (code)
+                {
+                    case NetworkCode.HostFailedAlreadyInRoom:
+                        message = "Already in a room.";
+                        break;
+                    default:
+                        message = "Something is wrong.";
+                        break;
+                }
+
+                GameLogger.LogClient($"Failed to create a room. {message}");
                 if (hostRoomErrorCallback != null)
                 {
-                    hostRoomErrorCallback("Failed to create a room.");
+                    hostRoomErrorCallback(message);
                     hostRoomErrorCallback = null;
                 }
                 return;
@@ -128,15 +139,32 @@ namespace VampireVillage.Network
         }
 
         [TargetRpc]
-        public void TargetJoinRoom(Room room)
+        public void TargetJoinRoom(Room room, NetworkCode code)
         {
-            // TODO: Better error message.
+            // Return error.
             if (room == null)
             {
-                GameLogger.LogClient($"Failed to join the room.");
+                string message;
+                switch (code)
+                {
+                    case NetworkCode.JoinFailedAlreadyInRoom:
+                        message = "Already in a room.";
+                        break;
+                    case NetworkCode.JoinFailedRoomDoesNotExist:
+                        message = "Room does not exist.";
+                        break;
+                    case NetworkCode.JoinFailedRoomGameAlreadyStarted:
+                        message = "Room already started the game.";
+                        break;
+                    default:
+                        message = "Something is wrong.";
+                        break;
+                }
+
+                GameLogger.LogClient($"Failed to join the room. {message}");
                 if (joinRoomErrorCallback != null)
                 {
-                    joinRoomErrorCallback("Room does not exist!");
+                    joinRoomErrorCallback(message);
                     joinRoomErrorCallback = null;
                 }
                 return;

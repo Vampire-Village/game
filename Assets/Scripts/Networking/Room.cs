@@ -8,16 +8,38 @@ namespace VampireVillage.Network
     {
         private static readonly Random rng = new Random();
 
+#region Client & Server Properties
+        /// <summary>
+        /// The room code that players can use to join.
+        /// </summary>
         public string code;
-        public Scene lobbyScene;
-        public bool isRoomInitialized = false;
+
+        /// <summary>
+        /// The host player.
+        /// </summary>
+        public ServerPlayer host;
+
+        /// <summary>
+        /// Whether the room is currently in the lobby or in the game.
+        /// </summary>
         public RoomState state = RoomState.Lobby;
 
-        [System.NonSerialized]
+        /// <summary>
+        /// The current room scene.
+        /// </summary>
+        public Scene scene;
+#endregion
+
+#region Server-only Properties
+        [NonSerialized]
+        public bool isRoomInitialized = false;
+
+        [NonSerialized]
         public readonly List<ServerPlayer> players = new List<ServerPlayer>();
 
-        [System.NonSerialized]
+        [NonSerialized]
         public LobbyManager lobbyManager;
+#endregion
 
         public Room() {}
         

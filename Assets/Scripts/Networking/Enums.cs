@@ -12,4 +12,13 @@
         Lobby,
         Game
     }
+
+    public enum NetworkCode
+    {
+        Success,
+        HostFailedAlreadyInRoom,
+        JoinFailedAlreadyInRoom,
+        JoinFailedRoomDoesNotExist,
+        JoinFailedRoomGameAlreadyStarted
+    }
 }

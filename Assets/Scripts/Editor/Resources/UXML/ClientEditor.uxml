@@ -8,11 +8,11 @@
     <ui:VisualElement class="group">
         <ui:Label text="Client Information" class="header" />
         <ui:VisualElement class="line">
-            <ui:Label text="ID:" class="bold" />
+            <ui:Label text="ID:" />
             <ui:Label name="playerId" />
         </ui:VisualElement>
         <ui:VisualElement class="line">
-            <ui:Label text="Name:" class="bold" />
+            <ui:Label text="Name:" />
             <ui:Label name="playerName" />
         </ui:VisualElement>
     </ui:VisualElement>

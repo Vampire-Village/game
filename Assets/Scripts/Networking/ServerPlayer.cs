@@ -3,12 +3,21 @@ using Mirror;
 
 namespace VampireVillage.Network
 {
+    /// <summary>
+    /// Represents the player on the server.
+    /// </summary>
     public class ServerPlayer : IEquatable<ServerPlayer>
     {
 #region Client & Server Properties
+        /// <summary>
+        /// The player ID.
+        /// </summary>
         public Guid id;
+
+        /// <summary>
+        /// The network connection ID.
+        /// </summary>
         public int connectionId;
-        public string name;
 #endregion
 
 #region Server-only Properties

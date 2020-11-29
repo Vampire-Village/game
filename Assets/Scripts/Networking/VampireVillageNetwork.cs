@@ -117,18 +117,29 @@ namespace VampireVillage.Network
 
         private IEnumerator CreateRoomAsync(NetworkConnection conn)
         {
+            // Get the player.
+            ServerPlayer player = GetPlayer(conn);
+
+            // Check if player can create room.
+            if (player.room != null)
+            {
+                player.client.TargetHostRoom(null, NetworkCode.HostFailedAlreadyInRoom);
+                yield break;
+            }
+
             // Ask Room Manager to create a room.
             Room room = roomManager.CreateRoom();
 
             // Load the lobby scene on the server.
             yield return SceneManager.LoadSceneAsync(lobbyScene.name, LoadSceneMode.Additive);
             Scene loadedScene = GetLastScene();
-            room.lobbyScene = loadedScene;
+            room.scene = loadedScene;
+            room.host = player;
             additiveScenes.Add(loadedScene);
             GameLogger.LogServer($"New room created.\nCode: {room.code}", GetPlayer(conn));
 
             // Let the client know that the room has been created.
-            conn.identity.GetComponent<Client>().TargetHostRoom(room);
+            player.client.TargetHostRoom(room, NetworkCode.Success);
         }
 
         public void JoinRoom(NetworkConnection conn, string roomCode)
@@ -140,32 +151,42 @@ namespace VampireVillage.Network
         {
             GameLogger.LogServer($"A client is trying to join room {roomCode}.", GetPlayer(conn));
 
-            // Get client.
-            Client client = conn.identity.GetComponent<Client>();
+            // Get the player.
+            ServerPlayer player = GetPlayer(conn);
 
             // Check if room is joinable.
-            // TODO: Check if room has started yet or not.
+            if (player.room != null)
+            {
+                player.client.TargetJoinRoom(null, NetworkCode.JoinFailedAlreadyInRoom);
+                yield break;
+            }
             Room room = roomManager.GetRoom(roomCode);
             if (room == null)
             {
-                client.TargetJoinRoom(null);
+                player.client.TargetJoinRoom(null, NetworkCode.JoinFailedRoomDoesNotExist);
                 yield break;
             }
+            if (room.state == RoomState.Game)
+            {
+                player.client.TargetJoinRoom(null, NetworkCode.JoinFailedRoomGameAlreadyStarted);
+                yield break;
+            }
+
+            // Wait for room to be initialized.
             while (!room.isRoomInitialized)
                 yield return new WaitForSeconds(1);
 
             // Move the client to the lobby.
-            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.lobbyScene);
+            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.scene);
             conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.UnloadAdditive });
             conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
 
             // Register player to the room manager.
-            ServerPlayer serverPlayer = GetPlayer(conn);
-            roomManager.JoinRoom(room, serverPlayer);
-            serverPlayer.room = room;
+            roomManager.JoinRoom(room, player);
+            player.room = room;
 
             // Let the client know that the room has been joined.
-            client.TargetJoinRoom(room);
+            player.client.TargetJoinRoom(room, NetworkCode.Success);
         }
 
         public GameObject InstantiateLobbyPlayer(GameObject lobbyManager, ServerPlayer player)
@@ -198,7 +219,7 @@ namespace VampireVillage.Network
 
             // Move client out of the room
             SceneManager.MoveGameObjectToScene(conn.identity.gameObject, gameObject.scene);
-            conn.Send(new SceneMessage { sceneName = (room.state == RoomState.Lobby ? lobbyScene.name : gameScene.name), sceneOperation = SceneOperation.UnloadAdditive });
+            conn.Send(new SceneMessage { sceneName = room.scene.name, sceneOperation = SceneOperation.UnloadAdditive });
             conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.LoadAdditive });
             
             // Let the client know that they have left the room.

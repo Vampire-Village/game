@@ -12,6 +12,10 @@
             <ui:Label name="roomCode" />
         </ui:VisualElement>
         <ui:VisualElement class="line">
+            <ui:Label text="Host: " />
+            <ui:Label name="host" />
+        </ui:VisualElement>
+        <ui:VisualElement class="line">
             <ui:Label text="Players: " />
             <ui:Label name="playerTotal" />
         </ui:VisualElement>
