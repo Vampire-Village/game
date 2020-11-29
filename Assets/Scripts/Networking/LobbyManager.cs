@@ -35,7 +35,7 @@ namespace VampireVillage.Network
         public NetworkMode mode = NetworkMode.Offline;
 #endif
 
-        public void Awake()
+        private void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
 
@@ -92,24 +92,22 @@ namespace VampireVillage.Network
             leaveLobbyButton.onClick.AddListener(LeaveRoom);
         }
 
-        public void StartGame()
+        private void StartGame()
         {
-            GameLogger.LogClient("Attempting to start the game...");
             Client.local.StartGame(room);
         }
 
-        public void LeaveRoom()
+        private void LeaveRoom()
         {
-            GameLogger.LogClient("Leaving room...");
-            Client.local.CmdLeaveRoom();
+            Client.local.LeaveRoom();
         }
 
-        public void UpdateRoom(Room oldRoom, Room newRoom)
+        private void UpdateRoom(Room oldRoom, Room newRoom)
         {
             roomCodeText.text = newRoom.code;
         }
 
-        public void UpdateHost(ServerPlayer oldHost, ServerPlayer newHost)
+        private void UpdateHost(ServerPlayer oldHost, ServerPlayer newHost)
         {
             // Display the start game button if local client is the new host.
             if (newHost.id == Client.local.playerId)

@@ -109,7 +109,6 @@ public class StartMenu : MonoBehaviour
 
     private void HostRoom()
     {
-        GameLogger.LogClient("Creating new room...");
         SetInputsAndButtonsActive(false);
         SetName();
         Client.local.HostRoom(OnHostRoomError);
@@ -124,7 +123,6 @@ public class StartMenu : MonoBehaviour
     private void JoinRoom()
     {
         string roomCode = roomInput.text;
-        GameLogger.LogClient($"Joining room {roomCode}...");
         SetInputsAndButtonsActive(false);
         SetName();
         Client.local.JoinRoom(roomCode, OnJoinRoomError);

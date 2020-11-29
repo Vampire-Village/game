@@ -104,6 +104,7 @@ namespace VampireVillage.Network
 
         public void HostRoom(HostRoomErrorCallback hostRoomErrorCallback)
         {
+            GameLogger.LogClient("Creating new room...");
             this.hostRoomErrorCallback = hostRoomErrorCallback;
             Client.local.CmdHostRoom();
         }
@@ -140,6 +141,7 @@ namespace VampireVillage.Network
 
         public void JoinRoom(string roomCode, JoinRoomErrorCallback joinRoomErrorCallback)
         {
+            GameLogger.LogClient($"Joining room {roomCode}...");
             this.joinRoomErrorCallback = joinRoomErrorCallback;
             CmdJoinRoom(roomCode);
         }
@@ -179,6 +181,12 @@ namespace VampireVillage.Network
             GameLogger.LogClient($"Joined a room!\nCode: {room.code}");
         }
 
+        public void LeaveRoom()
+        {
+            GameLogger.LogClient("Leaving room...");
+            CmdLeaveRoom();
+        }
+
         [TargetRpc]
         public void TargetLeaveRoom()
         {
@@ -187,6 +195,7 @@ namespace VampireVillage.Network
 
         public void StartGame(Room room)
         {
+            GameLogger.LogClient("Attempting to start the game...");
             CmdStartGame(room);
         }
 
