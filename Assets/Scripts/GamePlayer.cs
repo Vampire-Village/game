@@ -16,6 +16,7 @@ public class GamePlayer : BasePlayer
         VampireLord,
         Infected
     }
+    
     [SyncVar(hook = nameof(SetRole))]
     public Role role = Role.None;
 
@@ -45,9 +46,9 @@ public class GamePlayer : BasePlayer
         local = this;
         OnPlayerSpawned.Invoke();
 
-        // TEST: Randomize role.
-        Role randomRole = (Role)UnityEngine.Random.Range(1, 4);
-        CmdSetRole(randomRole);
+        // // TEST: Randomize role.
+        // Role randomRole = (Role)UnityEngine.Random.Range(1, 4);
+        // CmdSetRole(randomRole);
     }
 
     [Command(ignoreAuthority = true)]

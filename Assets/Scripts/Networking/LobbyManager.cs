@@ -78,6 +78,15 @@ namespace VampireVillage.Network
         {
             host = player;
         }
+
+        public void OnStartGame()
+        {
+            // Clean up lobby players.
+            foreach (var lobbyPlayer in lobbyPlayers.Values)
+            {
+                network.DestroyLobbyPlayer(lobbyPlayer);
+            }
+        }
 #endregion
 
 #region Client Methods
@@ -94,7 +103,7 @@ namespace VampireVillage.Network
 
         private void StartGame()
         {
-            Client.local.StartGame(room);
+            Client.local.StartGame();
         }
 
         private void LeaveRoom()

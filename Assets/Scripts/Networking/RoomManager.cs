@@ -12,6 +12,8 @@ namespace VampireVillage.Network
     public class RoomManager : MonoBehaviour
     {
         public uint codeLength = 4;
+        public uint minPlayers = 4;
+        public uint maxPlayers = 10;
         public readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
 
 #if UNITY_EDITOR
@@ -94,11 +96,35 @@ namespace VampireVillage.Network
             // Search for the rooms scene.
             foreach (var room in rooms.Values)
             {
-                if (room.scene == lobbyScene)
+                if (room.state == RoomState.Lobby && room.scene == lobbyScene)
                 {
                     room.lobbyManager = lobbyManager;
                     lobbyManager.RegisterRoom(room);
-                    room.isRoomInitialized = true;
+                    room.isLobbyInitialized = true;
+                    break;
+                }
+            }
+        }
+
+        public void RegisterGameManager(GameManager gameManager, Scene gameScene)
+        {
+            StartCoroutine(RegisterGameManagerAsync(gameManager, gameScene));
+        }
+
+        private IEnumerator RegisterGameManagerAsync(GameManager gameManager, Scene gameScene)
+        {
+            // NOTE: This is just here to fix race condition between RegisterLobbyManager and setting room.lobbyScene.
+            // TODO: Better scene management.
+            yield return new WaitForSeconds(3);
+
+            // Search for the rooms scene.
+            foreach (var room in rooms.Values)
+            {
+                if (room.state == RoomState.Game && room.scene == gameScene)
+                {
+                    room.gameManager = gameManager;
+                    gameManager.RegisterRoom(room);
+                    room.isGameInitialized = true;
                     break;
                 }
             }

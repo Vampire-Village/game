@@ -32,13 +32,19 @@ namespace VampireVillage.Network
 
 #region Server-only Properties
         [NonSerialized]
-        public bool isRoomInitialized = false;
-
-        [NonSerialized]
         public readonly List<ServerPlayer> players = new List<ServerPlayer>();
 
         [NonSerialized]
         public LobbyManager lobbyManager;
+        
+        [NonSerialized]
+        public bool isLobbyInitialized = false;
+
+        [NonSerialized]
+        public GameManager gameManager;
+
+        [NonSerialized]
+        public bool isGameInitialized = false;
 #endregion
 
         public Room() {}

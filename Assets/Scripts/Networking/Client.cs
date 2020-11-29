@@ -88,9 +88,12 @@ namespace VampireVillage.Network
         }
 
         [Command]
-        public void CmdStartGame(Room room)
+        public void CmdStartGame()
         {
-            network.StartGame(connectionToClient, room);
+#if UNITY_SERVER || UNITY_EDITOR
+            GameLogger.LogServer($"A client requested to start a game.", this);
+            network.StartGame(connectionToClient);
+#endif
         }
 #endregion
 
@@ -193,10 +196,10 @@ namespace VampireVillage.Network
             GameLogger.LogClient("Left room successfully!");
         }
 
-        public void StartGame(Room room)
+        public void StartGame()
         {
             GameLogger.LogClient("Attempting to start the game...");
-            CmdStartGame(room);
+            CmdStartGame();
         }
 
         private void SetName(string oldName, string newName)

@@ -6,6 +6,9 @@
     xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
 >
     <ui:VisualElement class="group">
+        <ui:Label text="Room Settings" class="header" />
         <ue:PropertyField binding-path="codeLength" />
+        <ue:PropertyField binding-path="minPlayers" label="Min. Players" />
+        <ue:PropertyField binding-path="maxPlayers" label="Max. Players" />
     </ui:VisualElement>
 </UXML>

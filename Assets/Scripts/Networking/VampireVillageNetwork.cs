@@ -33,6 +33,8 @@ namespace VampireVillage.Network
 #region Prefabs
         public GameObject lobbyManagerPrefab;
         public GameObject lobbyPlayerPrefab;
+        public GameObject gameManagerPrefab;
+        public GameObject gamePlayerPrefab;
 #endregion
 
 #region Network Events
@@ -66,6 +68,8 @@ namespace VampireVillage.Network
             // Register custom prefabs.
             spawnPrefabs.Add(lobbyManagerPrefab);
             spawnPrefabs.Add(lobbyPlayerPrefab);
+            spawnPrefabs.Add(gameManagerPrefab);
+            spawnPrefabs.Add(gamePlayerPrefab);
 
             base.Awake();
         }
@@ -173,7 +177,7 @@ namespace VampireVillage.Network
             }
 
             // Wait for room to be initialized.
-            while (!room.isRoomInitialized)
+            while (!room.isLobbyInitialized)
                 yield return new WaitForSeconds(1);
 
             // Move the client to the lobby.
@@ -222,6 +226,8 @@ namespace VampireVillage.Network
             SceneManager.MoveGameObjectToScene(player.client.gameObject, gameObject.scene);
             conn.Send(new SceneMessage { sceneName = room.scene.name, sceneOperation = SceneOperation.UnloadAdditive });
             conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.LoadAdditive });
+
+            // TODO: Handle loading, player not loading the scene yet, etc.
             
             // Let the client know that they have left the room.
             player.client.TargetLeaveRoom();
@@ -239,29 +245,95 @@ namespace VampireVillage.Network
             }
         }
 
-        public void StartGame(NetworkConnection conn, Room room)
+        public void StartGame(NetworkConnection conn)
         {
-            // Get player.
+            StartCoroutine(StartGameAsync(conn));   
+        }
+
+        private IEnumerator StartGameAsync(NetworkConnection conn)
+        {
+            // Get player and room.
             ServerPlayer player = GetPlayer(conn);
-            GameLogger.LogServer($"A player attempting to start the game on {room.code}", player);
+            Room room = player.room;
 
             // Check if player is allowed to start the game.
+            if (room == null)
+            {
+                // TODO: Return error.
+                yield break;
+            }
             if (room.host != player)
             {
                 // TODO: Return error.
+                yield break;
             }
-            if (room.players.Count < 4)
+            if (room.players.Count < roomManager.minPlayers)
             {
                 // TODO: Return error.
+                yield break;
             }
 
-            // TODO: Actually start the game.
+            // Load the game scene on the server.
+            yield return SceneManager.LoadSceneAsync(gameScene.name, LoadSceneMode.Additive);
+            Scene loadedScene = GetLastScene();
+            Scene roomLobbyScene = room.scene;
+            room.scene = loadedScene;
+            room.state = RoomState.Game;
+            additiveScenes.Add(loadedScene);
+
+            // Wait until the game scene has been initialized.
+            while (!room.isGameInitialized)
+                yield return new WaitForSeconds(1);
+
+            // Move the clients to the game scene.
+            room.lobbyManager.OnStartGame();
+            foreach (var roomPlayer in room.players)
+            {
+                SceneManager.MoveGameObjectToScene(roomPlayer.client.gameObject, room.scene);
+                roomPlayer.clientConnection.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.UnloadAdditive });
+                roomPlayer.clientConnection.Send(new SceneMessage { sceneName = gameScene.name, sceneOperation = SceneOperation.LoadAdditive });
+            }
+
+            // TODO: Handle loading, player not loading the scene yet, etc.
+
+            // Start the game.
+            room.gameManager.StartGame();
+
+            // Remove lobby.
+            yield return SceneManager.UnloadSceneAsync(roomLobbyScene);
+            additiveScenes.Remove(roomLobbyScene);
+            room.lobbyManager = null;
+            room.isLobbyInitialized = false;
+
+            GameLogger.LogServer($"New game started.\nCode: {room.code}", player);
+        }
+
+        public GameObject InstantiateGamePlayer(GameObject gameManager, ServerPlayer player)
+        {
+            // Instantiate the game player in the game scene.
+            GameObject gamePlayerInstance = Instantiate(gamePlayerPrefab, gameManager.transform);
+            gamePlayerInstance.transform.parent = null;
+
+            // Set the name of the game player according to client.
+            GamePlayer gamePlayer = gamePlayerInstance.GetComponent<GamePlayer>();
+            gamePlayer.name = $"Player ({player.client.playerName})";
+            gamePlayer.playerName = player.client.playerName;
+
+            // Spawn the game player in all connected clients in the game.
+            NetworkServer.Spawn(gamePlayerInstance, player.clientConnection);
+            return gamePlayerInstance;
+        }
+
+        public void DestroyGamePlayer(GameObject gamePlayerInstance)
+        {
+            // TODO: Remove any reference to the game player.
+            NetworkServer.Destroy(gamePlayerInstance);
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)
         {
             // Remove the player from players set.
-            ServerPlayer player = players.SingleOrDefault(x => x.connectionId == conn.connectionId);
+            ServerPlayer player = GetPlayer(conn);
             if (player != null)
             {
                 if (player.room != null)
