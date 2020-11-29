@@ -176,6 +176,7 @@ namespace VampireVillage.Network
 
             // Set the name of the lobby player according to client.
             LobbyPlayer lobbyPlayer = lobbyPlayerInstance.GetComponent<LobbyPlayer>();
+            lobbyPlayer.name = $"Player ({player.client.playerName})";
             lobbyPlayer.playerName = player.client.playerName;
 
             // Spawn the lobby player in all connected clients in the lobby.

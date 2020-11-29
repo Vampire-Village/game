@@ -21,6 +21,10 @@ public abstract class BasePlayer : NetworkBehaviour
 
     public void SetName(string oldName, string newName)
     {
+        // Set gameobject name for the editor.
+        name = $"Player ({newName})";
+
+        // Set the floating name text.
         nameText.text = newName;
     }
 }
