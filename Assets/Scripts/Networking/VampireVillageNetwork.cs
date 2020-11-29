@@ -100,13 +100,13 @@ namespace VampireVillage.Network
             players.Add(player);
 
             // Create the client.
-            GameObject clientObject = Instantiate(playerPrefab);
-            Client client = clientObject.GetComponent<Client>();
+            GameObject clientInstance= Instantiate(playerPrefab);
+            Client client = clientInstance.GetComponent<Client>();
             client.playerId = player.id;
             player.client = client;
 
             // Add client to the server connection.
-            NetworkServer.AddPlayerForConnection(conn, clientObject);
+            NetworkServer.AddPlayerForConnection(conn, clientInstance);
             GameLogger.LogServer("New client connected!", player);
         }
 

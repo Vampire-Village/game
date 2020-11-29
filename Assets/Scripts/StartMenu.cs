@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Mirror;
 using VampireVillage.Network;
+using TMPro;
 
+/// <summary>
+/// Handles the UI logic for the StartMenu scene.
+/// </summary>
 public class StartMenu : MonoBehaviour
 {
-    [Header("Server Only")]
-    public GameObject serverPanel;
-
-    [Header("Client Only")]
     public TMP_InputField nameInput;
     public GameObject connectingPanel;
 
@@ -24,11 +22,15 @@ public class StartMenu : MonoBehaviour
     public Button reconnectButton;
 
     private VampireVillageNetwork network;
+    private uint codeLength;
 
     private void Awake()
     {
-        // Show online/offline menu.
+        // Get references.
         network = VampireVillageNetwork.singleton as VampireVillageNetwork;
+        codeLength = network.roomManager.codeLength;
+
+        // Show menu depending on current network state.
         if (network.isNetworkActive)
         {
             if (network.isNetworkConnected)
@@ -44,48 +46,22 @@ public class StartMenu : MonoBehaviour
         network.OnNetworkOnline += OnNetworkOnline;
         network.OnNetworkOffline += OnNetworkOffline;
 
-        // Handle getting and saving name.
+        // Set name input to last used name.
         nameInput.text = ApplicationManager.GetPlayerName();
-        nameInput.onEndEdit.AddListener(newName => ApplicationManager.SetPlayerName(newName));
 
-        // Handle creating room.
-        hostButton.onClick.AddListener(() =>
-        {
-            GameLogger.LogClient("Creating new room...");
-            SetName();
-            Client.instance.CmdHostRoom();
-        });
-
-        // Handle joining room.
-        joinButton.onClick.AddListener(() =>
-        {
-            string roomCode = roomInput.text;
-            SetName();
-            GameLogger.LogClient($"Joining room {roomCode}...");
-            Client.instance.CmdJoinRoom(roomCode);
-        });
-
-        // Handle reconnecting.
+        // Add inputs & buttons listeners.
+        nameInput.onEndEdit.AddListener(OnEditName);
+        roomInput.onValidateInput += OnValidateRoomCode;
+        hostButton.onClick.AddListener(HostRoom);
+        joinButton.onClick.AddListener(JoinRoom);
         reconnectButton.onClick.AddListener(network.StartClient);
     }
 
     private void OnNetworkStart()
     {
-        if (network.mode == NetworkManagerMode.ServerOnly)
-        {
-            onlinePanel.SetActive(false);
-            offlinePanel.SetActive(false);
-            connectingPanel.SetActive(false);
-            nameInput.gameObject.SetActive(false);
-            serverPanel.SetActive(true);
-        }
-        else
-        {
-            // Show connecting panel.
-            offlinePanel.SetActive(false);
-            onlinePanel.SetActive(false);
-            connectingPanel.SetActive(true);
-        }
+        offlinePanel.SetActive(false);
+        onlinePanel.SetActive(false);
+        connectingPanel.SetActive(true);
     }
 
     private void OnNetworkOnline()
@@ -102,6 +78,46 @@ public class StartMenu : MonoBehaviour
         offlinePanel.SetActive(true);
     }
 
+    private void OnEditName(string newName)
+    {
+        // TODO: Make sure name is valid and/or not offensive.
+        ApplicationManager.SetPlayerName(newName);
+    }
+
+    private char OnValidateRoomCode(string input, int charIndex, char addedChar)
+    {
+        // Make sure the room code is valid length.
+        if (charIndex + 1 > codeLength)
+            return '\0';
+
+        // Make sure the user enters a letter & convert to uppercase if necesssary.
+        if (char.IsLetter(addedChar))
+        {
+            if (char.IsLower(addedChar))
+                addedChar = char.ToUpper(addedChar);
+            return addedChar;
+        }
+        else
+            return '\0';
+    }
+
+    private void HostRoom()
+    {
+        GameLogger.LogClient("Creating new room...");
+        SetName();
+        SetInputsAndButtonsActive(false);
+        Client.instance.CmdHostRoom();
+    }
+
+    private void JoinRoom()
+    {
+        string roomCode = roomInput.text;
+        GameLogger.LogClient($"Joining room {roomCode}...");
+        SetName();
+        SetInputsAndButtonsActive(false);
+        Client.instance.CmdJoinRoom(roomCode);
+    }
+
     private void SetName()
     {
         if (nameInput.text.Length > 0)
@@ -110,10 +126,26 @@ public class StartMenu : MonoBehaviour
             Client.instance.CmdSetName("Player");
     }
 
+    private void SetInputsAndButtonsActive(bool isActive)
+    {
+        nameInput.interactable = isActive;
+        roomInput.interactable = isActive;
+        hostButton.interactable = isActive;
+        joinButton.interactable = isActive;
+    }
+
     private void OnDestroy()
     {
+        // Remove network listeners.
         network.OnNetworkStart -= OnNetworkStart;
         network.OnNetworkOnline -= OnNetworkOnline;
         network.OnNetworkOffline -= OnNetworkOffline;
+
+        // Remove other listeners.
+        nameInput.onEndEdit.RemoveListener(OnEditName);
+        roomInput.onValidateInput -= OnValidateRoomCode;
+        hostButton.onClick.RemoveListener(HostRoom);
+        joinButton.onClick.RemoveListener(JoinRoom);
+        reconnectButton.onClick.RemoveListener(network.StartClient);
     }
 }
