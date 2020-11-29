@@ -136,7 +136,7 @@ namespace VampireVillage.Network
             room.scene = loadedScene;
             room.host = player;
             additiveScenes.Add(loadedScene);
-            GameLogger.LogServer($"New room created.\nCode: {room.code}", GetPlayer(conn));
+            GameLogger.LogServer($"New room created.\nCode: {room.code}", player);
 
             // Let the client know that the room has been created.
             player.client.TargetHostRoom(room, NetworkCode.Success);
@@ -149,10 +149,10 @@ namespace VampireVillage.Network
 
         private IEnumerator JoinRoomAsync(NetworkConnection conn, string roomCode)
         {
-            GameLogger.LogServer($"A client is trying to join room {roomCode}.", GetPlayer(conn));
 
             // Get the player.
             ServerPlayer player = GetPlayer(conn);
+            GameLogger.LogServer($"A client is trying to join room {roomCode}.", player);
 
             // Check if room is joinable.
             if (player.room != null)
@@ -187,6 +187,7 @@ namespace VampireVillage.Network
 
             // Let the client know that the room has been joined.
             player.client.TargetJoinRoom(room, NetworkCode.Success);
+            GameLogger.LogServer($"A client successfully joined room {room.code}.", player);
         }
 
         public GameObject InstantiateLobbyPlayer(GameObject lobbyManager, ServerPlayer player)
@@ -217,22 +218,29 @@ namespace VampireVillage.Network
             GameLogger.LogServer($"A client is leaving room {player.room.code}", player);
             Room room = roomManager.LeaveRoom(player);
 
-            // Move client out of the room
-            SceneManager.MoveGameObjectToScene(conn.identity.gameObject, gameObject.scene);
+            // Move client out of the room.
+            SceneManager.MoveGameObjectToScene(player.client.gameObject, gameObject.scene);
             conn.Send(new SceneMessage { sceneName = room.scene.name, sceneOperation = SceneOperation.UnloadAdditive });
             conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.LoadAdditive });
             
             // Let the client know that they have left the room.
             player.client.TargetLeaveRoom();
+
+            // Check if room is empty.
+            if (room.players.Count == 0)
+            {
+                // Remove room.
+                roomManager.RemoveRoom(room);
+
+                // Unload the scene from the server.
+                SceneManager.UnloadSceneAsync(room.scene);
+                additiveScenes.Remove(room.scene);
+                GameLogger.LogServer($"Room {room.code} was removed.");
+            }
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)
         {
-            // Remove the objects for this connection.
-            // TODO: Create a timeout.
-            // TODO: Try not to destroy objects.
-            NetworkServer.DestroyPlayerForConnection(conn);
-            
             // Remove the player from players set.
             ServerPlayer player = players.SingleOrDefault(x => x.connectionId == conn.connectionId);
             if (player != null)
@@ -242,6 +250,11 @@ namespace VampireVillage.Network
                 players.Remove(player);
                 GameLogger.LogServer("A client disconnected.", player);
             }
+
+            // Remove the objects for this connection.
+            // TODO: Create a timeout.
+            // TODO: Try not to destroy objects.
+            NetworkServer.DestroyPlayerForConnection(conn);
         }
 
         public override void OnStopServer()

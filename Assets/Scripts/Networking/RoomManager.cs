@@ -7,8 +7,7 @@ using Mirror;
 namespace VampireVillage.Network
 {
     /// <summary>
-    /// On the server: Manages the room creation and joining.
-    /// On the client: Holds information about the joined room.
+    /// Manages the room creation and joining on the server.
     /// </summary>
     public class RoomManager : MonoBehaviour
     {
@@ -62,6 +61,11 @@ namespace VampireVillage.Network
             if (room.state == RoomState.Lobby)
                 room.lobbyManager.RemovePlayer(player);
             return room;
+        }
+
+        public void RemoveRoom(Room room)
+        {
+            rooms.Remove(room.code);
         }
 
         public void RegisterLobbyManager(LobbyManager lobbyManager, Scene lobbyScene)
