@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using Mirror;
 using TMPro;
 
@@ -17,6 +18,14 @@ public abstract class BasePlayer : NetworkBehaviour
     {
         local = this;
         OnPlayerSpawned?.Invoke();
+    }
+
+    [TargetRpc]
+    public void TargetSetPosition(Vector3 position)
+    {
+        // TODO: This is just a silly solution to solve client vs server authority issue.
+        // Need better fix in the future.
+        transform.position = position;
     }
 
     public void SetName(string oldName, string newName)
