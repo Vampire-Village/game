@@ -40,7 +40,7 @@ public class PlayerUI : MonoBehaviour
                 break;
             case GamePlayer.Role.Infected:
                 interactButton.gameObject.SetActive(true);
-                infectButton.gameObject.SetActive(true);
+                reportButton.gameObject.SetActive(true);
                 break;
             default:
                 GameLogger.LogClient("Player role is not assigned, so UI is not initialized.");
