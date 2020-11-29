@@ -31,9 +31,7 @@ namespace VampireVillage.Network
 #endregion
 
 #region Prefabs
-        public GameObject lobbyManagerPrefab;
         public GameObject lobbyPlayerPrefab;
-        public GameObject gameManagerPrefab;
         public GameObject gamePlayerPrefab;
 #endregion
 
@@ -66,9 +64,7 @@ namespace VampireVillage.Network
             roomManager = GetComponent<RoomManager>();
 
             // Register custom prefabs.
-            spawnPrefabs.Add(lobbyManagerPrefab);
             spawnPrefabs.Add(lobbyPlayerPrefab);
-            spawnPrefabs.Add(gameManagerPrefab);
             spawnPrefabs.Add(gamePlayerPrefab);
 
             base.Awake();

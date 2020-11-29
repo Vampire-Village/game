@@ -25,9 +25,7 @@
         <ui:VisualElement class="group">
             <ui:Label text="Prefabs" class="header" />
             <ue:PropertyField binding-path="playerPrefab" label="Client" />
-            <ue:PropertyField binding-path="lobbyManagerPrefab" label="Lobby Manager" />
             <ue:PropertyField binding-path="lobbyPlayerPrefab" label="Lobby Player" />
-            <ue:PropertyField binding-path="gameManagerPrefab" label="Game Manager" />
             <ue:PropertyField binding-path="gamePlayerPrefab" label="Game Player" />
         </ui:VisualElement>
     </ui:VisualElement>
