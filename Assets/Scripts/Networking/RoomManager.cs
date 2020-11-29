@@ -68,6 +68,7 @@ namespace VampireVillage.Network
             if (room.host == player && room.players.Count > 0)
             {
                 room.host = room.players[0];
+                room.lobbyManager.SetHost(room.host);
                 GameLogger.LogServer($"Room {room.code} changed its host.\nNew host:{room.host.id}\nOld host:{player.id}");
             }
 

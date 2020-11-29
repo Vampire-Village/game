@@ -7,14 +7,23 @@ using TMPro;
 
 namespace VampireVillage.Network
 {
+    /// <summary>
+    /// Handles the lobby logics.
+    /// On the server: Adding/removing player.
+    /// On the client: Starting the game for the host.
+    /// </summary>
     public class LobbyManager : NetworkBehaviour
     {
         [SyncVar(hook = nameof(UpdateRoom))]
         public Room room;
 
+        [SyncVar(hook = nameof(UpdateHost))]
+        public ServerPlayer host;
+
         public readonly SyncList<ServerPlayer> players = new SyncList<ServerPlayer>();
 
         public TMP_Text roomCodeText;
+        public Button startGameButton;
         public Button leaveLobbyButton;
 
         private readonly Dictionary<ServerPlayer, GameObject> lobbyPlayers = new Dictionary<ServerPlayer, GameObject>();
@@ -29,30 +38,25 @@ namespace VampireVillage.Network
         public void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
+
+            startGameButton.gameObject.SetActive(false);
         }
 
+#region Server Methods
         public override void OnStartServer()
         {
 #if UNITY_EDITOR
             mode = NetworkMode.Server;
 #endif
 
-            // Register the Lobby Manager to the server's Room Manager.
+            // Register the lobby manager to the server's room manager.
             network.roomManager.RegisterLobbyManager(this, gameObject.scene);
-        }
-
-        public override void OnStartClient()
-        {
-#if UNITY_EDITOR
-            mode = NetworkMode.Client;
-#endif
-
-            leaveLobbyButton.onClick.AddListener(Client.local.CmdLeaveRoom);
         }
 
         public void RegisterRoom(Room room)
         {
             this.room = room;
+            SetHost(room.host);
         }
 
         public void AddPlayer(ServerPlayer player)
@@ -70,9 +74,47 @@ namespace VampireVillage.Network
             network.DestroyLobbyPlayer(lobbyPlayerInstance);
         }
 
+        public void SetHost(ServerPlayer player)
+        {
+            host = player;
+        }
+#endregion
+
+#region Client Methods
+        public override void OnStartClient()
+        {
+#if UNITY_EDITOR
+            mode = NetworkMode.Client;
+#endif
+
+            // Add buttons listeners.
+            startGameButton.onClick.AddListener(StartGame);
+            leaveLobbyButton.onClick.AddListener(LeaveRoom);
+        }
+
+        public void StartGame()
+        {
+            GameLogger.LogClient("Attempting to start the game...");
+            Client.local.StartGame(room);
+        }
+
+        public void LeaveRoom()
+        {
+            GameLogger.LogClient("Leaving room...");
+            Client.local.CmdLeaveRoom();
+        }
+
         public void UpdateRoom(Room oldRoom, Room newRoom)
         {
             roomCodeText.text = newRoom.code;
         }
+
+        public void UpdateHost(ServerPlayer oldHost, ServerPlayer newHost)
+        {
+            // Display the start game button if local client is the new host.
+            if (newHost.id == Client.local.playerId)
+                startGameButton.gameObject.SetActive(true);
+        }
+#endregion
     }
 }

@@ -86,6 +86,12 @@ namespace VampireVillage.Network
             network.LeaveRoom(connectionToClient);
 #endif
         }
+
+        [Command]
+        public void CmdStartGame(Room room)
+        {
+            network.StartGame(connectionToClient, room);
+        }
 #endregion
 
 #region Client Methods
@@ -177,6 +183,11 @@ namespace VampireVillage.Network
         public void TargetLeaveRoom()
         {
             GameLogger.LogClient("Left room successfully!");
+        }
+
+        public void StartGame(Room room)
+        {
+            CmdStartGame(room);
         }
 
         private void SetName(string oldName, string newName)

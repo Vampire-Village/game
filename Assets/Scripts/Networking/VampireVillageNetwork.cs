@@ -239,6 +239,25 @@ namespace VampireVillage.Network
             }
         }
 
+        public void StartGame(NetworkConnection conn, Room room)
+        {
+            // Get player.
+            ServerPlayer player = GetPlayer(conn);
+            GameLogger.LogServer($"A player attempting to start the game on {room.code}", player);
+
+            // Check if player is allowed to start the game.
+            if (room.host != player)
+            {
+                // TODO: Return error.
+            }
+            if (room.players.Count < 4)
+            {
+                // TODO: Return error.
+            }
+
+            // TODO: Actually start the game.
+        }
+
         public override void OnServerDisconnect(NetworkConnection conn)
         {
             // Remove the player from players set.
