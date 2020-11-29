@@ -62,9 +62,11 @@ namespace VampireVillage.Network
             player.room = null;
             room.players.Remove(player);
 
-            // Remove the player from the lobby manager.
+            // Remove the player from the manger.
             if (room.state == RoomState.Lobby)
                 room.lobbyManager.RemovePlayer(player);
+            else if (room.state == RoomState.Game)
+                room.gameManager.RemovePlayer(player);
 
             // Change the room host if player was the host.
             if (room.host == player && room.players.Count > 0)

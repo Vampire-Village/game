@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 namespace VampireVillage.Network
@@ -11,7 +12,11 @@ namespace VampireVillage.Network
 
         public List<GameObject> spawnPoints;
 
+        public Button leaveGameButton;
+
         private Room room;
+
+        private readonly Dictionary<ServerPlayer, GameObject> gamePlayers = new Dictionary<ServerPlayer, GameObject>();
 
         private VampireVillageNetwork network;
 
@@ -44,12 +49,30 @@ namespace VampireVillage.Network
                 // Instantiate the game player and assign role.
                 GameObject gamePlayerInstance = network.InstantiateGamePlayer(gameObject, player);
                 GamePlayer gamePlayer = gamePlayerInstance.GetComponent<GamePlayer>();
+                gamePlayers.Add(player, gamePlayerInstance);
                 gamePlayer.role = i == vampireLordIndex ? GamePlayer.Role.VampireLord : GamePlayer.Role.Villager;
 
                 // Move player to spawn points.
                 // TODO: Make it random.
                 gamePlayer.TargetSetPosition(spawnPoints[i % room.players.Count].transform.position);
             }
+        }
+
+        public void RemovePlayer(ServerPlayer player)
+        {
+            GameObject gamePlayerInstance = gamePlayers[player];
+            gamePlayers.Remove(player);
+            network.DestroyGamePlayer(gamePlayerInstance);
+        }
+
+        public override void OnStartClient()
+        {
+            leaveGameButton.onClick.AddListener(LeaveGame);
+        }
+
+        private void LeaveGame()
+        {
+            Client.local.LeaveRoom();
         }
     }
 }
