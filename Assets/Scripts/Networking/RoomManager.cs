@@ -55,11 +55,22 @@ namespace VampireVillage.Network
 
         public Room LeaveRoom(ServerPlayer player)
         {
+            // Remove the player from the room.
             Room room = player.room;
             player.room = null;
             room.players.Remove(player);
+
+            // Remove the player from the lobby manager.
             if (room.state == RoomState.Lobby)
                 room.lobbyManager.RemovePlayer(player);
+
+            // Change the room host if player was the host.
+            if (room.host == player && room.players.Count > 0)
+            {
+                room.host = room.players[0];
+                GameLogger.LogServer($"Room {room.code} changed its host.\nNew host:{room.host.id}\nOld host:{player.id}");
+            }
+
             return room;
         }
 
