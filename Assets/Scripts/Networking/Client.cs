@@ -25,6 +25,12 @@ namespace VampireVillage.Network
         [SyncVar(hook = nameof(SetName))]
         public string playerName;
 
+        public delegate void HostRoomErrorCallback(string errorMessage);
+        private HostRoomErrorCallback hostRoomErrorCallback;
+
+        public delegate void JoinRoomErrorCallback(string errorMessage);
+        private JoinRoomErrorCallback joinRoomErrorCallback;
+
         private VampireVillageNetwork network;
 
         private void Awake()
@@ -90,19 +96,49 @@ namespace VampireVillage.Network
             GameLogger.LogClient("Client connected to the server.", this);
         }
 
+        public void HostRoom(HostRoomErrorCallback hostRoomErrorCallback)
+        {
+            this.hostRoomErrorCallback = hostRoomErrorCallback;
+            Client.local.CmdHostRoom();
+        }
+
         [TargetRpc]
         public void TargetHostRoom(Room room)
         {
+            // TODO: Better error message.
+            if (room == null)
+            {
+                GameLogger.LogClient("Failed to create a room.");
+                if (hostRoomErrorCallback != null)
+                {
+                    hostRoomErrorCallback("Failed to create a room.");
+                    hostRoomErrorCallback = null;
+                }
+                return;
+            }
+
             GameLogger.LogClient($"Created new room!\nCode: {room.code}");
             CmdJoinRoom(room.code);
+        }
+
+        public void JoinRoom(string roomCode, JoinRoomErrorCallback joinRoomErrorCallback)
+        {
+            this.joinRoomErrorCallback = joinRoomErrorCallback;
+            CmdJoinRoom(roomCode);
         }
 
         [TargetRpc]
         public void TargetJoinRoom(Room room)
         {
+            // TODO: Better error message.
             if (room == null)
             {
                 GameLogger.LogClient($"Failed to join the room.");
+                if (joinRoomErrorCallback != null)
+                {
+                    joinRoomErrorCallback("Room does not exist!");
+                    joinRoomErrorCallback = null;
+                }
                 return;
             }
 

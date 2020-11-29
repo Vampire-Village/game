@@ -21,6 +21,11 @@ public class StartMenu : MonoBehaviour
     public GameObject offlinePanel;
     public Button reconnectButton;
 
+    [Header("Popup")]
+    public GameObject popupPanel;
+    public TMP_Text popupText;
+    public Button popupButton;
+
     private VampireVillageNetwork network;
     private uint codeLength;
 
@@ -55,6 +60,7 @@ public class StartMenu : MonoBehaviour
         hostButton.onClick.AddListener(HostRoom);
         joinButton.onClick.AddListener(JoinRoom);
         reconnectButton.onClick.AddListener(network.StartClient);
+        popupButton.onClick.AddListener(() => popupPanel.SetActive(false));
     }
 
     private void OnNetworkStart()
@@ -106,7 +112,13 @@ public class StartMenu : MonoBehaviour
         GameLogger.LogClient("Creating new room...");
         SetInputsAndButtonsActive(false);
         SetName();
-        Client.local.CmdHostRoom();
+        Client.local.HostRoom(OnHostRoomError);
+    }
+
+    private void OnHostRoomError(string errorMessage)
+    {
+        ShowPopup(errorMessage);
+        SetInputsAndButtonsActive(true);
     }
 
     private void JoinRoom()
@@ -115,7 +127,13 @@ public class StartMenu : MonoBehaviour
         GameLogger.LogClient($"Joining room {roomCode}...");
         SetInputsAndButtonsActive(false);
         SetName();
-        Client.local.CmdJoinRoom(roomCode);
+        Client.local.JoinRoom(roomCode, OnJoinRoomError);
+    }
+
+    private void OnJoinRoomError(string errorMessage)
+    {
+        ShowPopup(errorMessage);
+        SetInputsAndButtonsActive(true);
     }
 
     private void SetName()
@@ -131,6 +149,12 @@ public class StartMenu : MonoBehaviour
         joinButton.interactable = isActive;
     }
 
+    private void ShowPopup(string message)
+    {
+        popupText.text = message;
+        popupPanel.SetActive(true);
+    }
+
     private void OnDestroy()
     {
         // Remove network listeners.
@@ -139,10 +163,11 @@ public class StartMenu : MonoBehaviour
         network.OnNetworkOffline -= OnNetworkOffline;
 
         // Remove other listeners.
-        nameInput.onEndEdit.RemoveListener(OnEditName);
+        nameInput.onEndEdit.RemoveAllListeners();
         roomInput.onValidateInput -= OnValidateRoomCode;
-        hostButton.onClick.RemoveListener(HostRoom);
-        joinButton.onClick.RemoveListener(JoinRoom);
-        reconnectButton.onClick.RemoveListener(network.StartClient);
+        hostButton.onClick.RemoveAllListeners();
+        joinButton.onClick.RemoveAllListeners();
+        reconnectButton.onClick.RemoveAllListeners();
+        popupButton.onClick.RemoveAllListeners();
     }
 }
