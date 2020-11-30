@@ -269,6 +269,9 @@ namespace VampireVillage.Network
                 yield break;
             }
 
+            // Mark the game as starting.
+            room.lobbyManager.RpcOnGameStarting();
+
             // Load the game scene on the server.
             yield return SceneManager.LoadSceneAsync(gameScene.name, LoadSceneMode.Additive);
             Scene loadedScene = GetLastScene();

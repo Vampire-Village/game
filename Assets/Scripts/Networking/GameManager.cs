@@ -25,6 +25,7 @@ namespace VampireVillage.Network
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         }
 
+#region Server Methods
         public override void OnStartServer()
         {
             network.roomManager.RegisterGameManager(this, gameObject.scene);
@@ -64,7 +65,9 @@ namespace VampireVillage.Network
             gamePlayers.Remove(player);
             network.DestroyGamePlayer(gamePlayerInstance);
         }
+#endregion
 
+#region Client Methods
         public override void OnStartClient()
         {
             leaveGameButton.onClick.AddListener(LeaveGame);
@@ -74,5 +77,6 @@ namespace VampireVillage.Network
         {
             Client.local.LeaveRoom();
         }
+#endregion
     }
 }

@@ -106,6 +106,14 @@ namespace VampireVillage.Network
             Client.local.StartGame();
         }
 
+        [ClientRpc]
+        public void RpcOnGameStarting()
+        {
+            GameLogger.LogClient("Game is starting soon!");
+            startGameButton.interactable = false;
+            leaveLobbyButton.interactable = false;
+        }
+
         private void LeaveRoom()
         {
             Client.local.LeaveRoom();
