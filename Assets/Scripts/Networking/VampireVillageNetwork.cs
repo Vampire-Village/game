@@ -378,6 +378,22 @@ namespace VampireVillage.Network
             OnNetworkOnline?.Invoke();
         }
 
+        public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling)
+        {
+            // Remove the scene to be unloaded from list.
+            if (sceneOperation == SceneOperation.UnloadAdditive)
+            {
+                foreach (var scene in additiveScenes)
+                {
+                    if (scene.name == newSceneName)
+                    {
+                        additiveScenes.Remove(scene);
+                        break;
+                    }
+                }
+            }
+        }
+
         public override void OnClientSceneChanged(NetworkConnection conn)
         {
             base.OnClientSceneChanged(conn);
