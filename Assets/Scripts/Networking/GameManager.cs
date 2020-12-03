@@ -22,8 +22,9 @@ namespace VampireVillage.Network
         private GamePlayer vampireLord;
         private readonly List<GamePlayer> vampires = new List<GamePlayer>();
         private readonly List<GamePlayer> villagers = new List<GamePlayer>();
+        private bool isGameOver = false;
 
-        private readonly Dictionary<ServerPlayer, GameObject> gamePlayers = new Dictionary<ServerPlayer, GameObject>();
+        private readonly Dictionary<ServerPlayer, GamePlayer> gamePlayers = new Dictionary<ServerPlayer, GamePlayer>();
 
         private VampireVillageNetwork network;
 #endregion
@@ -60,7 +61,7 @@ namespace VampireVillage.Network
                 // Instantiate the game player and assign role.
                 GameObject gamePlayerInstance = network.InstantiateGamePlayer(gameObject, player);
                 GamePlayer gamePlayer = gamePlayerInstance.GetComponent<GamePlayer>();
-                gamePlayers.Add(player, gamePlayerInstance);
+                gamePlayers.Add(player, gamePlayer);
                 gamePlayer.RegisterGameManager(this);
                 gamePlayer.role = i == vampireLordIndex ? Role.VampireLord : Role.Villager;
 
@@ -81,9 +82,31 @@ namespace VampireVillage.Network
 
         public void RemovePlayer(ServerPlayer player)
         {
-            GameObject gamePlayerInstance = gamePlayers[player];
+            // Get the game player and remove it from the game players list.
+            GamePlayer gamePlayer = gamePlayers[player];
             gamePlayers.Remove(player);
-            network.DestroyGamePlayer(gamePlayerInstance);
+
+            // Also remove the player from its role list.
+            if (gamePlayer.role == Role.Villager)
+            {
+                villagers.Remove(gamePlayer);
+            }
+            else if (gamePlayer.role == Role.Infected || gamePlayer.role == Role.VampireLord)
+            {
+                vampires.Remove(gamePlayer);
+            }
+
+            // Check the winning condition if game is not over yet.
+            if (!isGameOver)
+            {
+                if (gamePlayer == vampireLord)
+                    GameOver(Team.Villagers);
+                else if (villagers.Count <= 1)
+                    GameOver(Team.Vampires);
+            }
+
+            // Destroy the game object for this player.
+            network.DestroyGamePlayer(gamePlayer.gameObject);
         }
 
         public void UpdatePlayerTeam(GamePlayer player, Role oldRole, Role newRole)
@@ -102,8 +125,9 @@ namespace VampireVillage.Network
 
         public void GameOver(Team winningTeam)
         {
-            GameLogger.LogServer($"Game over triggered for room ${room.code}.\nWinning team: {winningTeam.ToString()}");
+            isGameOver = true;
             RpcOnGameOver(winningTeam);
+            GameLogger.LogServer($"Game over triggered for room ${room.code}.\nWinning team: {winningTeam.ToString()}");
         }
 #endregion
 
