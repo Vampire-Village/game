@@ -8,14 +8,6 @@ public class GamePlayer : BasePlayer
 
     public new static UnityEvent OnPlayerSpawned = new UnityEvent();
     public static UnityEvent OnRoleUpdated = new UnityEvent();
-
-    public enum Role
-    {
-        None,
-        Villager,
-        VampireLord,
-        Infected
-    }
     
     [SyncVar(hook = nameof(SetRole))]
     public Role role = Role.None;

@@ -18,7 +18,7 @@ public class Villager : MonoBehaviour
         //gameObject.AddComponent<Infected>();
         //gameObject.tag = "Infected";
         //Destroy(this);
-        gameObject.GetComponent<GamePlayer>().CmdSetRole(GamePlayer.Role.Infected);
+        gameObject.GetComponent<GamePlayer>().CmdSetRole(Role.Infected);
     }
     // Update is called once per frame
     void Update()

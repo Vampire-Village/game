@@ -32,13 +32,13 @@ public class PlayerUI : MonoBehaviour
 
         switch (player.role)
         {
-            case GamePlayer.Role.VampireLord:
+            case Role.VampireLord:
                 infectButton.gameObject.SetActive(true);
                 break;
-            case GamePlayer.Role.Villager:
+            case Role.Villager:
                 interactButton.gameObject.SetActive(true);
                 break;
-            case GamePlayer.Role.Infected:
+            case Role.Infected:
                 interactButton.gameObject.SetActive(true);
                 reportButton.gameObject.SetActive(true);
                 break;
