@@ -14,6 +14,7 @@ namespace VampireVillage.Network
 {
     public class VampireVillageNetwork : NetworkManager
     {
+#region Properties
 #region Network Settings
         public ushort networkPort = 7777;
 #if UNITY_EDITOR
@@ -45,7 +46,9 @@ namespace VampireVillage.Network
         private readonly HashSet<ServerPlayer> players = new HashSet<ServerPlayer>();
 
         public RoomManager roomManager;
+#endregion
 
+#region Unity Methods
         public override void Awake()
         {
             // Set default network settings.
@@ -83,6 +86,7 @@ namespace VampireVillage.Network
             roomManager.mode = mode;
 #endif
         }
+#endregion
 
 #region Server Methods
         public override void OnStartServer()
@@ -226,7 +230,7 @@ namespace VampireVillage.Network
             // TODO: Handle loading, player not loading the scene yet, etc.
             
             // Let the client know that they have left the room.
-            player.client.TargetLeaveRoom();
+            player.client.TargetLeaveRoom(NetworkCode.Success);
 
             // Check if room is empty.
             if (room.players.Count == 0)
@@ -255,22 +259,23 @@ namespace VampireVillage.Network
             // Check if player is allowed to start the game.
             if (room == null)
             {
-                // TODO: Return error.
+                player.client.TargetStartGame(NetworkCode.StartFailedNotInARoom);
                 yield break;
             }
             if (room.host != player)
             {
-                // TODO: Return error.
+                player.client.TargetStartGame(NetworkCode.StartFailedNotHost);
                 yield break;
             }
             if (room.players.Count < roomManager.minPlayers)
             {
-                // TODO: Return error.
+                player.client.TargetStartGame(NetworkCode.StartFailedNotEnoughPlayers);
                 yield break;
             }
 
             // Mark the game as starting.
             room.lobbyManager.RpcOnGameStarting();
+            player.client.TargetStartGame(NetworkCode.Success);
 
             // Load the game scene on the server.
             yield return SceneManager.LoadSceneAsync(gameScene.name, LoadSceneMode.Additive);

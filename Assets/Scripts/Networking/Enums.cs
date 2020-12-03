@@ -19,6 +19,9 @@
         HostFailedAlreadyInRoom,
         JoinFailedAlreadyInRoom,
         JoinFailedRoomDoesNotExist,
-        JoinFailedRoomGameAlreadyStarted
+        JoinFailedRoomGameAlreadyStarted,
+        StartFailedNotInARoom,
+        StartFailedNotHost,
+        StartFailedNotEnoughPlayers
     }
 }

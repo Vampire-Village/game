@@ -219,11 +219,7 @@ MonoBehaviour:
   menuScene: {fileID: 102900000, guid: 5ad7d09dbfc3cf5419baf121e6edfc4e, type: 3}
   lobbyScene: {fileID: 102900000, guid: eeab2c16ac6a1b342817a221809255c5, type: 3}
   gameScene: {fileID: 102900000, guid: 46661b42d12dc6444a72b434a1f5e831, type: 3}
-  lobbyManagerPrefab: {fileID: 4303215239192270110, guid: 31bbe101264723643acdb9dd71daf8c5,
-    type: 3}
   lobbyPlayerPrefab: {fileID: 4602695557135484434, guid: c75ab9aee59cacf4fa4cf4905c74bfd0,
-    type: 3}
-  gameManagerPrefab: {fileID: 6641309314041548932, guid: 9492b2b6e1d4aa0459988e628fa8ac86,
     type: 3}
   gamePlayerPrefab: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
     type: 3}

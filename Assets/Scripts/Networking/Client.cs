@@ -8,13 +8,14 @@ namespace VampireVillage.Network
     /// </summary>
     public class Client : NetworkBehaviour
     {
+#region Properties
         /// <summary>
         /// The local client.
         /// </summary>
         public static Client local { get; private set; }
 
         /// <summary>
-        /// The ServerPlayer ID that this client belongs to.
+        /// The server player ID.
         /// </summary>
         [SyncVar]
         public Guid playerId;
@@ -22,23 +23,34 @@ namespace VampireVillage.Network
         /// <summary>
         /// The player name.
         /// </summary>
-        [SyncVar(hook = nameof(SetName))]
+        [SyncVar(hook = nameof(UpdateName))]
         public string playerName;
 
+#region Callbacks
         public delegate void HostRoomErrorCallback(string errorMessage);
         private HostRoomErrorCallback hostRoomErrorCallback;
 
         public delegate void JoinRoomErrorCallback(string errorMessage);
         private JoinRoomErrorCallback joinRoomErrorCallback;
 
-        private VampireVillageNetwork network;
+        public delegate void LeaveRoomErrorCallback(string errorMessage);
+        private LeaveRoomErrorCallback leaveRoomErrorCallback;
 
+        public delegate void StartGameErrorCallback(string errorMessage);
+        private StartGameErrorCallback startGameErrorCallback;
+#endregion
+
+        private VampireVillageNetwork network;
+#endregion
+
+#region Unity Methods
         private void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
             syncMode = SyncMode.Observers;
             syncInterval = 0.1f;
         }
+#endregion
 
 #region Server Methods
         public override void OnStartServer()
@@ -49,7 +61,7 @@ namespace VampireVillage.Network
         }
 
         [Command]
-        public void CmdSetName(string newName)
+        private void CmdSetName(string newName)
         {
 #if UNITY_SERVER || UNITY_EDITOR
             if (newName.Length > 0)
@@ -61,7 +73,7 @@ namespace VampireVillage.Network
         }
 
         [Command]
-        public void CmdHostRoom()
+        private void CmdHostRoom()
         {
 #if UNITY_SERVER || UNITY_EDITOR
             GameLogger.LogServer("A client requested a new room.", this);
@@ -70,7 +82,7 @@ namespace VampireVillage.Network
         }
 
         [Command]
-        public void CmdJoinRoom(string roomCode)
+        private void CmdJoinRoom(string roomCode)
         {
 #if UNITY_SERVER || UNITY_EDITOR
             GameLogger.LogServer($"A client requested to join a room.\nCode: {roomCode}", this);
@@ -79,7 +91,7 @@ namespace VampireVillage.Network
         }
 
         [Command]
-        public void CmdLeaveRoom()
+        private void CmdLeaveRoom()
         {
 #if UNITY_SERVER || UNITY_EDITOR
             GameLogger.LogServer($"A client requested to leave a room.", this);
@@ -88,7 +100,7 @@ namespace VampireVillage.Network
         }
 
         [Command]
-        public void CmdStartGame()
+        private void CmdStartGame()
         {
 #if UNITY_SERVER || UNITY_EDITOR
             GameLogger.LogServer($"A client requested to start a game.", this);
@@ -105,21 +117,44 @@ namespace VampireVillage.Network
             GameLogger.LogClient("Client connected to the server.", this);
         }
 
-        public void HostRoom(HostRoomErrorCallback hostRoomErrorCallback)
+        /// <summary>
+        /// Sets the player name.
+        /// </summary>
+        /// <param name="name">Player name.</param>
+        public void SetName(string name)
+        {
+            CmdSetName(name);
+        }
+
+        private void UpdateName(string oldName, string newName)
+        {
+            name = $"Client ({newName})";
+        }
+
+        /// <summary>
+        /// Sends a request to the server to host a room.
+        /// </summary>
+        /// <param name="hostRoomErrorCallback">Callback when an error occurs.</param>
+        public void HostRoom(HostRoomErrorCallback hostRoomErrorCallback = null)
         {
             GameLogger.LogClient("Creating new room...");
             this.hostRoomErrorCallback = hostRoomErrorCallback;
             Client.local.CmdHostRoom();
         }
 
+        /// <summary>
+        /// Called when the server has processed the host room request.
+        /// </summary>
+        /// <param name="room">The room created.</param>
+        /// <param name="status">Request status code.</param>
         [TargetRpc]
-        public void TargetHostRoom(Room room, NetworkCode code)
+        public void TargetHostRoom(Room room, NetworkCode status)
         {
             // Return error.
-            if (room == null)
+            if (status != NetworkCode.Success)
             {
                 string message;
-                switch (code)
+                switch (status)
                 {
                     case NetworkCode.HostFailedAlreadyInRoom:
                         message = "Already in a room.";
@@ -139,24 +174,36 @@ namespace VampireVillage.Network
             }
 
             GameLogger.LogClient($"Created new room!\nCode: {room.code}");
+
+            // Automatically join the room after creating.
             CmdJoinRoom(room.code);
         }
 
-        public void JoinRoom(string roomCode, JoinRoomErrorCallback joinRoomErrorCallback)
+        /// <summary>
+        /// Sends a request to the server to join a room.
+        /// </summary>
+        /// <param name="roomCode">The room code.</param>
+        /// <param name="joinRoomErrorCallback">Callback when an error occurs.</param>
+        public void JoinRoom(string roomCode, JoinRoomErrorCallback joinRoomErrorCallback = null)
         {
             GameLogger.LogClient($"Joining room {roomCode}...");
             this.joinRoomErrorCallback = joinRoomErrorCallback;
             CmdJoinRoom(roomCode);
         }
 
+        /// <summary>
+        /// Called when the server has processed the join room request.
+        /// </summary>
+        /// <param name="room">The room joined.</param>
+        /// <param name="status">Request status code.</param>
         [TargetRpc]
-        public void TargetJoinRoom(Room room, NetworkCode code)
+        public void TargetJoinRoom(Room room, NetworkCode status)
         {
             // Return error.
-            if (room == null)
+            if (status != NetworkCode.Success)
             {
                 string message;
-                switch (code)
+                switch (status)
                 {
                     case NetworkCode.JoinFailedAlreadyInRoom:
                         message = "Already in a room.";
@@ -184,27 +231,95 @@ namespace VampireVillage.Network
             GameLogger.LogClient($"Joined a room!\nCode: {room.code}");
         }
 
-        public void LeaveRoom()
+        /// <summary>
+        /// Sends a request to the server to leave the room.
+        /// </summary>
+        /// <param name="leaveRoomErrorCallback">Callback when an error occurs.</param>
+        public void LeaveRoom(LeaveRoomErrorCallback leaveRoomErrorCallback = null)
         {
             GameLogger.LogClient("Leaving room...");
+            this.leaveRoomErrorCallback = leaveRoomErrorCallback;
             CmdLeaveRoom();
         }
 
+        /// <summary>
+        /// Called when the server has processed the leave room request.
+        /// </summary>
+        /// <param name="status">Request status code.</param>
         [TargetRpc]
-        public void TargetLeaveRoom()
+        public void TargetLeaveRoom(NetworkCode status)
         {
+            // Return error.
+            if (status != NetworkCode.Success)
+            {
+                string message;
+                switch (status)
+                {
+                    default:
+                        message = "Something is wrong.";
+                        break;
+                }
+
+                GameLogger.LogClient($"Failed to leave the room. {message}");
+                if (leaveRoomErrorCallback != null)
+                {
+                    leaveRoomErrorCallback(message);
+                    leaveRoomErrorCallback = null;
+                }
+                return;
+            }
+
             GameLogger.LogClient("Left room successfully!");
         }
 
-        public void StartGame()
+        /// <summary>
+        /// Sends a request to the server to start the game.
+        /// </summary>
+        /// <param name="startGameErrorCallback">Callback when an error occurs.</param>
+        public void StartGame(StartGameErrorCallback startGameErrorCallback = null)
         {
-            GameLogger.LogClient("Attempting to start the game...");
+            GameLogger.LogClient("Starting the game...");
+            this.startGameErrorCallback = startGameErrorCallback;
             CmdStartGame();
         }
 
-        private void SetName(string oldName, string newName)
+        /// <summary>
+        /// Called when the server has processed the start game request.
+        /// </summary>
+        /// <param name="status">Request status code.</param>
+        [TargetRpc]
+        public void TargetStartGame(NetworkCode status)
         {
-            name = $"Client ({newName})";
+            // Return error.
+            if (status != NetworkCode.Success)
+            {
+                string message;
+                switch (status)
+                {
+                    case NetworkCode.StartFailedNotInARoom:
+                        message = "You are not in a room.";
+                        break;
+                    case NetworkCode.StartFailedNotHost:
+                        message = "You are not the host.";
+                        break;
+                    case NetworkCode.StartFailedNotEnoughPlayers:
+                        message = "Not enough player to start the game.";
+                        break;
+                    default:
+                        message = "Something is wrong.";
+                        break;
+                }
+
+                GameLogger.LogClient($"Failed to start the game. {message}");
+                if (startGameErrorCallback != null)
+                {
+                    startGameErrorCallback(message);
+                    startGameErrorCallback = null;
+                }
+                return;
+            }
+
+            GameLogger.LogClient("Started the game!");
         }
 #endregion
     }

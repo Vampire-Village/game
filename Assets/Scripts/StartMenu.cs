@@ -136,7 +136,7 @@ public class StartMenu : MonoBehaviour
 
     private void SetName()
     {
-        Client.local.CmdSetName(nameInput.text);
+        Client.local.SetName(nameInput.text);
     }
 
     private void SetInputsAndButtonsActive(bool isActive)
