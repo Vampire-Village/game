@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using VampireVillage.Network;
 using Mirror;
 
 public class GamePlayer : BasePlayer
 {
+#region Properties
     public new static GamePlayer local;
 
     public new static UnityEvent OnPlayerSpawned = new UnityEvent();
@@ -19,6 +21,10 @@ public class GamePlayer : BasePlayer
 
     private SphereCollider sphereCollider;
 
+    private GameManager gameManager;
+#endregion
+
+#region Unity Methods
     private void Awake()
     {
         // Get component references.
@@ -28,7 +34,31 @@ public class GamePlayer : BasePlayer
         infected = GetComponent<Infected>();
         sphereCollider = GetComponent<SphereCollider>();
     }
+#endregion
 
+#region Server Methods
+    public void RegisterGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
+    }
+
+    [Command(ignoreAuthority = true)]
+    public void CmdSetRole(Role targetRole)
+    {
+        // Update the role.
+        Role oldRole = role;
+        role = targetRole;
+
+        // Report to the game manager to switch team.
+        if (oldRole == Role.Villager && targetRole == Role.Infected)
+        {
+            gameManager.UpdatePlayerTeam(this, oldRole, targetRole);
+        }
+
+    }
+#endregion
+
+#region Client Methods
     public override void OnStartAuthority()
     {
         // Set base player.
@@ -41,12 +71,6 @@ public class GamePlayer : BasePlayer
         // // TEST: Randomize role.
         // Role randomRole = (Role)UnityEngine.Random.Range(1, 4);
         // CmdSetRole(randomRole);
-    }
-
-    [Command(ignoreAuthority = true)]
-    public void CmdSetRole(Role targetRole)
-    {
-        role = targetRole;
     }
 
     void SetRole(Role oldRole, Role newRole)
@@ -80,4 +104,5 @@ public class GamePlayer : BasePlayer
             GameLogger.LogClient($"Player is now {role.ToString()}!");
         }
     }
+#endregion
 }

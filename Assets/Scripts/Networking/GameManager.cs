@@ -1,29 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using TMPro;
 
 namespace VampireVillage.Network
 {
     public class GameManager : NetworkBehaviour
     {
+#region Properties
         private static readonly System.Random rng = new System.Random();
 
         public List<GameObject> spawnPoints;
 
         public Button leaveGameButton;
+        public GameObject gameOverCanvas;
+        public TMP_Text winText;
 
         private Room room;
+
+        private GamePlayer vampireLord;
+        private readonly List<GamePlayer> vampires = new List<GamePlayer>();
+        private readonly List<GamePlayer> villagers = new List<GamePlayer>();
 
         private readonly Dictionary<ServerPlayer, GameObject> gamePlayers = new Dictionary<ServerPlayer, GameObject>();
 
         private VampireVillageNetwork network;
+#endregion
 
+#region Unity Methods
         private void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         }
+#endregion
 
 #region Server Methods
         public override void OnStartServer()
@@ -51,7 +61,17 @@ namespace VampireVillage.Network
                 GameObject gamePlayerInstance = network.InstantiateGamePlayer(gameObject, player);
                 GamePlayer gamePlayer = gamePlayerInstance.GetComponent<GamePlayer>();
                 gamePlayers.Add(player, gamePlayerInstance);
-                gamePlayer.role = i == vampireLordIndex ? GamePlayer.Role.VampireLord : GamePlayer.Role.Villager;
+                gamePlayer.RegisterGameManager(this);
+                gamePlayer.role = i == vampireLordIndex ? Role.VampireLord : Role.Villager;
+
+                // Add game player to their team list.
+                if (gamePlayer.role == Role.VampireLord)
+                {
+                    vampireLord = gamePlayer;
+                    vampires.Add(gamePlayer);
+                }
+                else
+                    villagers.Add(gamePlayer);
 
                 // Move player to spawn points.
                 // TODO: Make it random.
@@ -65,6 +85,26 @@ namespace VampireVillage.Network
             gamePlayers.Remove(player);
             network.DestroyGamePlayer(gamePlayerInstance);
         }
+
+        public void UpdatePlayerTeam(GamePlayer player, Role oldRole, Role newRole)
+        {
+            // Update the player team.
+            if (oldRole == Role.Villager && newRole == Role.Infected)
+            {
+                villagers.Remove(player);
+                vampires.Add(player);
+            }
+
+            // Check for win condition.
+            if (villagers.Count <= 1)
+                GameOver(Team.Vampires);
+        }
+
+        public void GameOver(Team winningTeam)
+        {
+            GameLogger.LogServer($"Game over triggered for room ${room.code}.\nWinning team: {winningTeam.ToString()}");
+            RpcOnGameOver(winningTeam);
+        }
 #endregion
 
 #region Client Methods
@@ -76,6 +116,14 @@ namespace VampireVillage.Network
         private void LeaveGame()
         {
             Client.local.LeaveRoom();
+        }
+
+        [ClientRpc]
+        public void RpcOnGameOver(Team winningTeam)
+        {
+            GameLogger.LogClient($"Game over! {winningTeam.ToString()} win!");
+            gameOverCanvas.SetActive(true);
+            winText.text = $"{winningTeam.ToString()} win!";
         }
 #endregion
     }
