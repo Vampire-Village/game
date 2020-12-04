@@ -81,9 +81,6 @@ namespace VampireVillage.Network
                 StartClient();
             else
                 StartServer();
-
-            // Set room manager mode editor.
-            roomManager.mode = mode;
 #endif
         }
 #endregion
@@ -93,6 +90,10 @@ namespace VampireVillage.Network
         {
             GameLogger.LogServer("Server started!");
             OnNetworkStart?.Invoke();
+
+#if UNITY_EDITOR
+            roomManager.mode = NetworkMode.Server;
+#endif
         }
 
         public override void OnServerAddPlayer(NetworkConnection conn)

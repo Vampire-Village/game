@@ -15,29 +15,46 @@ namespace VampireVillage.Network
     public class LobbyManager : NetworkBehaviour
     {
 #region Properties
+#region Client & Server Properties
+        /// <summary>
+        /// The room that this lobby belongs to.
+        /// </summary>
         [SyncVar(hook = nameof(UpdateRoom))]
         public Room room;
 
+        /// <summary>
+        /// The current host of the lobby.
+        /// </summary>
         [SyncVar(hook = nameof(UpdateHost))]
         public ServerPlayer host;
 
+        /// <summary>
+        /// List of players in the lobby.
+        /// </summary>
         public readonly SyncList<ServerPlayer> players = new SyncList<ServerPlayer>();
 
+#region UIs
         public TMP_Text roomCodeText;
         public Button startGameButton;
         public Button leaveLobbyButton;
         public GameObject popupPanel;
         public TMP_Text popupText;
         public Button popupButton;
-
-        private readonly Dictionary<ServerPlayer, GameObject> lobbyPlayers = new Dictionary<ServerPlayer, GameObject>();
+#endregion
 
         private VampireVillageNetwork network;
+#endregion
+
+#region Server-only Properties
+#if UNITY_SERVER || UNITY_EDITOR
+        private readonly Dictionary<ServerPlayer, GameObject> lobbyPlayers = new Dictionary<ServerPlayer, GameObject>();
 
 #if UNITY_EDITOR
         [NonSerialized]
         public NetworkMode mode = NetworkMode.Offline;
 #endif
+#endif
+#endregion
 #endregion
 
 #region Unity Methods
@@ -50,13 +67,13 @@ namespace VampireVillage.Network
 #endregion
 
 #region Server Methods
+#if UNITY_SERVER || UNITY_EDITOR
         public override void OnStartServer()
         {
 #if UNITY_EDITOR
             mode = NetworkMode.Server;
 #endif
 
-#if UNITY_SERVER || UNITY_EDITOR
             // Register the lobby manager to the server's room manager.
             network.roomManager.RegisterLobbyManager(this, gameObject.scene);
 
@@ -64,53 +81,62 @@ namespace VampireVillage.Network
             roomCodeText.gameObject.SetActive(false);
             startGameButton.gameObject.SetActive(false);
             leaveLobbyButton.gameObject.SetActive(false);
-#endif
         }
 
+        /// <summary>
+        /// Registers the room that this lobby manager belongs to.
+        /// </summary>
+        /// <param name="room">A room.</param>
         public void RegisterRoom(Room room)
         {
-#if UNITY_SERVER || UNITY_EDITOR
             this.room = room;
             SetHost(room.host);
-#endif
         }
 
+        /// <summary>
+        /// Adds a player to the lobby.
+        /// </summary>
+        /// <param name="player">A player.</param>
         public void AddPlayer(ServerPlayer player)
         {
-#if UNITY_SERVER || UNITY_EDITOR
             players.Add(player);
             GameObject lobbyPlayerInstance = network.InstantiateLobbyPlayer(gameObject, player);
             lobbyPlayers.Add(player, lobbyPlayerInstance);
-#endif
         }
 
+        /// <summary>
+        /// Removes a player from the lobby.
+        /// </summary>
+        /// <param name="player">A player.</param>
         public void RemovePlayer(ServerPlayer player)
         {
-#if UNITY_SERVER || UNITY_EDITOR
             players.Remove(player);
             GameObject lobbyPlayerInstance = lobbyPlayers[player];
             lobbyPlayers.Remove(player);
             network.DestroyLobbyPlayer(lobbyPlayerInstance);
-#endif
         }
 
+        /// <summary>
+        /// Sets the lobby host.
+        /// </summary>
+        /// <param name="player">A player.</param>
         public void SetHost(ServerPlayer player)
         {
-#if UNITY_SERVER || UNITY_EDITOR
             host = player;
-#endif
         }
 
+        /// <summary>
+        /// Called when game is about to start to remove the lobby player objects.
+        /// </summary>
         public void OnStartGame()
         {
-#if UNITY_SERVER || UNITY_EDITOR
             // Clean up lobby players.
             foreach (var lobbyPlayer in lobbyPlayers.Values)
             {
                 network.DestroyLobbyPlayer(lobbyPlayer);
             }
-#endif
         }
+#endif
 #endregion
 
 #region Client Methods
@@ -136,6 +162,9 @@ namespace VampireVillage.Network
             ShowPopup(errorMessage);
         }
 
+        /// <summary>
+        /// Called when game is about to start and let all the players know.
+        /// </summary>
         [ClientRpc]
         public void RpcOnGameStarting()
         {

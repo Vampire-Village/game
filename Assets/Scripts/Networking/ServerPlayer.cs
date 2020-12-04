@@ -8,29 +8,44 @@ namespace VampireVillage.Network
     /// </summary>
     public class ServerPlayer : IEquatable<ServerPlayer>
     {
+#region Properties
 #region Client & Server Properties
         /// <summary>
         /// The player ID.
         /// </summary>
         public Guid id;
-
-        /// <summary>
-        /// The network connection ID.
-        /// </summary>
-        public int connectionId;
 #endregion
 
 #region Server-only Properties
+#if UNITY_SERVER || UNITY_EDITOR
+        /// <summary>
+        /// The network connection ID.
+        /// </summary>
+        [NonSerialized]
+        public int connectionId;
+
+        /// <summary>
+        /// The connection to client.
+        /// </summary>
         [NonSerialized]
         public NetworkConnection clientConnection;
 
+        /// <summary>
+        /// The client that belongs to this player.
+        /// </summary>
         [NonSerialized]
         public Client client;
 
+        /// <summary>
+        /// The room that the player is currently in.
+        /// </summary>
         [NonSerialized]
         public Room room;
+#endif
+#endregion
 #endregion
 
+#region Methods
         public ServerPlayer()
         {
             id = Guid.NewGuid();
@@ -50,5 +65,6 @@ namespace VampireVillage.Network
         {
             return id == p.id;
         }
+#endregion
     }
 }

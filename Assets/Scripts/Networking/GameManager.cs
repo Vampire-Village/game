@@ -6,27 +6,42 @@ using TMPro;
 
 namespace VampireVillage.Network
 {
+    /// <summary>
+    /// Handles the game logics.
+    /// On the server: Adding/removing player, checking win condition.
+    /// On the client: Leaving room, UI logics.
+    /// </summary>
     public class GameManager : NetworkBehaviour
     {
 #region Properties
         private static readonly System.Random rng = new System.Random();
 
-        public List<GameObject> spawnPoints;
-
+#region Client & Server Properties
+#region UIs
         public Button leaveGameButton;
         public GameObject gameOverCanvas;
         public TMP_Text winText;
+#endregion
+
+        private VampireVillageNetwork network;
+#endregion
+
+#region Server-only Properties
+#if UNITY_SERVER || UNITY_EDITOR
+        /// <summary>
+        /// List of spawn points.
+        /// </summary>
+        public List<GameObject> spawnPoints;
 
         private Room room;
+        private bool isGameOver = false;
+        private readonly Dictionary<ServerPlayer, GamePlayer> gamePlayers = new Dictionary<ServerPlayer, GamePlayer>();
 
         private GamePlayer vampireLord;
         private readonly List<GamePlayer> vampires = new List<GamePlayer>();
         private readonly List<GamePlayer> villagers = new List<GamePlayer>();
-        private bool isGameOver = false;
-
-        private readonly Dictionary<ServerPlayer, GamePlayer> gamePlayers = new Dictionary<ServerPlayer, GamePlayer>();
-
-        private VampireVillageNetwork network;
+#endif
+#endregion
 #endregion
 
 #region Unity Methods
@@ -37,17 +52,25 @@ namespace VampireVillage.Network
 #endregion
 
 #region Server Methods
+#if UNITY_SERVER || UNITY_EDITOR
         public override void OnStartServer()
         {
             network.roomManager.RegisterGameManager(this, gameObject.scene);
         }
         
+        /// <summary>
+        /// Registers the room that this game manager belongs to.
+        /// </summary>
+        /// <param name="room">A room.</param>
         public void RegisterRoom(Room room)
         {
             this.room = room;
             GameLogger.LogServer("Game initialized!");
         }
 
+        /// <summary>
+        /// Initializes the game.
+        /// </summary>
         public void StartGame()
         {
             // Randomly choose a vampire lord.
@@ -80,6 +103,10 @@ namespace VampireVillage.Network
             }
         }
 
+        /// <summary>
+        /// Removes a player from the game.
+        /// </summary>
+        /// <param name="player">A player.</param>
         public void RemovePlayer(ServerPlayer player)
         {
             // Get the game player and remove it from the game players list.
@@ -109,6 +136,12 @@ namespace VampireVillage.Network
             network.DestroyGamePlayer(gamePlayer.gameObject);
         }
 
+        /// <summary>
+        /// Updates a player team.
+        /// </summary>
+        /// <param name="player">A player.</param>
+        /// <param name="oldRole">The player's old role.</param>
+        /// <param name="newRole">The player's new role.</param>
         public void UpdatePlayerTeam(GamePlayer player, Role oldRole, Role newRole)
         {
             // Update the player team.
@@ -123,12 +156,17 @@ namespace VampireVillage.Network
                 GameOver(Team.Vampires);
         }
 
+        /// <summary>
+        /// Finishes the game.
+        /// </summary>
+        /// <param name="winningTeam">The winning team.</param>
         public void GameOver(Team winningTeam)
         {
             isGameOver = true;
             RpcOnGameOver(winningTeam);
             GameLogger.LogServer($"Game over triggered for room ${room.code}.\nWinning team: {winningTeam.ToString()}");
         }
+#endif
 #endregion
 
 #region Client Methods
@@ -142,6 +180,10 @@ namespace VampireVillage.Network
             Client.local.LeaveRoom();
         }
 
+        /// <summary>
+        /// Called when the game is over and let all the players know.
+        /// </summary>
+        /// <param name="winningTeam">The winning team.</param>
         [ClientRpc]
         public void RpcOnGameOver(Team winningTeam)
         {

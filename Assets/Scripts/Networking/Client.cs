@@ -53,12 +53,12 @@ namespace VampireVillage.Network
 #endregion
 
 #region Server Methods
+#if UNITY_SERVER || UNITY_EDITOR
         public override void OnStartServer()
         {
-#if UNITY_SERVER || UNITY_EDITOR
             name = $"Client ({playerId})";
-#endif    
         }
+#endif    
 
         [Command]
         private void CmdSetName(string newName)

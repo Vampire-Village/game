@@ -40,7 +40,7 @@ public class RoomManagerEditor : Editor
         rootElement.Clear();
         visualTree.CloneTree(rootElement);
 
-        if (manager.mode == NetworkManagerMode.ServerOnly)
+        if (manager.mode == NetworkMode.Server)
             rootElement.Add(CreateServerGUI());
 
         return rootElement;
@@ -87,7 +87,7 @@ public class RoomManagerEditor : Editor
 
     private void RefreshRooms()
     {
-        var rooms = new List<Room>(manager.rooms.Values);
+        var rooms = new List<Room>(manager.editorRooms.Values);
         if (rooms.Count == 0)
         {
             roomList.style.display = DisplayStyle.None;

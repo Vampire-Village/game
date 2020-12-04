@@ -2,25 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Mirror;
 
 namespace VampireVillage.Network
 {
     /// <summary>
-    /// Manages the room creation and joining on the server.
+    /// Manages the room creation and states on the server.
     /// </summary>
     public class RoomManager : MonoBehaviour
     {
+#region Properties
+#region Client & Server Properties
+        /// <summary>
+        /// Length of the room code.
+        /// </summary>
         public uint codeLength = 4;
+#endregion
+
+#region Server-only Properties
+#if UNITY_SERVER || UNITY_EDITOR
+        /// <summary>
+        /// Minimum players to start a game.
+        /// </summary>
         public uint minPlayers = 4;
+
+        /// <summary>
+        /// Maximum players in a room.
+        /// </summary>
         public uint maxPlayers = 10;
-        public readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
+
+        private readonly Dictionary<string, Room> rooms = new Dictionary<string, Room>();
 
 #if UNITY_EDITOR
         [System.NonSerialized]
-        public NetworkManagerMode mode = NetworkManagerMode.Offline;
-#endif
+        public NetworkMode mode = NetworkMode.Offline;
 
+        public Dictionary<string, Room> editorRooms { get { return rooms; } }
+#endif
+#endif
+#endregion
+#endregion
+
+#region Server Methods
+#if UNITY_SERVER || UNITY_EDITOR
         public Room CreateRoom()
         {
             // Generate a unique room code.
@@ -131,5 +154,7 @@ namespace VampireVillage.Network
                 }
             }
         }
+#endif
+#endregion
     }
 }

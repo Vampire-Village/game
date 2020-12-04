@@ -6,6 +6,7 @@ namespace VampireVillage.Network
 {
     public class Room
     {
+#region Properties
         private static readonly Random rng = new Random();
 
 #region Client & Server Properties
@@ -13,40 +14,62 @@ namespace VampireVillage.Network
         /// The room code that players can use to join.
         /// </summary>
         public string code;
+#endregion
+
+#region Server-only Properties
+#if UNITY_SERVER || UNITY_EDITOR
+        /// <summary>
+        /// List of players in the room.
+        /// </summary>
+        [NonSerialized]
+        public readonly List<ServerPlayer> players = new List<ServerPlayer>();
 
         /// <summary>
         /// The host player.
         /// </summary>
+        [NonSerialized]
         public ServerPlayer host;
-
-        /// <summary>
-        /// Whether the room is currently in the lobby or in the game.
-        /// </summary>
-        public RoomState state = RoomState.Lobby;
 
         /// <summary>
         /// The current room scene.
         /// </summary>
-        public Scene scene;
-#endregion
-
-#region Server-only Properties
         [NonSerialized]
-        public readonly List<ServerPlayer> players = new List<ServerPlayer>();
+        public Scene scene;
 
+        /// <summary>
+        /// Whether the room is currently in the lobby or in the game.
+        /// </summary>
+        [NonSerialized]
+        public RoomState state = RoomState.Lobby;
+
+        /// <summary>
+        /// The lobby manager that belongs to this room.
+        /// </summary>
         [NonSerialized]
         public LobbyManager lobbyManager;
         
+        /// <summary>
+        /// Whether the lobby has been initialized.
+        /// </summary>
         [NonSerialized]
         public bool isLobbyInitialized = false;
 
+        /// <summary>
+        /// The game manager that belongs to this room.
+        /// </summary>
         [NonSerialized]
         public GameManager gameManager;
 
+        /// <summary>
+        /// Whether the game has been initialized.
+        /// </summary>
         [NonSerialized]
         public bool isGameInitialized = false;
+#endif
+#endregion
 #endregion
 
+#region Methods
         public Room() {}
         
         public Room(string code)
@@ -54,6 +77,11 @@ namespace VampireVillage.Network
             this.code = code;
         }
 
+        /// <summary>
+        /// Generate an alphabetic room code with the specified length.
+        /// </summary>
+        /// <param name="length">Length of the code.</param>
+        /// <returns>Room code.</returns>
         public static string GenerateCode(uint length)
         {
             string code = "";
@@ -64,4 +92,5 @@ namespace VampireVillage.Network
             return code;
         }
     }
+#endregion
 }
