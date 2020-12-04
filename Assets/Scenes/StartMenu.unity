@@ -719,8 +719,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Vampire Village
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d937b2dc367a06548a1b2ae8842c8927, type: 2}
+  m_sharedMaterial: {fileID: 135471983236749284, guid: d937b2dc367a06548a1b2ae8842c8927,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1810,7 +1811,7 @@ PrefabInstance:
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_text
-      value: Unnable to connect to the server!
+      value: Unable to connect to the server!
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}

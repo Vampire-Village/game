@@ -121,7 +121,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+      objectReference: {fileID: 2100000, guid: 5759e28eddd6725428dbd051cfb698e3, type: 2}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.r
@@ -136,6 +136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414e8961ddd04e546b83eaf3aa1a3611, type: 3}
