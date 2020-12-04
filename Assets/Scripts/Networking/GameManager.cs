@@ -99,7 +99,7 @@ namespace VampireVillage.Network
 
                 // Move player to spawn points.
                 // TODO: Make it random.
-                gamePlayer.TargetSetPosition(spawnPoints[i % room.players.Count].transform.position);
+                gamePlayer.TargetSetPosition(spawnPoints[i % spawnPoints.Count].transform.position);
             }
         }
 
