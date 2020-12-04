@@ -164,7 +164,7 @@ namespace VampireVillage.Network
         {
             isGameOver = true;
             RpcOnGameOver(winningTeam);
-            GameLogger.LogServer($"Game over triggered for room ${room.code}.\nWinning team: {winningTeam.ToString()}");
+            GameLogger.LogServer($"Game over triggered for room {room.code}.\nWinning Team: {winningTeam.ToString()}");
         }
 #endif
 #endregion

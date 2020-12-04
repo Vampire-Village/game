@@ -92,7 +92,7 @@ namespace VampireVillage.Network
                 room.gameManager.RemovePlayer(player);
 
             // Change the room host if player was the host.
-            if (room.host == player && room.players.Count > 0)
+            if (room.state == RoomState.Lobby && room.host == player && room.players.Count > 0)
             {
                 room.host = room.players[0];
                 room.lobbyManager.SetHost(room.host);
