@@ -56,6 +56,8 @@ public class GamePlayer : BasePlayer
         }
 
     }
+
+    
 #endregion
 
 #region Client Methods

@@ -15,6 +15,8 @@ namespace VampireVillage.Network
     {
 #region Properties
         private static readonly System.Random rng = new System.Random();
+        [SyncVar]
+        public int totalWellProgress = 0;
 
 #region Client & Server Properties
 #region UIs
@@ -165,6 +167,13 @@ namespace VampireVillage.Network
             isGameOver = true;
             RpcOnGameOver(winningTeam);
             GameLogger.LogServer($"Game over triggered for room {room.code}.\nWinning Team: {winningTeam.ToString()}");
+        }
+        public void AddTaskProgress(int progress){
+            totalWellProgress += progress;
+            if(totalWellProgress >= 100){
+                GameOver(Team.Villagers);
+            }
+
         }
 #endif
 #endregion
