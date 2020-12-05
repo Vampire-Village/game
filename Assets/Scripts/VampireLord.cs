@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VampireLord : MonoBehaviour
 {
 
     private List<GameObject> villagersInRange = new List<GameObject>();
+    private int cooldown = 30;
+    private int cdSec = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -16,20 +19,26 @@ public class VampireLord : MonoBehaviour
 
     public void Infect()
     {
-        if (!(villagersInRange.Count == 0))
+        if (cdSec == 0)
         {
-            Debug.Log("BITE!!");
-            GameObject victim = GetClosestVillager(villagersInRange);
-            victim.GetComponent<Villager>().Infected();
-            villagersInRange.Remove(victim);
-        } else
-        {
-           
-            Debug.Log("Nobody to infect.");
-        }
+            if (!(villagersInRange.Count == 0))
+            {
+                cdSec = cooldown;
 
+                StartCoroutine(LowerCooldown());
+                Debug.Log(cdSec);
+
+                Debug.Log("BITE!!");
+                GameObject victim = GetClosestVillager(villagersInRange);
+                victim.GetComponent<Villager>().Infected();
+                villagersInRange.Remove(victim);
+            }
+            else
+            {
+                Debug.Log("Nobody to infect.");
+            }
+        } 
     }
-
 
 
 
@@ -81,11 +90,26 @@ public class VampireLord : MonoBehaviour
 
 
 
-
-
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    IEnumerator LowerCooldown()
+    {
+        GameObject uiCanvas = GameObject.Find("UICanvas");
+        PlayerUI playerUI = uiCanvas.GetComponent<PlayerUI>();
+        while (cdSec > 0)
+        {
+            // Change button text
+            playerUI.infectButton.GetComponentInChildren<Text>().text = "Infect (" + cdSec + ")";
+
+            yield return new WaitForSeconds(1);
+            cdSec -= 1;
+        }
+        playerUI.infectButton.GetComponentInChildren<Text>().text = "Infect";
+    }
+
+
 }
