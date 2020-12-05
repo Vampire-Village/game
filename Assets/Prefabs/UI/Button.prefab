@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7529412, g: 0.2509804, b: 0.34117648, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -239,22 +239,27 @@ PrefabInstance:
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.r
-      value: 0.19607843
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.g
-      value: 0.19607843
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.b
-      value: 0.19607843
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4281479730
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414e8961ddd04e546b83eaf3aa1a3611, type: 3}

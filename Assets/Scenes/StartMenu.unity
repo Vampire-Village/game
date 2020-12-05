@@ -433,8 +433,8 @@ Camera:
   m_GameObject: {fileID: 160743810}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.15686275, g: 0.14901961, b: 0.20392157, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -580,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 1535670457704668560, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1535670457704668560, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
@@ -630,22 +630,27 @@ PrefabInstance:
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414e8961ddd04e546b83eaf3aa1a3611, type: 3}
@@ -727,8 +732,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283908350
+  m_fontColor: {r: 0.99607843, g: 0.2509804, b: 0.34117648, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -993,7 +998,7 @@ PrefabInstance:
     - target: {fileID: 7980430306697768535, guid: 1d342a007d0d56248b82ba2bd7ddbcc9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d342a007d0d56248b82ba2bd7ddbcc9, type: 3}
@@ -1519,6 +1524,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102753959777210017, guid: 5ef097b5e1a88e14d9bd8e4f98c290a2,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3278194136668349756, guid: 5ef097b5e1a88e14d9bd8e4f98c290a2,
         type: 3}
