@@ -7,6 +7,7 @@ public class WellController : Interactable
     public static int totalCompletionProgress;
     public GameObject playerObject;
     public Item emptyItem;
+    public WellManager wellManager;
     void Start()
     {
         //playerObject = GameObject.Find("Player");
