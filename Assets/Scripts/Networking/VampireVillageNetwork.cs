@@ -25,10 +25,10 @@ namespace VampireVillage.Network
 #endregion
 
 #region Scene Settings
-        public SceneAsset networkScene;
-        public SceneAsset menuScene;
-        public SceneAsset lobbyScene;
-        public SceneAsset gameScene;
+        public string networkScene;
+        public string menuScene;
+        public string lobbyScene;
+        public string gameScene;
 #endregion
 
 #region Prefabs
@@ -81,6 +81,10 @@ namespace VampireVillage.Network
                 StartClient();
             else
                 StartServer();
+#elif UNITY_SERVER
+            StartServer();
+#else
+            StartClient();
 #endif
         }
 #endregion
@@ -136,7 +140,7 @@ namespace VampireVillage.Network
             Room room = roomManager.CreateRoom();
 
             // Load the lobby scene on the server.
-            yield return SceneManager.LoadSceneAsync(lobbyScene.name, LoadSceneMode.Additive);
+            yield return SceneManager.LoadSceneAsync(lobbyScene, LoadSceneMode.Additive);
             Scene loadedScene = GetLastScene();
             room.scene = loadedScene;
             room.host = player;
@@ -183,8 +187,8 @@ namespace VampireVillage.Network
 
             // Move the client to the lobby.
             SceneManager.MoveGameObjectToScene(conn.identity.gameObject, room.scene);
-            conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.UnloadAdditive });
-            conn.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.LoadAdditive });
+            conn.Send(new SceneMessage { sceneName = menuScene, sceneOperation = SceneOperation.UnloadAdditive });
+            conn.Send(new SceneMessage { sceneName = lobbyScene, sceneOperation = SceneOperation.LoadAdditive });
 
             // Register player to the room manager.
             roomManager.JoinRoom(room, player);
@@ -226,7 +230,7 @@ namespace VampireVillage.Network
             // Move client out of the room.
             SceneManager.MoveGameObjectToScene(player.client.gameObject, gameObject.scene);
             conn.Send(new SceneMessage { sceneName = room.scene.name, sceneOperation = SceneOperation.UnloadAdditive });
-            conn.Send(new SceneMessage { sceneName = menuScene.name, sceneOperation = SceneOperation.LoadAdditive });
+            conn.Send(new SceneMessage { sceneName = menuScene, sceneOperation = SceneOperation.LoadAdditive });
 
             // TODO: Handle loading, player not loading the scene yet, etc.
             
@@ -279,7 +283,7 @@ namespace VampireVillage.Network
             player.client.TargetStartGame(NetworkCode.Success);
 
             // Load the game scene on the server.
-            yield return SceneManager.LoadSceneAsync(gameScene.name, LoadSceneMode.Additive);
+            yield return SceneManager.LoadSceneAsync(gameScene, LoadSceneMode.Additive);
             Scene loadedScene = GetLastScene();
             Scene roomLobbyScene = room.scene;
             room.scene = loadedScene;
@@ -295,8 +299,8 @@ namespace VampireVillage.Network
             foreach (var roomPlayer in room.players)
             {
                 SceneManager.MoveGameObjectToScene(roomPlayer.client.gameObject, room.scene);
-                roomPlayer.clientConnection.Send(new SceneMessage { sceneName = lobbyScene.name, sceneOperation = SceneOperation.UnloadAdditive });
-                roomPlayer.clientConnection.Send(new SceneMessage { sceneName = gameScene.name, sceneOperation = SceneOperation.LoadAdditive });
+                roomPlayer.clientConnection.Send(new SceneMessage { sceneName = lobbyScene, sceneOperation = SceneOperation.UnloadAdditive });
+                roomPlayer.clientConnection.Send(new SceneMessage { sceneName = gameScene, sceneOperation = SceneOperation.LoadAdditive });
             }
 
             // TODO: Handle loading, player not loading the scene yet, etc.
@@ -363,8 +367,8 @@ namespace VampireVillage.Network
         public override void OnStartClient()
         {
             // Send client to start menu.
-            if (GetLastScene().name != menuScene.name)
-                SceneManager.LoadScene(menuScene.name, LoadSceneMode.Additive);
+            if (GetLastScene().name != menuScene)
+                SceneManager.LoadScene(menuScene, LoadSceneMode.Additive);
 
             GameLogger.LogClient("Client started!");
             OnNetworkStart?.Invoke();
@@ -401,7 +405,7 @@ namespace VampireVillage.Network
 
             // Add the last scene added.
             Scene lastScene = GetLastScene();
-            if (lastScene.name != networkScene.name)
+            if (lastScene.name != networkScene)
                 additiveScenes.Add(lastScene);
         }
 
@@ -413,11 +417,11 @@ namespace VampireVillage.Network
             // TODO: Enable reconnect.
             // TODO: Error message & loading scene.
             // Get the client back to the start menu.
-            if (GetLastScene().name != menuScene.name)
+            if (GetLastScene().name != menuScene)
             {
                 foreach (Scene additiveScene in additiveScenes)
                     SceneManager.UnloadSceneAsync(additiveScene);
-                SceneManager.LoadScene(menuScene.name, LoadSceneMode.Additive);
+                SceneManager.LoadScene(menuScene, LoadSceneMode.Additive);
             }
 
             GameLogger.LogClient("Client disconnected.");
