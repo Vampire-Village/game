@@ -11,6 +11,7 @@ public class Controller : NetworkBehaviour
     private GameObject interactable;
     public bool inTask = false;
     public Item heldItem;
+    public bool isFrontFacing = true;
 
     void Update()
     {
@@ -28,6 +29,7 @@ public class Controller : NetworkBehaviour
         {
             float moveXAxis = Input.GetAxis("Horizontal");
             float moveZAxis = Input.GetAxis("Vertical");
+            spriteFlip(moveZAxis);
             Vector3 movement = new Vector3(moveXAxis, 0, moveZAxis);
             movement = Vector3.ClampMagnitude(movement, 1f);
             if (!inTask)
@@ -60,12 +62,12 @@ public class Controller : NetworkBehaviour
     public void EndTask(Item completeItem)
     {
         inTask = false;
-        if(completeItem.displayName != "None")
+        if (completeItem.displayName != "None")
         {
             heldItem = completeItem;
         }
         Debug.Log(heldItem.displayName);
-        
+
     }
     public void Interact()
     {
@@ -74,5 +76,17 @@ public class Controller : NetworkBehaviour
             interactable.GetComponent<Interactable>().Interact(gameObject);
         }
     }
-    
+
+    void spriteFlip(float moveZAxis)
+    {
+        if (moveZAxis > 0)
+        {
+            isFrontFacing = false;
+        }
+        else if (moveZAxis < 0)
+        {
+            isFrontFacing = true;
+        }
+    }
+
 }

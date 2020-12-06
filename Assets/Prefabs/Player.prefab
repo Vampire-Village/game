@@ -156,6 +156,7 @@ MonoBehaviour:
   speed: 6
   inTask: 0
   heldItem: {fileID: 11400000, guid: 3866f0ea7e1782348a7dd825782118ed, type: 2}
+  isFrontFacing: 1
 --- !u!114 &7844542241749530217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4490144467143566105}
   - component: {fileID: 5480293502665057529}
+  - component: {fileID: 8557525589009819636}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -321,6 +323,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8557525589009819636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041459700190105026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 2133475260882544663, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 3620411563614840914, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &1109134729747023945
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6275908037486922181}
   - component: {fileID: 5594747241161608580}
+  - component: {fileID: 7597076653832719116}
   m_Layer: 0
   m_Name: Bangs
   m_TagString: Untagged
@@ -403,6 +423,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7597076653832719116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109134729747023945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 5335852079622675789, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 0}
+  hair: 0
 --- !u!1 &1919046408157997959
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5101443121742401237}
   - component: {fileID: 968673004437539789}
+  - component: {fileID: 3562698700675961746}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -485,6 +522,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3562698700675961746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919046408157997959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 7107664553799624138, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 4886963170480132469, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &3776324107715788757
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370549667092473997}
   - component: {fileID: 6014937487837588414}
+  - component: {fileID: 4399997829322692682}
   m_Layer: 0
   m_Name: HandR
   m_TagString: Untagged
@@ -607,6 +662,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4399997829322692682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004646868093766652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: -5900264276066625875, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: -4479030111723155644, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &5656674214667064453
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4333234927110133741}
   - component: {fileID: 7252080016458826743}
+  - component: {fileID: 4107743700471624458}
   m_Layer: 0
   m_Name: LegR
   m_TagString: Untagged
@@ -689,6 +762,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4107743700471624458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656674214667064453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 6417048607527915008, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 3144416222115057957, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &5897050137700561550
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7000349872162246717}
   - component: {fileID: 7828160553015829140}
+  - component: {fileID: 6024646221815524720}
   m_Layer: 0
   m_Name: HandL
   m_TagString: Untagged
@@ -771,6 +862,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6024646221815524720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897050137700561550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: -915904619410266455, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 4373968315688634538, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &6004823124653355548
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8914347996953876742}
   - component: {fileID: 1899784986198255204}
+  - component: {fileID: 4013798134961960409}
   m_Layer: 0
   m_Name: ArmL
   m_TagString: Untagged
@@ -853,6 +962,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4013798134961960409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6004823124653355548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: -1168497541344120125, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 5696140214537307243, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &6529771975876279987
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +1088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3127559952275224589}
   - component: {fileID: 2237769428812721579}
+  - component: {fileID: 1816565388408627756}
   m_Layer: 0
   m_Name: ArmR
   m_TagString: Untagged
@@ -1034,6 +1161,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1816565388408627756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811024697020443019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 8913153336508394431, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: -5876415979524471301, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1 &8760031607245764490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5674338988032707137}
   - component: {fileID: 1306923245799736749}
+  - component: {fileID: 1035394193178967808}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -1116,6 +1261,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1035394193178967808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760031607245764490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 1256943919788666062, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: 2263030856727889668, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 1
 --- !u!1 &8843673417188773780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769418007350891552}
   - component: {fileID: 4735888644730159277}
+  - component: {fileID: 4174732154621885255}
   m_Layer: 0
   m_Name: LegL
   m_TagString: Untagged
@@ -1198,6 +1361,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4174732154621885255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843673417188773780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSprite: {fileID: 3606741472264670265, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  backSprite: {fileID: -2350611114233088623, guid: 3908ccb12ef63674bae567febdbe33d0,
+    type: 3}
+  hair: 0
 --- !u!1001 &2638491575092013208
 PrefabInstance:
   m_ObjectHideFlags: 0
