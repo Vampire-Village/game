@@ -7,31 +7,33 @@ public class SpriteUpdate : MonoBehaviour
     public bool hair = false;
     public Sprite frontSprite;
     public Sprite backSprite;
-    
+
+    private Controller controller;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        controller = transform.root.gameObject.GetComponent<Controller>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameObject player = transform.root.gameObject;
-        if (player.GetComponent<Controller>().isFrontFacing == true)
+        if (controller.isFrontFacing == true)
         {
-            GetComponent<SpriteRenderer>().sprite = frontSprite;
+            spriteRenderer.sprite = frontSprite;
             if (hair)
             {
-                GetComponent<SpriteRenderer>().sortingOrder = 0;
+                spriteRenderer.sortingOrder = 0;
             }
         } else
         {
-            GetComponent<SpriteRenderer>().sprite = backSprite;
+            spriteRenderer.sprite = backSprite;
             if (hair)
             {
-                GetComponent<SpriteRenderer>().sortingOrder = 5;
+                spriteRenderer.sortingOrder = 5;
             }
         }
     }
