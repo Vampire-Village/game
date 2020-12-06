@@ -1,0 +1,560 @@
+fileFormatVersion: 2
+guid: 3908ccb12ef63674bae567febdbe33d0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5335852079622675789
+    second: dwaft_bangsF
+  - first:
+      213: 1256943919788666062
+    second: dwaft_hairF
+  - first:
+      213: 2263030856727889668
+    second: dwaft_hairB
+  - first:
+      213: 2133475260882544663
+    second: dwaft_headF
+  - first:
+      213: 3620411563614840914
+    second: dwaft_headB
+  - first:
+      213: -1168497541344120125
+    second: dwaft_armLF
+  - first:
+      213: -915904619410266455
+    second: dwaft_handLF
+  - first:
+      213: 3606741472264670265
+    second: dwaft_legLF
+  - first:
+      213: 6417048607527915008
+    second: dwaft_legRF
+  - first:
+      213: 8913153336508394431
+    second: dwaft_armRF
+  - first:
+      213: -5900264276066625875
+    second: dwaft_handRF
+  - first:
+      213: 7107664553799624138
+    second: dwaft_bodyF
+  - first:
+      213: 5696140214537307243
+    second: dwaft_armLB
+  - first:
+      213: 4373968315688634538
+    second: dwaft_handLB
+  - first:
+      213: -2350611114233088623
+    second: dwaft_legLB
+  - first:
+      213: 3144416222115057957
+    second: dwaft_legRB
+  - first:
+      213: -4479030111723155644
+    second: dwaft_handRB
+  - first:
+      213: -5876415979524471301
+    second: dwaft_armRB
+  - first:
+      213: 4886963170480132469
+    second: dwaft_bodyB
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dwaft_bangsF
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 3698
+        width: 979
+        height: 695
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d50f32231cc0a40800000000000000
+      internalID: 5335852079622675789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_hairF
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 2520
+        width: 1232
+        height: 1083
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc2791e5df817110800000000000000
+      internalID: 1256943919788666062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_hairB
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 2517
+        width: 1237
+        height: 1090
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407830bf296e76f10800000000000000
+      internalID: 2263030856727889668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_headF
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 1567
+        width: 885
+        height: 896
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 718ecf53270ab9d10800000000000000
+      internalID: 2133475260882544663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_headB
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 1576
+        width: 870
+        height: 889
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258aaf5a2294e3230800000000000000
+      internalID: 3620411563614840914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_armLF
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 947
+        width: 234
+        height: 465
+      alignment: 9
+      pivot: {x: 0.74686986, y: 0.8726943}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c234475da9a8cfe0800000000000000
+      internalID: -1168497541344120125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_handLF
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 654
+        width: 177
+        height: 235
+      alignment: 9
+      pivot: {x: 0.48080167, y: 0.8036595}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a669efe99d0a43f0800000000000000
+      internalID: -915904619410266455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_legLF
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 148
+        width: 323
+        height: 591
+      alignment: 9
+      pivot: {x: 0.44201982, y: 0.88749236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c410b7248bd0230800000000000000
+      internalID: 3606741472264670265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_legRF
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 131
+        width: 327
+        height: 591
+      alignment: 9
+      pivot: {x: 0.58313364, y: 0.88523245}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ecd16a5bfed0950800000000000000
+      internalID: 6417048607527915008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_armRF
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 953
+        width: 241
+        height: 459
+      alignment: 9
+      pivot: {x: 0.31670004, y: 0.8923723}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbbab235cb1e1bb70800000000000000
+      internalID: 8913153336508394431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_handRF
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 678
+        width: 180
+        height: 235
+      alignment: 9
+      pivot: {x: 0.5755127, y: 0.8325798}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da61f10e6ec0e1ea0800000000000000
+      internalID: -5900264276066625875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_bodyF
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 845
+        width: 663
+        height: 662
+      alignment: 9
+      pivot: {x: 0.48974922, y: 0.8798476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac5acdfe04f73a260800000000000000
+      internalID: 7107664553799624138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_armLB
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 944
+        width: 236
+        height: 464
+      alignment: 9
+      pivot: {x: 0.72100675, y: 0.8765701}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b64405e7851cc0f40800000000000000
+      internalID: 5696140214537307243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_handLB
+      rect:
+        serializedVersion: 2
+        x: 1569
+        y: 658
+        width: 172
+        height: 232
+      alignment: 9
+      pivot: {x: 0.5151616, y: 0.85970885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa84f63420573bc30800000000000000
+      internalID: 4373968315688634538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_legLB
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 146
+        width: 318
+        height: 585
+      alignment: 9
+      pivot: {x: 0.4261912, y: 0.9012138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1953d0b45a3f06fd0800000000000000
+      internalID: -2350611114233088623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_legRB
+      rect:
+        serializedVersion: 2
+        x: 2252
+        y: 139
+        width: 315
+        height: 584
+      alignment: 9
+      pivot: {x: 0.57451016, y: 0.9019007}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 521d429e4e533ab20800000000000000
+      internalID: 3144416222115057957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_handRB
+      rect:
+        serializedVersion: 2
+        x: 2654
+        y: 679
+        width: 173
+        height: 238
+      alignment: 9
+      pivot: {x: 0.5602971, y: 0.81776774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f867428d947d1c0800000000000000
+      internalID: -4479030111723155644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_armRB
+      rect:
+        serializedVersion: 2
+        x: 2559
+        y: 948
+        width: 235
+        height: 459
+      alignment: 9
+      pivot: {x: 0.33353764, y: 0.8920356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf5c30c1dc6c27ea0800000000000000
+      internalID: -5876415979524471301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dwaft_bodyB
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 848
+        width: 661
+        height: 647
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86392266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57192ee7c1bf1d340800000000000000
+      internalID: 4886963170480132469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
