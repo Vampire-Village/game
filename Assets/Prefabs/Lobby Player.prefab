@@ -202,6 +202,7 @@ MonoBehaviour:
   speed: 6
   inTask: 0
   heldItem: {fileID: 0}
+  isFrontFacing: 1
 --- !u!212 &4545711400052734902
 SpriteRenderer:
   m_ObjectHideFlags: 0
