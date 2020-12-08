@@ -11,6 +11,8 @@ public class Controller : NetworkBehaviour
     private GameObject interactable;
     public bool inTask = false;
     public Item heldItem;
+
+    [SyncVar]
     public bool isFrontFacing = true;
 
     void Update()
@@ -77,15 +79,22 @@ public class Controller : NetworkBehaviour
         }
     }
 
+
+    [Command]
+    public void CmdSpriteUpdate(bool isFrontFacing)
+    {
+        this.isFrontFacing = isFrontFacing;
+    }
+
     void spriteFlip(float moveZAxis)
     {
         if (moveZAxis > 0)
         {
-            isFrontFacing = false;
+            CmdSpriteUpdate(false);
         }
         else if (moveZAxis < 0)
         {
-            isFrontFacing = true;
+            CmdSpriteUpdate(true);
         }
     }
 
