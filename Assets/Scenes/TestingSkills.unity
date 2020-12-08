@@ -167,8 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6553c2a1769c74a41bdc3bbc26760507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItemCompletion: 0
   playerObject: {fileID: 0}
   emptyItem: {fileID: 11400000, guid: 3866f0ea7e1782348a7dd825782118ed, type: 2}
+  wellManager: {fileID: 0}
 --- !u!65 &9034457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1221,7 +1223,7 @@ PrefabInstance:
     - target: {fileID: 2357342938659546933, guid: 45888de90007e0649a8d90fb69bd4dc9,
         type: 3}
       propertyPath: m_Name
-      value: UICanvas
+      value: UI Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45888de90007e0649a8d90fb69bd4dc9, type: 3}

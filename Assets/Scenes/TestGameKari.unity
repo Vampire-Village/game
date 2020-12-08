@@ -1077,7 +1077,7 @@ PrefabInstance:
     - target: {fileID: 2357342938659546933, guid: 45888de90007e0649a8d90fb69bd4dc9,
         type: 3}
       propertyPath: m_Name
-      value: UICanvas
+      value: UI Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45888de90007e0649a8d90fb69bd4dc9, type: 3}

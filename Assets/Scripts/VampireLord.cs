@@ -5,17 +5,14 @@ using UnityEngine.UI;
 
 public class VampireLord : MonoBehaviour
 {
-
     private List<GameObject> villagersInRange = new List<GameObject>();
     private int cooldown = 30;
     private int cdSec = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
-
 
     public void Infect()
     {
