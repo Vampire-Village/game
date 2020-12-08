@@ -34,15 +34,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379157041769675410}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalRotation: {x: 0.05503734, y: 0, z: 0, w: 0.99848425}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 8944474990667284781}
   - {fileID: 4917935683769452746}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.31, y: 0, z: 0}
 --- !u!114 &379157041769675435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,8 +121,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.19, y: 0.23, z: 0.56}
+  m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!54 &379157041769675415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -335,11 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: 2133475260882544663, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 3620411563614840914, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &1109134729747023945
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,10 +435,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: 5335852079622675789, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 0}
-  hair: 0
 --- !u!1 &1919046408157997959
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,11 +534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: 7107664553799624138, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 4886963170480132469, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &3776324107715788757
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,11 +674,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: -5900264276066625875, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: -4479030111723155644, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &5656674214667064453
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,11 +774,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: 6417048607527915008, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 3144416222115057957, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &5897050137700561550
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,11 +874,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: -915904619410266455, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 4373968315688634538, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &6004823124653355548
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,11 +974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: -1168497541344120125, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 5696140214537307243, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &6529771975876279987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,11 +1173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: 8913153336508394431, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: -5876415979524471301, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1 &8760031607245764490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,11 +1273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 1
   frontSprite: {fileID: 1256943919788666062, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: 2263030856727889668, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 1
 --- !u!1 &8843673417188773780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,11 +1373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e3c8ab795793f40bb7be1c009c41f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hair: 0
   frontSprite: {fileID: 3606741472264670265, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
   backSprite: {fileID: -2350611114233088623, guid: 3908ccb12ef63674bae567febdbe33d0,
     type: 3}
-  hair: 0
 --- !u!1001 &2638491575092013208
 PrefabInstance:
   m_ObjectHideFlags: 0
