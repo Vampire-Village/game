@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7197892016877042628}
   - component: {fileID: 2999670654014349832}
   - component: {fileID: 3906909135833912207}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 4490144467143566105}
   - component: {fileID: 5480293502665057529}
   - component: {fileID: 8557525589009819636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 6275908037486922181}
   - component: {fileID: 5594747241161608580}
   - component: {fileID: 7597076653832719116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bangs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 5101443121742401237}
   - component: {fileID: 968673004437539789}
   - component: {fileID: 3562698700675961746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8944474990667284781}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 370549667092473997}
   - component: {fileID: 6014937487837588414}
   - component: {fileID: 4399997829322692682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 4333234927110133741}
   - component: {fileID: 7252080016458826743}
   - component: {fileID: 4107743700471624458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 7000349872162246717}
   - component: {fileID: 7828160553015829140}
   - component: {fileID: 6024646221815524720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 8914347996953876742}
   - component: {fileID: 1899784986198255204}
   - component: {fileID: 4013798134961960409}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +940,7 @@ GameObject:
   - component: {fileID: 1888206634964465277}
   - component: {fileID: 8011979504657419357}
   - component: {fileID: 4202921509035027377}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 3127559952275224589}
   - component: {fileID: 2237769428812721579}
   - component: {fileID: 1816565388408627756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1138,7 +1138,7 @@ GameObject:
   - component: {fileID: 5674338988032707137}
   - component: {fileID: 1306923245799736749}
   - component: {fileID: 1035394193178967808}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1238,7 @@ GameObject:
   - component: {fileID: 769418007350891552}
   - component: {fileID: 4735888644730159277}
   - component: {fileID: 4174732154621885255}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1453,6 +1453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Outlined Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464723185110731072, guid: 220a0860877c87647b3c5f5648b11244,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 220a0860877c87647b3c5f5648b11244, type: 3}
