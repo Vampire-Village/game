@@ -9,9 +9,11 @@ public class VampireLord : MonoBehaviour
     private int cooldown = 30;
     private int cdSec = 0;
 
-    void Start()
+    private PlayerUI playerUI;
+
+    public void RegisterUI(PlayerUI playerUI)
     {
-        
+        this.playerUI = playerUI;
     }
 
     public void Infect()
@@ -37,8 +39,6 @@ public class VampireLord : MonoBehaviour
         } 
     }
 
-
-
     GameObject GetClosestVillager(List<GameObject> villagers)
     {
         GameObject closestVillager = null;
@@ -55,10 +55,6 @@ public class VampireLord : MonoBehaviour
         }
         return closestVillager;
     }
-
-
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -84,29 +80,16 @@ public class VampireLord : MonoBehaviour
         }
     }
 
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     IEnumerator LowerCooldown()
     {
-        GameObject uiCanvas = GameObject.Find("UICanvas");
-        PlayerUI playerUI = uiCanvas.GetComponent<PlayerUI>();
         while (cdSec > 0)
         {
             // Change button text
-            playerUI.infectButton.GetComponentInChildren<Text>().text = "Infect (" + cdSec + ")";
+            playerUI.infectText.text = "Infect (" + cdSec + ")";
 
             yield return new WaitForSeconds(1);
             cdSec -= 1;
         }
-        playerUI.infectButton.GetComponentInChildren<Text>().text = "Infect";
+        playerUI.infectText.text = "Infect";
     }
-
-
 }

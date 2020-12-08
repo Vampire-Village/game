@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
     public Button infectButton;
+    public TMP_Text infectText;
     public Button reportButton;
     public Button interactButton;
 
@@ -22,6 +24,7 @@ public class PlayerUI : MonoBehaviour
     private void SetPlayer()
     {
         player = GamePlayer.local;
+        player.vampireLord.RegisterUI(this);
     }
 
     private void SetUI()

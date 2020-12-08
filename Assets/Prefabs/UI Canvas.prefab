@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2357342938659546935}
   - component: {fileID: 8285662754910357389}
   m_Layer: 5
-  m_Name: Game UI Canvas
+  m_Name: UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infectButton: {fileID: 2744185583238921574}
+  infectText: {fileID: 7160102729746152833}
   reportButton: {fileID: 1439844875799515033}
   interactButton: {fileID: 8184236702500678028}
 --- !u!1001 &2446951739384334399
@@ -571,5 +572,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7160102729746152833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1525008401411973460, guid: de33e4ed180bf34479b9552c98c31185,
+    type: 3}
+  m_PrefabInstance: {fileID: 8535482861807426773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
