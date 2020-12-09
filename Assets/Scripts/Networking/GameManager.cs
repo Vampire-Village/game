@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
@@ -14,14 +15,15 @@ namespace VampireVillage.Network
     public class GameManager : NetworkBehaviour
     {
 #region Properties
+        public static GameManager local;
         private static readonly System.Random rng = new System.Random();
-        
 
 #region Client & Server Properties
 #region UIs
         public Button leaveGameButton;
         public GameObject gameOverCanvas;
         public TMP_Text winText;
+        public TMP_Text announcementText;
 #endregion
 
         private VampireVillageNetwork network;
@@ -49,6 +51,7 @@ namespace VampireVillage.Network
         private void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
+            announcementText.gameObject.SetActive(false);
         }
 #endregion
 
@@ -174,7 +177,13 @@ namespace VampireVillage.Network
 #region Client Methods
         public override void OnStartClient()
         {
+            local = this;
+
             leaveGameButton.onClick.AddListener(LeaveGame);
+
+            // Announce player role at the start.
+            GamePlayer.OnRoleUpdated.AddListener(AnnouncePlayerRole);
+            AnnouncePlayerRole();
         }
 
         private void LeaveGame()
@@ -192,6 +201,43 @@ namespace VampireVillage.Network
             GameLogger.LogClient($"Game over! {winningTeam.ToString()} win!");
             gameOverCanvas.SetActive(true);
             winText.text = $"{winningTeam.ToString()} win!";
+        }
+
+        public void Announce(string message, float time = 5.0f)
+        {
+            StartCoroutine(AnnounceAsync(message, time));
+        }
+
+        private IEnumerator AnnounceAsync(string message, float time)
+        {
+            announcementText.text = message;
+            announcementText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(time);
+            announcementText.gameObject.SetActive(false);
+        }
+
+        public void AnnouncePlayerRole()
+        {
+            Role role = GamePlayer.local.role;
+            string message = "";
+            switch (role)
+            {
+                case Role.Villager:
+                    message = "You are a villager!";
+                    break;
+                case Role.VampireLord:
+                    message = "You are the Vampire Lord!";
+                    break;
+                case Role.Infected:
+                    message = "You got infected!";
+                    break;
+            }
+            Announce(message);
+        }
+
+        public override void OnStopClient()
+        {
+            GamePlayer.OnRoleUpdated.RemoveListener(AnnouncePlayerRole);
         }
 #endregion
     }

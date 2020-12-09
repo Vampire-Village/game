@@ -69,10 +69,6 @@ public class GamePlayer : BasePlayer
         // Set game player.
         local = this;
         OnPlayerSpawned.Invoke();
-
-        // // TEST: Randomize role.
-        // Role randomRole = (Role)UnityEngine.Random.Range(1, 4);
-        // CmdSetRole(randomRole);
     }
 
     void SetRole(Role oldRole, Role newRole)
@@ -103,7 +99,7 @@ public class GamePlayer : BasePlayer
         if (hasAuthority)
         {
             OnRoleUpdated?.Invoke();
-            GameLogger.LogClient($"Player is now {role.ToString()}!");
+            GameLogger.LogClient($"Player is now {newRole.ToString()}!");
         }
     }
 #endregion
