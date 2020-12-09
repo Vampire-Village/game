@@ -5,11 +5,20 @@ using UnityEngine.UI;
 
 public class VampireLord : MonoBehaviour
 {
+    public List<GameObject> eyes;
     private List<GameObject> villagersInRange = new List<GameObject>();
     private int cooldown = 30;
     private int cdSec = 0;
 
     private PlayerUI playerUI;
+
+    public void OnEnable()
+    {
+        foreach (var eye in eyes)
+        {
+            eye.SetActive(true);
+        }
+    }
 
     public void RegisterUI(PlayerUI playerUI)
     {
