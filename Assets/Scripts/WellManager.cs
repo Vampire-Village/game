@@ -25,12 +25,13 @@ public class WellManager : NetworkBehaviour
     [Command(ignoreAuthority = true)]
     public void CmdDepoItem(int itemValue)
     {
+#if UNITY_SERVER || UNITY_EDITOR
         totalWellProgress += itemValue;
         if (totalWellProgress >= maximumProgress)
         {
             gameManager.GameOver(Team.Villagers);
         }
-
+#endif
     }
 
     private void UpdateProgress(int oldValue, int newValue)

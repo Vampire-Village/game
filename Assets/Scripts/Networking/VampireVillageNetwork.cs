@@ -90,6 +90,7 @@ namespace VampireVillage.Network
 #endregion
 
 #region Server Methods
+#if UNITY_SERVER || UNITY_EDITOR
         public override void OnStartServer()
         {
             GameLogger.LogServer("Server started!");
@@ -361,6 +362,7 @@ namespace VampireVillage.Network
         {
             GameLogger.LogServer("Server stopped.");
         }
+#endif
 #endregion
 
 #region Client Methods
@@ -436,10 +438,12 @@ namespace VampireVillage.Network
 #endregion
 
 #region Helper Methods
+#if UNITY_SERVER || UNITY_EDITOR
         private ServerPlayer GetPlayer(NetworkConnection conn)
         {
             return players.SingleOrDefault(p => p.connectionId == conn.connectionId);
         }
+#endif
 
         private static Scene GetLastScene()
         {

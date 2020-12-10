@@ -45,6 +45,7 @@ public class GamePlayer : BasePlayer
     [Command(ignoreAuthority = true)]
     public void CmdSetRole(Role targetRole)
     {
+#if UNITY_SERVER || UNITY_EDITOR
         // Update the role.
         Role oldRole = role;
         role = targetRole;
@@ -54,7 +55,7 @@ public class GamePlayer : BasePlayer
         {
             gameManager.UpdatePlayerTeam(this, oldRole, targetRole);
         }
-
+#endif
     }
 
     

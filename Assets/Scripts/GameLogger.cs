@@ -3,6 +3,7 @@ using VampireVillage.Network;
 
 public static class GameLogger
 {
+#if UNITY_SERVER || UNITY_EDITOR
     public static void LogServer(object message)
     {
         Debug.Log($"<color='red'>[SERVER]</color> {message}\n");
@@ -17,6 +18,7 @@ public static class GameLogger
     {
         LogServer($"{message}\nPlayer ID: {client.playerId}");
     }
+#endif
 
     public static void LogClient(object message)
     {
