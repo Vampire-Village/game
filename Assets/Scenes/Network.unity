@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &613425208
 AudioListener:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   networkScene: Network
   menuScene: StartMenu
   lobbyScene: Lobby
-  gameScene: Game
+  gameScene: Game_2
   lobbyPlayerPrefab: {fileID: 4602695557135484434, guid: c75ab9aee59cacf4fa4cf4905c74bfd0,
     type: 3}
   gamePlayerPrefab: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
