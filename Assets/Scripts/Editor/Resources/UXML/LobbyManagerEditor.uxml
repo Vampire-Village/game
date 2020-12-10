@@ -8,6 +8,7 @@
     <ui:VisualElement class="group">
         <ui:Label text="UI Settings" class="header" />
         <ue:PropertyField binding-path="roomCodeText" label="Room Code" />
+        <ue:PropertyField binding-path="playerCountText" label="Player Count" />
         <ue:PropertyField binding-path="startGameButton" label="Start Game" />
         <ue:PropertyField binding-path="leaveLobbyButton" label="Leave Lobby" />
         <ue:PropertyField binding-path="popupPanel" />

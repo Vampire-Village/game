@@ -35,6 +35,7 @@ namespace VampireVillage.Network
 
 #region UIs
         public TMP_Text roomCodeText;
+        public TMP_Text playerCountText;
         public Button startGameButton;
         public Button leaveLobbyButton;
         public GameObject popupPanel;
@@ -150,6 +151,10 @@ namespace VampireVillage.Network
             startGameButton.onClick.AddListener(StartGame);
             leaveLobbyButton.onClick.AddListener(LeaveRoom);
             popupButton.onClick.AddListener(() => popupPanel.SetActive(false));
+
+            // Set the player count text.
+            playerCountText.text = $"{players.Count.ToString()}/10";
+            players.Callback += UpdatePlayerCount;
         }
 
         private void StartGame()
@@ -199,6 +204,11 @@ namespace VampireVillage.Network
         {
             popupText.text = message;
             popupPanel.SetActive(true);
+        }
+
+        private void UpdatePlayerCount(SyncList<ServerPlayer>.Operation op, int index, ServerPlayer oldPlayer, ServerPlayer newPlayer)
+        {
+            playerCountText.text = $"{players.Count.ToString()}/10";
         }
 #endregion
     }
