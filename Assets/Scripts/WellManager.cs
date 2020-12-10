@@ -1,35 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 using Mirror;
 using VampireVillage.Network;
 
 public class WellManager : NetworkBehaviour
 {
-    //public static WellManager progress;
-    //public new UnityEvent OnItemDepo = new UnityEvent();
-    public GameManager gameManager;
-    [SyncVar]
+
+    [SyncVar(hook = nameof(UpdateProgress))]
     public int totalWellProgress = 0;
+
+    public Slider taskProgress;
+
+    private int maximumProgress = 100;
+
+    private GameManager gameManager;
+
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
-        //OnItemDepo.AddListener(CmdDepoItem);
     }
+
     [Command(ignoreAuthority = true)]
     public void CmdDepoItem(int itemValue)
     {
         totalWellProgress += itemValue;
-        if (totalWellProgress >= 100)
+        if (totalWellProgress >= maximumProgress)
         {
             gameManager.GameOver(Team.Villagers);
         }
 
     }
 
-
-
-
-
+    private void UpdateProgress(int oldValue, int newValue)
+    {
+        taskProgress.value = (float)(newValue) / (float)(maximumProgress);
+    }
 }
