@@ -286,7 +286,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1576988694}
-  networkAddress: 35.215.85.94
+  networkAddress: localhost
   maxConnections: 64
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
