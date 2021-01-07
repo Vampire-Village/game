@@ -56,6 +56,7 @@ public class StartMenu : MonoBehaviour
 
         // Add inputs & buttons listeners.
         nameInput.onEndEdit.AddListener(OnEditName);
+        nameInput.onValidateInput += OnValidateName;
         roomInput.onValidateInput += OnValidateRoomCode;
         hostButton.onClick.AddListener(HostRoom);
         joinButton.onClick.AddListener(JoinRoom);
@@ -88,6 +89,15 @@ public class StartMenu : MonoBehaviour
     {
         // TODO: Make sure name is valid and/or not offensive.
         ApplicationManager.SetPlayerName(newName);
+    }
+
+    private char OnValidateName(string input, int charIndex, char addedChar)
+    {
+        // Limit player name to 8 characters.
+        if (charIndex + 1 > 8)
+            return '\0';
+        
+        return addedChar;
     }
 
     private char OnValidateRoomCode(string input, int charIndex, char addedChar)
@@ -162,6 +172,7 @@ public class StartMenu : MonoBehaviour
 
         // Remove other listeners.
         nameInput.onEndEdit.RemoveAllListeners();
+        nameInput.onValidateInput -= OnValidateName;
         roomInput.onValidateInput -= OnValidateRoomCode;
         hostButton.onClick.RemoveAllListeners();
         joinButton.onClick.RemoveAllListeners();
