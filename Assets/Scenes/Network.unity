@@ -286,7 +286,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1576988694}
-  networkAddress: localhost
+  networkAddress: 35.215.85.94
   maxConnections: 64
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
@@ -301,7 +301,7 @@ MonoBehaviour:
   networkScene: Network
   menuScene: StartMenu
   lobbyScene: Lobby
-  gameScene: Game_2
+  gameScene: Game
   lobbyPlayerPrefab: {fileID: 4602695557135484434, guid: c75ab9aee59cacf4fa4cf4905c74bfd0,
     type: 3}
   gamePlayerPrefab: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
