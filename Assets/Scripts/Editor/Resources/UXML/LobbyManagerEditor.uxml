@@ -15,4 +15,8 @@
         <ue:PropertyField binding-path="popupText" />
         <ue:PropertyField binding-path="popupButton" />
     </ui:VisualElement>
+    <ui:VisualElement class="group">
+        <ui:Label text="Other Settings" class="header" />
+        <ue:PropertyField binding-path="chatSystem" />
+    </ui:VisualElement>
 </UXML>

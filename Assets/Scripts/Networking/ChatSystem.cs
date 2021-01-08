@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 using TMPro;
@@ -14,6 +15,8 @@ namespace VampireVillage.Network
         public Button sendButton;
         public GameObject chatBubblePrefab;
 
+        private readonly List<ServerPlayer> players = new List<ServerPlayer>();
+
         private VampireVillageNetwork network;
 #endregion
 
@@ -23,6 +26,16 @@ namespace VampireVillage.Network
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         }
+
+        public void AddPlayer(ServerPlayer player)
+        {
+            players.Add(player);
+        }
+
+        public void RemovePlayer(ServerPlayer player)
+        {
+            players.Remove(player);
+        }
 #endif
 
         [Command(ignoreAuthority = true)]
@@ -30,17 +43,20 @@ namespace VampireVillage.Network
         {
 #if UNITY_SERVER || UNITY_EDITOR
             // Get the sender.
-            ServerPlayer player = network.GetPlayer(sender);
+            ServerPlayer senderPlayer = network.GetPlayer(sender);
 
             // Construct chat.
             Chat chat = new Chat
             {
-                sender = player.client.playerName,
+                sender = senderPlayer.client.playerName,
                 message = message
             };
 
-            // Send chat to the player themselves.
-            TargetReceiveChat(sender, chat);
+            // Send chat to the players.
+            foreach (var player in players)
+            {
+                TargetReceiveChat(player.clientConnection, chat);
+            }
 #endif
         }
 #endregion
