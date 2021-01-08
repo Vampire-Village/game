@@ -87,7 +87,7 @@ MonoBehaviour:
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
       m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 0.3, y: 0.3}
+      m_UniformScale: {x: 0.3, y: 0.6}
       m_UniformBool: 1
       m_XRotationBool: 0
       m_YRotationBool: 0
