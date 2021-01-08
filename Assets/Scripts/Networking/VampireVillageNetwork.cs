@@ -18,9 +18,7 @@ namespace VampireVillage.Network
 #region Network Settings
         public ushort networkPort = 7777;
 #if UNITY_EDITOR
-        public bool disableMinPlayers = false;
         public bool forceClient = false;
-        
 #endif
         [NonSerialized]
         public bool isNetworkConnected = false;
@@ -275,7 +273,7 @@ namespace VampireVillage.Network
                 player.client.TargetStartGame(NetworkCode.StartFailedNotHost);
                 yield break;
             }
-            if (room.players.Count < roomManager.minPlayers && !disableMinPlayers)
+            if (room.players.Count < roomManager.minPlayers)
             {
                 player.client.TargetStartGame(NetworkCode.StartFailedNotEnoughPlayers);
                 yield break;
