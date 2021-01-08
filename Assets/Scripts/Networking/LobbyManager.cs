@@ -43,6 +43,7 @@ namespace VampireVillage.Network
         public Button popupButton;
 #endregion
 
+        public ChatSystem chatSystem;
         private VampireVillageNetwork network;
 #endregion
 
@@ -102,6 +103,7 @@ namespace VampireVillage.Network
         {
             players.Add(player);
             GameObject lobbyPlayerInstance = network.InstantiateLobbyPlayer(gameObject, player);
+            chatSystem.AddPlayer(player);
             lobbyPlayers.Add(player, lobbyPlayerInstance);
         }
 
@@ -113,6 +115,7 @@ namespace VampireVillage.Network
         {
             players.Remove(player);
             GameObject lobbyPlayerInstance = lobbyPlayers[player];
+            chatSystem.RemovePlayer(player);
             lobbyPlayers.Remove(player);
             network.DestroyLobbyPlayer(lobbyPlayerInstance);
         }

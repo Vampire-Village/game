@@ -439,7 +439,7 @@ namespace VampireVillage.Network
 
 #region Helper Methods
 #if UNITY_SERVER || UNITY_EDITOR
-        private ServerPlayer GetPlayer(NetworkConnection conn)
+        public ServerPlayer GetPlayer(NetworkConnection conn)
         {
             return players.SingleOrDefault(p => p.connectionId == conn.connectionId);
         }
