@@ -65,6 +65,7 @@ namespace VampireVillage.Network
         public override void OnStartClient()
         {
             sendButton.onClick.AddListener(SendChat);
+            chatInput.onSubmit.AddListener((message) => SendChat());
         }
 
         public void ToggleChat()
@@ -92,6 +93,7 @@ namespace VampireVillage.Network
         public override void OnStopClient()
         {
             sendButton.onClick.RemoveListener(SendChat);
+            chatInput.onSubmit.RemoveAllListeners();
         }
 #endregion
     }
