@@ -1,10 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VampireVillage.Network;
 using Mirror;
 
 public class MeetingManager : NetworkBehaviour
 {
+#region Properties
+    private GameManager gameManager;
+#endregion
+
+#region Unity Methods
+    private void Awake()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
+#endregion
+
 #region Server Methods
 #if UNITY_SERVER || UNITY_EDITOR
     /// <summary>
@@ -13,6 +25,10 @@ public class MeetingManager : NetworkBehaviour
     /// </summary>
     public void StartMeeting()
     {
+        // Stop the night cycle.
+        gameManager.StopNight();
+
+        // Call meeting start on all clients.
         RpcOnMeetingStart();
 
         // TODO: Initialize meeting stuff.
@@ -28,6 +44,10 @@ public class MeetingManager : NetworkBehaviour
 
         // TODO: Kill the voted-off player.
 
+        // Restart the night cycle.
+        gameManager.StartNight();
+
+        // Call meeting end on all clients.
         RpcOnMeetingEnd();
     }
 #endif

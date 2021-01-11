@@ -26,6 +26,7 @@ namespace VampireVillage.Network
         public TMP_Text announcementText;
 #endregion
 
+        private MeetingManager meetingManager;
         private VampireVillageNetwork network;
 #endregion
 
@@ -36,6 +37,12 @@ namespace VampireVillage.Network
         /// </summary>
         public GameObject spawnPointGroup;
         private readonly List<GameObject> spawnPoints = new List<GameObject>();
+
+        /// <summary>
+        /// How long the night time should be.
+        /// </summary>
+        public float nightLength = 300.0f;
+        private Coroutine nightCoroutine;
 
         private Room room;
         private bool isGameOver = false;
@@ -52,6 +59,7 @@ namespace VampireVillage.Network
         private void Awake()
         {
             network = VampireVillageNetwork.singleton as VampireVillageNetwork;
+            meetingManager = GetComponent<MeetingManager>();
             announcementText.gameObject.SetActive(false);
         }
 #endregion
@@ -63,6 +71,7 @@ namespace VampireVillage.Network
             network.roomManager.RegisterGameManager(this, gameObject.scene);
             foreach (Transform spawnPoint in spawnPointGroup.transform)
                 spawnPoints.Add(spawnPoint.gameObject);
+            StartNight();
         }
         
         /// <summary>
@@ -173,7 +182,41 @@ namespace VampireVillage.Network
             RpcOnGameOver(winningTeam);
             GameLogger.LogServer($"Game over triggered for room {room.code}.\nWinning Team: {winningTeam.ToString()}");
         }
-        
+
+        /// <summary>
+        /// Starts the night cycle.
+        /// </summary>
+        public void StartNight()
+        {
+            if (nightCoroutine != null)
+                StopNight();
+            nightCoroutine = StartCoroutine(StartNight(nightLength));
+        }
+
+        private IEnumerator StartNight(float length)
+        {
+            // TODO: Make it look like night in the game.
+
+            // Wait until cycle completes.
+            yield return new WaitForSeconds(length);
+
+            // Call meeting when the night ends.
+            meetingManager.StartMeeting();
+        }
+
+        /// <summary>
+        /// Stops the night cycle.
+        /// </summary>
+        public void StopNight()
+        {
+            if (nightCoroutine != null)
+            {
+                StopCoroutine(nightCoroutine);
+                nightCoroutine = null;
+            }
+
+            // TODO: Make it look like day in the game.
+        }
 #endif
 #endregion
 
