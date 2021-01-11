@@ -1238,8 +1238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  gameManager: {fileID: 0}
   totalWellProgress: 0
+  taskProgress: {fileID: 0}
 --- !u!114 &1371590608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,10 +1288,8 @@ MonoBehaviour:
   leaveGameButton: {fileID: 42849985}
   gameOverCanvas: {fileID: 1669463982}
   winText: {fileID: 1566135990}
-  spawnPoints:
-  - {fileID: 2045833167}
-  - {fileID: 706061994}
-  - {fileID: 1702191181}
+  announcementText: {fileID: 0}
+  spawnPointGroup: {fileID: 1871075578}
 --- !u!4 &1371590611
 Transform:
   m_ObjectHideFlags: 0

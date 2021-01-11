@@ -34,7 +34,8 @@ namespace VampireVillage.Network
         /// <summary>
         /// List of spawn points.
         /// </summary>
-        public List<GameObject> spawnPoints;
+        public GameObject spawnPointGroup;
+        private readonly List<GameObject> spawnPoints = new List<GameObject>();
 
         private Room room;
         private bool isGameOver = false;
@@ -60,6 +61,8 @@ namespace VampireVillage.Network
         public override void OnStartServer()
         {
             network.roomManager.RegisterGameManager(this, gameObject.scene);
+            foreach (Transform spawnPoint in spawnPointGroup.transform)
+                spawnPoints.Add(spawnPoint.gameObject);
         }
         
         /// <summary>
