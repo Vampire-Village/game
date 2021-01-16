@@ -44,6 +44,8 @@ namespace VampireVillage.Network
         public float nightLength = 300.0f;
         private Coroutine nightCoroutine;
 
+        public Lights lightSystem;
+
         private Room room;
         private bool isGameOver = false;
         private readonly Dictionary<ServerPlayer, GamePlayer> gamePlayers = new Dictionary<ServerPlayer, GamePlayer>();
@@ -195,7 +197,8 @@ namespace VampireVillage.Network
 
         private IEnumerator StartNight(float length)
         {
-            // TODO: Make it look like night in the game.
+            // Make it look like night in the game.
+            RpcToggleDayNight(false);
 
             // Wait until cycle completes.
             yield return new WaitForSeconds(length);
@@ -215,7 +218,8 @@ namespace VampireVillage.Network
                 nightCoroutine = null;
             }
 
-            // TODO: Make it look like day in the game.
+            // Make it look like day in the game.
+            RpcToggleDayNight(true);
         }
 #endif
 #endregion
@@ -279,6 +283,12 @@ namespace VampireVillage.Network
                     break;
             }
             Announce(message);
+        }
+
+        [ClientRpc]
+        private void RpcToggleDayNight(bool isDay)
+        {
+            lightSystem.DayNight(isDay);
         }
 
         public override void OnStopClient()
