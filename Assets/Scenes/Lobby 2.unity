@@ -474,6 +474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87621539}
   - component: {fileID: 87621538}
+  - component: {fileID: 87621540}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -493,7 +494,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.52705586, g: 0.7994278, b: 0.8867924, a: 1}
-  m_Intensity: 0.55
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -556,6 +557,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 55.771004, y: -69.270004, z: -44.811}
+--- !u!114 &87621540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87621537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f6df094f1f3a341967f0308e1fca68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 0}
+  transitionTime: 0.01
+  activeColor: {r: 1, g: 0.8400851, b: 0.6509434, a: 1}
+  dayLight: {r: 1, g: 0.8400851, b: 0.6509434, a: 1}
+  nightLight: {r: 0.3220897, g: 0.6128105, b: 0.7264151, a: 0}
+  activeFog: {r: 1, g: 0.9613609, b: 0.31132078, a: 0}
+  dayFog: {r: 0.8392157, g: 0.7872081, b: 0.35686275, a: 0}
+  nightFog: {r: 0, g: 0.8573189, b: 1, a: 0}
 --- !u!1001 &105094666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17843,6 +17864,7 @@ MonoBehaviour:
   popupPanel: {fileID: 1101087869}
   popupText: {fileID: 1101087868}
   popupButton: {fileID: 1101087867}
+  chatSystem: {fileID: 0}
 --- !u!114 &2999477682518831245
 MonoBehaviour:
   m_ObjectHideFlags: 0
