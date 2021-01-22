@@ -14,8 +14,10 @@ namespace VampireVillage.Network
         public TMP_InputField chatInput;
         public Button sendButton;
         public GameObject chatBubblePrefab;
+        public int chatLimit = 50;
 
         private readonly List<ServerPlayer> players = new List<ServerPlayer>();
+        private readonly List<GameObject> chatObjects = new List<GameObject>();
 
         private VampireVillageNetwork network;
 #endregion
@@ -84,10 +86,18 @@ namespace VampireVillage.Network
         [TargetRpc]
         public void TargetReceiveChat(NetworkConnection target, Chat chat)
         {
+            // Remove oldest chat if chat limit is reached.
+            if (chatObjects.Count >= chatLimit)
+            {
+                Destroy(chatObjects[0]);
+                chatObjects.RemoveAt(0);
+            }
+
             // Add chat to the UI.
             GameObject chatBubbleInstance = Instantiate(chatBubblePrefab, chatContent.transform);
             ChatBubble chatBubble = chatBubbleInstance.GetComponent<ChatBubble>();
             chatBubble.SetChat(chat);
+            chatObjects.Add(chatBubbleInstance);
         }
 
         public override void OnStopClient()
