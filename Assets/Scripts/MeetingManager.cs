@@ -8,6 +8,9 @@ public class MeetingManager : NetworkBehaviour
 {
 #region Properties
     private GameManager gameManager;
+
+    [SerializeField]
+    private GameObject chatButton;
 #endregion
 
 #region Unity Methods
@@ -66,7 +69,8 @@ public class MeetingManager : NetworkBehaviour
 
         // TODO: Show UI like Among Us emergency meeting announcement?
 
-        // TODO: Show the chat bar.
+        // Show the chat button.
+        chatButton.SetActive(true);
     }
 
     [ClientRpc]
@@ -75,6 +79,9 @@ public class MeetingManager : NetworkBehaviour
         GameLogger.LogClient("The meeting has ended.");
 
         // TODO: Enable player movement.
+
+        // Hide the chat button.
+        chatButton.SetActive(false);
     }
 #endregion
 }
