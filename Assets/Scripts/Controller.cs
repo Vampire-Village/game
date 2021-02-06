@@ -12,8 +12,15 @@ public class Controller : NetworkBehaviour
     public bool inTask = false;
     public Item heldItem;
 
+    private PlayerAudio audioManager;
+
     [SyncVar]
     public bool isFrontFacing = true;
+
+    void Start()
+    {
+        audioManager = GetComponent<PlayerAudio>();
+    }
 
     void Update()
     {
@@ -34,9 +41,14 @@ public class Controller : NetworkBehaviour
             spriteFlip(moveZAxis);
             Vector3 movement = new Vector3(moveXAxis, 0, moveZAxis);
             movement = Vector3.ClampMagnitude(movement, 1f);
+
             if (!inTask)
             {
                 transform.Translate(movement * speed * Time.deltaTime);
+                if (moveXAxis != 0 || moveZAxis != 0)
+                {
+                    audioManager.PlayFootsteps();
+                }
             }
         }
     }
