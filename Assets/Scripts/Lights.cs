@@ -12,7 +12,7 @@ public class Lights : MonoBehaviour
     public Color activeFog;
     public Color dayFog;
     public Color nightFog;
-
+    public bool isDay;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,7 @@ public class Lights : MonoBehaviour
         // }
         light.color = Color.Lerp(light.color, activeColor, transitionTime);
         RenderSettings.fogColor = Color.Lerp(RenderSettings.fogColor, activeFog, transitionTime);
-
+        DayNight(isDay);
     }
 
     public void DayNight(bool isDay)
