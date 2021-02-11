@@ -100,13 +100,16 @@ public class Controller : NetworkBehaviour
 
     void spriteFlip(float moveZAxis)
     {
-        if (moveZAxis > 0.01 && this.isFrontFacing != false)
+        if (!inTask)
         {
-            CmdSpriteUpdate(false);
-        }
-        else if (moveZAxis < -0.01 && this.isFrontFacing != true)
-        {
-            CmdSpriteUpdate(true);
+            if (moveZAxis > 0.01 && this.isFrontFacing != false)
+            {
+                CmdSpriteUpdate(false);
+            }
+            else if (moveZAxis < -0.01 && this.isFrontFacing != true)
+            {
+                CmdSpriteUpdate(true);
+            }
         }
     }
 
