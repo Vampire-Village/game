@@ -13,6 +13,7 @@ public class Door : Interactable
     private Quaternion originalRotation;
     private bool moving = false;
     private Quaternion openBase;
+    
     void Start()
     {
         originalPosition = transform.position;
@@ -21,37 +22,6 @@ public class Door : Interactable
         hingePos = hinge.transform.position;
         openBase = Quaternion.Euler(0.0f, 90.0f + originalRotation.eulerAngles.y, 0.0f);
     }
-    void Update()
-    {
-        if (!closing)
-        {
-            if(Quaternion.Angle(transform.rotation, originalRotation) < 90.0f)
-            {
-                transform.RotateAround(hingePos, Vector3.up, rotationSpeed * Time.deltaTime);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0.0f, 90.0f + originalRotation.eulerAngles.y, 0.0f);
-                moving = false;
-            }
-        }
-        else
-        {
-            if (Quaternion.Angle(openBase, transform.rotation) < 90.0f)
-            {
-                transform.RotateAround(hingePos, Vector3.up, -rotationSpeed*Time.deltaTime);
-            }
-            else
-            {
-                //transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                transform.SetPositionAndRotation(originalPosition, originalRotation);
-                moving = false;
-            }
-        }
-        //Debug.Log(originalRotation);
-        //Debug.Log(Quaternion.Angle(transform.rotation, originalRotation));
-    }
-
 
     public override void Interact(GameObject player)
     {
@@ -59,6 +29,35 @@ public class Door : Interactable
         {
             moving = true;
             closing = !closing;
+            SetDoor(!closing);
         }
+    }
+
+    public void SetDoor(bool shouldOpen)
+    {
+        StartCoroutine(SetDoorAsync(!closing));
+    }
+
+    private IEnumerator SetDoorAsync(bool shouldOpen)
+    {
+        if (shouldOpen)
+        {
+            while (Quaternion.Angle(transform.rotation, originalRotation) < 90.0f)
+            {
+                moving = true;
+                transform.RotateAround(hingePos, Vector3.up, rotationSpeed * Time.deltaTime);
+                yield return null;
+            }
+        }
+        else
+        {
+            while ((Quaternion.Angle(openBase, transform.rotation) < 90.0f))
+            {
+                moving = true;
+                transform.RotateAround(hingePos, Vector3.up, -rotationSpeed *Time.deltaTime);
+                yield return null;
+            }
+        }
+        moving = false;
     }
 }
