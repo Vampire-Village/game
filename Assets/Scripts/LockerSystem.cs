@@ -9,6 +9,8 @@ public class LockerSystem : NetworkBehaviour
 {
 #region Properties
     public int maxPlayers = 2;
+    public Transform lockerPoint;
+    public Transform outPoint;
 
     private readonly List<ServerPlayer> players = new List<ServerPlayer>();
 
@@ -97,12 +99,16 @@ public class LockerSystem : NetworkBehaviour
     private void GotIn()
     {
         GameLogger.LogClient("Got in to the house.");
+        // TODO: Make this server side one day.
+        GamePlayer.local.transform.position = lockerPoint.position;
         door.OpenCloseDoor();
     }
 
     private void GotOut()
     {
         GameLogger.LogClient("Got out of the house.");
+        // TODO: Make this server side one day.
+        GamePlayer.local.transform.position = outPoint.position;
         door.OpenCloseDoor();
     }
 
