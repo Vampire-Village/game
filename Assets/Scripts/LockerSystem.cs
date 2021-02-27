@@ -101,6 +101,7 @@ public class LockerSystem : NetworkBehaviour
         GameLogger.LogClient("Got in to the house.");
         // TODO: Make this server side one day.
         GamePlayer.local.transform.position = lockerPoint.position;
+        GamePlayer.local.controller.moveable = false;
         door.OpenCloseDoor();
     }
 
@@ -109,6 +110,7 @@ public class LockerSystem : NetworkBehaviour
         GameLogger.LogClient("Got out of the house.");
         // TODO: Make this server side one day.
         GamePlayer.local.transform.position = outPoint.position;
+        GamePlayer.local.controller.moveable = true;
         door.OpenCloseDoor();
     }
 

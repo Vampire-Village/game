@@ -11,6 +11,7 @@ public class Controller : NetworkBehaviour
     private GameObject interactable;
     public bool inTask = false;
     public Item heldItem;
+    public bool moveable = true;
 
     private PlayerAudio audioManager;
 
@@ -34,7 +35,7 @@ public class Controller : NetworkBehaviour
     }
     void FixedUpdate()
     {
-        if (hasAuthority)
+        if (hasAuthority && moveable)
         {
             float moveXAxis = Input.GetAxis("Horizontal");
             float moveZAxis = Input.GetAxis("Vertical");
