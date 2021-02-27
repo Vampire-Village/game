@@ -97,11 +97,13 @@ public class LockerSystem : NetworkBehaviour
     private void GotIn()
     {
         GameLogger.LogClient("Got in to the house.");
+        door.OpenCloseDoor();
     }
 
     private void GotOut()
     {
         GameLogger.LogClient("Got out of the house.");
+        door.OpenCloseDoor();
     }
 
     private void FullHouse()

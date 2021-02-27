@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Door : Interactable
 {
-    // Start is called before the first frame update
     private bool closing = true;
     private Vector3 hingePos;
     private GameObject hinge;
@@ -27,13 +26,8 @@ public class Door : Interactable
 
     public override void Interact(GameObject player)
     {
-        // if (!moving)
-        // {
-        //     moving = true;
-        //     closing = !closing;
-        //     SetDoor(!closing);
-        // }
-        lockerSystem.ActivateLocker();
+        if (!moving)
+            lockerSystem.ActivateLocker();
     }
 
     public void SetDoor(bool shouldOpen)
@@ -62,5 +56,16 @@ public class Door : Interactable
             }
         }
         moving = false;
+    }
+
+    public void OpenCloseDoor()
+    {
+        StartCoroutine(OpenCloseDoorAsync());
+    }
+
+    private IEnumerator OpenCloseDoorAsync()
+    {
+        yield return SetDoorAsync(true);
+        yield return SetDoorAsync(false);
     }
 }
