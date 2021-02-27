@@ -13,9 +13,11 @@ public class Door : Interactable
     private Quaternion originalRotation;
     private bool moving = false;
     private Quaternion openBase;
+    private LockerSystem lockerSystem;
     
     void Start()
     {
+        lockerSystem = GetComponent<LockerSystem>();
         originalPosition = transform.position;
         originalRotation = transform.rotation;
         hinge = transform.GetChild(0).gameObject;
@@ -25,12 +27,13 @@ public class Door : Interactable
 
     public override void Interact(GameObject player)
     {
-        if (!moving)
-        {
-            moving = true;
-            closing = !closing;
-            SetDoor(!closing);
-        }
+        // if (!moving)
+        // {
+        //     moving = true;
+        //     closing = !closing;
+        //     SetDoor(!closing);
+        // }
+        lockerSystem.ActivateLocker();
     }
 
     public void SetDoor(bool shouldOpen)

@@ -18,6 +18,13 @@ public class LockerSystem : NetworkBehaviour
     private GameManager gameManager;
 
     private VampireVillageNetwork network;
+
+    private enum LockerSystemStatus
+    {
+        GotIn,
+        GotOut,
+        FullHouse
+    }
 #endregion
 
 #region Unity Methods
@@ -30,29 +37,77 @@ public class LockerSystem : NetworkBehaviour
 
 #region Server Methods
     [Command(ignoreAuthority=true)]
-    public void CmdGetIn(NetworkConnectionToClient conn)
+    private void CmdActivateLocker(NetworkConnectionToClient conn = null)
     {
+        // Check if player is inside.
         ServerPlayer player = network.GetPlayer(conn);
+        if (players.Contains(player))
+            GetOut(conn, player);
+        else
+            GetIn(conn, player);
+    }
 
+    private void GetIn(NetworkConnectionToClient conn, ServerPlayer player)
+    {
         // Check if house is not full.
         if (players.Count >= maxPlayers)
         {
-            gameManager.Announce("This house is full!");
-            // TODO: Play locked door sound here.
+            TargetActivatedLocker(conn, LockerSystemStatus.FullHouse);
             return;
         }
 
+        // Otherwise, add player to the locker.
         players.Add(player);
+        TargetActivatedLocker(conn, LockerSystemStatus.GotIn);
     }
 
-    [Command(ignoreAuthority=true)]
-    public void CmdGetOut(NetworkConnectionToClient conn)
+    private void GetOut(NetworkConnectionToClient conn, ServerPlayer player)
     {
-        ServerPlayer player = network.GetPlayer(conn);
-
+        // Kick out all the players from the house.
+        foreach (var lockerPlayer in players)
+            TargetActivatedLocker(lockerPlayer.clientConnection, LockerSystemStatus.GotOut);
         players.RemoveAll(_ => true);
-        
-        // TODO: Actually remove all players from the house.
+    }
+#endregion
+
+#region Client Methods
+    public void ActivateLocker()
+    {
+        GameLogger.LogClient("Activating locker!");
+        CmdActivateLocker();
+    }
+
+    [TargetRpc]
+    private void TargetActivatedLocker(NetworkConnection target, LockerSystemStatus status)
+    {
+        switch (status)
+        {
+            case LockerSystemStatus.GotIn:
+                GotIn();
+                break;
+            case LockerSystemStatus.GotOut:
+                GotOut();
+                break;
+            case LockerSystemStatus.FullHouse:
+                FullHouse();
+                break;
+        }
+    }
+
+    private void GotIn()
+    {
+        GameLogger.LogClient("Got in to the house.");
+    }
+
+    private void GotOut()
+    {
+        GameLogger.LogClient("Got out of the house.");
+    }
+
+    private void FullHouse()
+    {
+        GameLogger.LogClient("House is full!");
+        gameManager.Announce("This house is full!");
     }
 #endregion
 }
