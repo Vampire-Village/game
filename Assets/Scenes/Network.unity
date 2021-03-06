@@ -334,5 +334,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codeLength: 4
-  minPlayers: 1
+  minPlayers: 4
   maxPlayers: 10
