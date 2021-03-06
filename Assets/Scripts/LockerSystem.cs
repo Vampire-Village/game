@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Mirror;
 using VampireVillage.Network;
+using TMPro;
 
 public class LockerSystem : NetworkBehaviour
 {
@@ -11,8 +11,12 @@ public class LockerSystem : NetworkBehaviour
     public int maxPlayers = 2;
     public Transform lockerPoint;
     public Transform outPoint;
+    public GameObject lockerCanvas;
+    public TMP_Text nameText1;
+    public TMP_Text nameText2;
 
     private readonly List<ServerPlayer> players = new List<ServerPlayer>();
+    public readonly SyncList<string> playerNames = new SyncList<string>();
 
     private Door door;
 
@@ -34,6 +38,10 @@ public class LockerSystem : NetworkBehaviour
     {
         network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         door = GetComponent<Door>();
+        lockerCanvas.SetActive(false);
+        nameText1.text = "";
+        nameText2.text = "";
+        playerNames.Callback += OnPlayerNamesUpdated;
     }
 #endregion
 
@@ -60,6 +68,7 @@ public class LockerSystem : NetworkBehaviour
 
         // Otherwise, add player to the locker.
         players.Add(player);
+        playerNames.Add(player.client.playerName);
         TargetActivatedLocker(conn, LockerSystemStatus.GotIn);
     }
 
@@ -69,6 +78,7 @@ public class LockerSystem : NetworkBehaviour
         foreach (var lockerPlayer in players)
             TargetActivatedLocker(lockerPlayer.clientConnection, LockerSystemStatus.GotOut);
         players.RemoveAll(_ => true);
+        playerNames.RemoveAll(_ => true);
     }
 #endregion
 
@@ -103,11 +113,18 @@ public class LockerSystem : NetworkBehaviour
         GamePlayer.local.transform.position = lockerPoint.position;
         GamePlayer.local.controller.moveable = false;
         door.OpenCloseDoor();
+
+        // Show canvas.
+        lockerCanvas.SetActive(true);
     }
 
     private void GotOut()
     {
         GameLogger.LogClient("Got out of the house.");
+
+        // Hide canvas.
+        lockerCanvas.SetActive(false);
+
         // TODO: Make this server side one day.
         GamePlayer.local.transform.position = outPoint.position;
         GamePlayer.local.controller.moveable = true;
@@ -118,6 +135,25 @@ public class LockerSystem : NetworkBehaviour
     {
         GameLogger.LogClient("House is full!");
         gameManager.Announce("This house is full!");
+    }
+
+    private void OnPlayerNamesUpdated(SyncList<string>.Operation op, int index, string oldItem, string newItem)
+    {
+        if (playerNames.Count > 0)
+        {
+            nameText1.text = playerNames[0];
+            nameText2.text = playerNames.Count > 1 ? playerNames[1] : "";
+        }
+        else
+        {
+            nameText1.text = "";
+            nameText2.text = "";
+        }
+    }
+
+    private void OnDestroy()
+    {
+        playerNames.Callback -= OnPlayerNamesUpdated;
     }
 #endregion
 }
