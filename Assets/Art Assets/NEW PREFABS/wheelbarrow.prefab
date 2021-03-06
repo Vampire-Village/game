@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 6126467885597047105}
   - component: {fileID: 697455777293502728}
   - component: {fileID: 8153366933101629814}
+  - component: {fileID: 8546207506359144680}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -120,6 +121,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8546207506359144680
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889260458800288341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2309305249758762421, guid: e8c2049d4ef5e9f4384a4d175516ed5b, type: 3}
 --- !u!1001 &3045955322582534973
 PrefabInstance:
   m_ObjectHideFlags: 0
