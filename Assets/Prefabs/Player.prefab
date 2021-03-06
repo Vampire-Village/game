@@ -108,6 +108,7 @@ MonoBehaviour:
   speed: 6
   inTask: 0
   heldItem: {fileID: 11400000, guid: 3866f0ea7e1782348a7dd825782118ed, type: 2}
+  moveable: 1
   isFrontFacing: 1
 --- !u!82 &-1801790974504865760
 AudioSource:
@@ -1160,6 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379821843864583046}
   - component: {fileID: 5577769601882554105}
+  - component: {fileID: 579192503422326678}
   m_Layer: 0
   m_Name: MinimapCamera
   m_TagString: Untagged
@@ -1208,13 +1210,13 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 50
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 1dd72d4be0c3b7f4592dff2b72d07951, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1224,6 +1226,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &579192503422326678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6452582342239679606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5450875dedd5194e94faba3e6a4f022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderTexture: {fileID: 0}
+  UIcanvas: {fileID: 0}
+  render: {fileID: 0}
 --- !u!1 &6529771975876279987
 GameObject:
   m_ObjectHideFlags: 0
