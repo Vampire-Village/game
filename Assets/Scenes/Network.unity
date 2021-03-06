@@ -146,7 +146,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613425207}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &613425209
 Camera:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   networkScene: Network
   menuScene: StartMenu
   lobbyScene: Lobby
-  gameScene: Game
+  gameScene: SampleScene
   lobbyPlayerPrefab: {fileID: 4602695557135484434, guid: c75ab9aee59cacf4fa4cf4905c74bfd0,
     type: 3}
   gamePlayerPrefab: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
@@ -334,5 +334,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codeLength: 4
-  minPlayers: 4
+  minPlayers: 1
   maxPlayers: 10
