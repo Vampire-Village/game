@@ -411,8 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755da04c64467f6419319ed67862c63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstep: {fileID: -1801790974504865760, guid: 240493a0de164bd4990cc1e33ca4a33a,
-    type: 3}
+  footstep: {fileID: 332722416327699165}
   footstepClips:
   - {fileID: 8300000, guid: eda157c2f8632444ea252123b1d84e31, type: 3}
   - {fileID: 8300000, guid: 4ce1436dbe8a78b4997aee604775b01c, type: 3}
