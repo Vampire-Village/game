@@ -78,7 +78,6 @@ public class GamePlayer : BasePlayer
         villager.enabled = false;
         vampireLord.enabled = false;
         infected.enabled = false;
-        sphereCollider.enabled = false;
 
         switch (newRole)
         {
@@ -87,7 +86,6 @@ public class GamePlayer : BasePlayer
                 break;
             case Role.VampireLord:
                 vampireLord.enabled = true;
-                sphereCollider.enabled = true;
                 break;
             case Role.Infected:
                 infected.enabled = true;
