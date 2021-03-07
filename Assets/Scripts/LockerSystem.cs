@@ -134,7 +134,8 @@ public class LockerSystem : NetworkBehaviour
     private void FullHouse()
     {
         GameLogger.LogClient("House is full!");
-        gameManager.Announce("This house is full!");
+        if (gameManager != null)
+            gameManager.Announce("This house is full!");
     }
 
     private void OnPlayerNamesUpdated(SyncList<string>.Operation op, int index, string oldItem, string newItem)

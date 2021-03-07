@@ -14,14 +14,17 @@ public class Door : Interactable
     private bool moving = false;
     private Quaternion openBase;
     private LockerSystem lockerSystem;
+    private AudioSource audioSource;
     
     void Start()
     {
         lockerSystem = GetComponent<LockerSystem>();
+        audioSource = GetComponent<AudioSource>();
+
         originalPosition = door.transform.position;
         originalRotation = door.transform.rotation;
         hingePos = hinge.transform.position;
-        openBase = Quaternion.Euler(0.0f, 90.0f + originalRotation.eulerAngles.y, 0.0f);
+        openBase = Quaternion.Euler(originalRotation.eulerAngles.x, 90.0f + originalRotation.eulerAngles.y, originalRotation.eulerAngles.z);
     }
 
     public override void Interact(GameObject player)
@@ -65,6 +68,7 @@ public class Door : Interactable
 
     private IEnumerator OpenCloseDoorAsync()
     {
+        audioSource.Play();
         yield return SetDoorAsync(true);
         yield return SetDoorAsync(false);
     }
