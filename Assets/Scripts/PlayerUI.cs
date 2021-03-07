@@ -15,10 +15,6 @@ public class PlayerUI : MonoBehaviour
 
     private GamePlayer player;
 
-    public GameObject render;
-    public RenderTexture rt;
-    public Camera cam;
-
     private void Start()
     {
         GamePlayer.OnPlayerSpawned.AddListener(SetPlayer);
@@ -70,30 +66,14 @@ public class PlayerUI : MonoBehaviour
 
     private void AssignVampMinimap()
     {
-        //CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
-        //rtScript.AssignRenderTexture(0);
-
-        /*
-        render = GameObject.Find("VampireMinimap/Minimap/MinimapRender").gameObject;
-        cam = player.gameObject.GetComponentInChildren<Camera>();
-        // get render texture from the player's camera
-        //rt = cam.targetTexture;
-        rt = player.gameObject.GetComponentInChildren<CreateRenderTexture>().renderTexture; 
-        // assign render texture into MinimapRender
-        render.GetComponent<RawImage>().texture = rt;
-        */
+        CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
+        rtScript.AssignRenderTexture(0);
     }
 
     private void AssignVilMinimap()
     {
-        //CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
-        //rtScript.AssignRenderTexture(1);
-
-        /*
-        GameObject render = this.transform.Find("VillagerMinimap/Minimap/MinimapRender").gameObject;
-        //GameObject render = minimap.transform.Find("MinimapRender").gameObject;
-        RenderTexture rt = player.transform.Find("MinimapCamera").gameObject.GetComponent<Camera>().targetTexture;
-        render.GetComponent<RawImage>().texture = rt;*/
+        CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
+        rtScript.AssignRenderTexture(1);
     }
 
     private void Infect()

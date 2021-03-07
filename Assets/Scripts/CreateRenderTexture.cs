@@ -22,22 +22,22 @@ public class CreateRenderTexture : MonoBehaviour
         GameObject UIcanvas = GameObject.Find("UI Canvas").gameObject;
         if (type == 0) // Vampire or Infected
         {
-            //minimapCamera = GetComponent<Camera>();
-            //renderTexture = new RenderTexture(150, 150, 0, RenderTextureFormat.ARGB32);
-            //minimapCamera.targetTexture = renderTexture;
+            minimapCamera = GetComponent<Camera>();
+            renderTexture = new RenderTexture(150, 150, 0, RenderTextureFormat.ARGB32);
+            minimapCamera.targetTexture = renderTexture;
 
             GameObject render = UIcanvas.transform.Find("VampireMinimap/Minimap/MinimapRender").gameObject;
             render.GetComponent<RawImage>().texture = renderTexture;
         }
         else if (type == 1) // Villager
         {
-            /*
+            
             minimapCamera = GetComponent<Camera>();
             renderTexture = new RenderTexture(150, 150, 0, RenderTextureFormat.ARGB32);
             minimapCamera.targetTexture = renderTexture;
 
             GameObject render = UIcanvas.transform.Find("VillagerMinimap/Minimap/MinimapRender").gameObject;
-            render.GetComponent<RawImage>().texture = renderTexture;*/
+            render.GetComponent<RawImage>().texture = renderTexture;
         }
         else
         {
