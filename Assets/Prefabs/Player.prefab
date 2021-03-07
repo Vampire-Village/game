@@ -1168,7 +1168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7379821843864583046
 Transform:
   m_ObjectHideFlags: 0
@@ -1239,8 +1239,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderTexture: {fileID: 0}
-  UIcanvas: {fileID: 0}
-  render: {fileID: 0}
 --- !u!1 &6529771975876279987
 GameObject:
   m_ObjectHideFlags: 0

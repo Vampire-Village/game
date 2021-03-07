@@ -70,8 +70,8 @@ public class PlayerUI : MonoBehaviour
 
     private void AssignVampMinimap()
     {
-        CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
-        rtScript.AssignRenderTexture(0);
+        //CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
+        //rtScript.AssignRenderTexture(0);
 
         /*
         render = GameObject.Find("VampireMinimap/Minimap/MinimapRender").gameObject;
@@ -82,13 +82,13 @@ public class PlayerUI : MonoBehaviour
         // assign render texture into MinimapRender
         render.GetComponent<RawImage>().texture = rt;
         */
-        Debug.Log("this is vfine.");
     }
 
     private void AssignVilMinimap()
     {
-        player.gameObject.GetComponentInChildren<CreateRenderTexture>().AssignRenderTexture(1);
-        Debug.Log("this is fine.");
+        //CreateRenderTexture rtScript = player.gameObject.transform.Find("MinimapCamera").GetComponent<CreateRenderTexture>();
+        //rtScript.AssignRenderTexture(1);
+
         /*
         GameObject render = this.transform.Find("VillagerMinimap/Minimap/MinimapRender").gameObject;
         //GameObject render = minimap.transform.Find("MinimapRender").gameObject;
