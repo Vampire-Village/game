@@ -49,14 +49,17 @@ public class LockerSystem : NetworkBehaviour
     [Command(ignoreAuthority=true)]
     private void CmdActivateLocker(NetworkConnectionToClient conn = null)
     {
+#if UNITY_SERVER || UNITY_EDITOR
         // Check if player is inside.
         ServerPlayer player = network.GetPlayer(conn);
         if (players.Contains(player))
             GetOut(conn, player);
         else
             GetIn(conn, player);
+#endif
     }
 
+#if UNITY_SERVER || UNITY_EDITOR
     private void GetIn(NetworkConnectionToClient conn, ServerPlayer player)
     {
         // Check if house is not full.
@@ -80,6 +83,7 @@ public class LockerSystem : NetworkBehaviour
         players.RemoveAll(_ => true);
         playerNames.RemoveAll(_ => true);
     }
+#endif
 #endregion
 
 #region Client Methods
