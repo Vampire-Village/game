@@ -29,10 +29,10 @@ public class MeetingManager : NetworkBehaviour
     public void StartMeeting()
     {
         // Stop the night cycle.
-        gameManager.StopNight();
+        // gameManager.StopNight();
 
         // Call meeting start on all clients.
-        RpcOnMeetingStart();
+        // RpcOnMeetingStart();
 
         // TODO: Initialize meeting stuff.
     }
