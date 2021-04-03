@@ -1548,17 +1548,17 @@ PrefabInstance:
     - target: {fileID: 379157041769675408, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.1
+      value: 9.7
       objectReference: {fileID: 0}
     - target: {fileID: 379157041769675408, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.36
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 379157041769675408, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.77
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 379157041769675408, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
@@ -1605,15 +1605,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7819632483215776236, guid: 240493a0de164bd4990cc1e33ca4a33a,
+    - target: {fileID: 379157041769675435, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: role
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7844542241749530217, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
       propertyPath: sceneId
       value: 1632488704
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844542241749530217, guid: 240493a0de164bd4990cc1e33ca4a33a,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 240493a0de164bd4990cc1e33ca4a33a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240493a0de164bd4990cc1e33ca4a33a, type: 3}
@@ -1889,7 +1894,7 @@ GameObject:
   - component: {fileID: 1639485257}
   - component: {fileID: 1639485256}
   m_Layer: 0
-  m_Name: Vampire Lord
+  m_Name: VLord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,10 +1909,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639485255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e5f5de77dfd1148a86488dfeea282b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5de05adca5d619546aa8b70d4c4e3168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
+  secondsBloodLasts: 5
   playersInScene: []
   playerInRange: []
   trail: {fileID: 0}
@@ -1979,7 +1985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639485255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.0175343, y: 1.02, z: -8.87}
+  m_LocalPosition: {x: 3.6, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
