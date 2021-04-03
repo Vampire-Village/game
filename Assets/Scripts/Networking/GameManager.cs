@@ -17,6 +17,7 @@ namespace VampireVillage.Network
 #region Properties
         public static GameManager local;
         private static readonly System.Random rng = new System.Random();
+        public Lights lightSystem;
 
 #region Client & Server Properties
 #region UIs
@@ -43,8 +44,6 @@ namespace VampireVillage.Network
         /// </summary>
         public float nightLength = 300.0f;
         private Coroutine nightCoroutine;
-
-        public Lights lightSystem;
 
         private Room room;
         private bool isGameOver = false;
