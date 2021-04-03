@@ -320,13 +320,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  lightSystem: {fileID: 0}
   leaveGameButton: {fileID: 908328573}
   gameOverCanvas: {fileID: 209334060}
   winText: {fileID: 209051542}
   announcementText: {fileID: 0}
   spawnPointGroup: {fileID: 0}
   nightLength: 300
-  lightSystem: {fileID: 0}
 --- !u!4 &251399432
 Transform:
   m_ObjectHideFlags: 0
