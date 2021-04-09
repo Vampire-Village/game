@@ -12,16 +12,14 @@ public class Infected : MonoBehaviour
 
     private GameObject minimap;
 
-    private int cooldown = 5;
+    //private int cooldown = 5;
     private int cdSec = 0;
 
     private PlayerUI playerUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private float pingHeight = 20;
+    private float pingZoffset = 1.1f;
 
-    }
 
     public void RegisterUI(PlayerUI playerUI)
     {
@@ -39,8 +37,7 @@ public class Infected : MonoBehaviour
             xPos = GetComponent<Transform>().position.x;
             zPos = GetComponent<Transform>().position.z;
             // may need to adjust y/z positions
-            GameObject ping = Instantiate(pingSprite, new Vector3(xPos, 11, zPos + 1.1f), Quaternion.Euler(90, 0, 0)) as GameObject;
-            //Instantiate(pingSprite, new Vector3(xPos, 11, zPos + 1.1f), Quaternion.Euler(90, 0, 0));
+            GameObject ping = Instantiate(pingSprite, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
             ping.transform.parent = minimap.transform;
         //}
     }
@@ -58,9 +55,4 @@ public class Infected : MonoBehaviour
         playerUI.reportText.text = "Report";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
