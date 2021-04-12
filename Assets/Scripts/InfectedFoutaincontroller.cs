@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class ImposterFountainController : Task
 {
-    public GameObject Rock;
+    public GameObject BusketOfRock;
     private int Rocknum;
     public bool taskComplete = false;
     public Item slowdownTimer;
@@ -17,12 +17,10 @@ public class ImposterFountainController : Task
     public void Start()
     {
         Rocknum = 0;
-        //playerReference = TaskSpawner.currentPlayer();
     }
 
     public void OnGUI()
     {
-        //bool buttonStatus = PourButton.GetComponent<MouseHoldController>().isMouseHeld();
         if (!taskComplete)
         {
             Rocknum += 1;
@@ -31,7 +29,6 @@ public class ImposterFountainController : Task
                 taskComplete = true;
                 CompleteTask(gameObject, slowdownTimer);
             }
-            //Debug.Log(candleTop);
         }
     }
 

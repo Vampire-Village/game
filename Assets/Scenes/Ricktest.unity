@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 1467186568}
   - component: {fileID: 1467186567}
   m_Layer: 0
-  m_Name: CandleMaker
+  m_Name: ImposterFountainBreak
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb0ff5f61786874eb00108012f8bd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskPrefab: {fileID: 1390246454110019960, guid: f233d1fd05ed80741b356f2c616d17df,
+  taskPrefab: {fileID: 1390246454110019960, guid: 2b43c7b5d18192f48b15e19d62eb2e68,
     type: 3}
   playerObject: {fileID: 0}
 --- !u!135 &1467186568
@@ -1193,72 +1193,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45888de90007e0649a8d90fb69bd4dc9, type: 3}
---- !u!1001 &2086965075
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.8130867
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.4716406
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103041, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 730942535886103045, guid: 4760b60c2089dcb4c83b19097f139e1b,
-        type: 3}
-      propertyPath: m_Name
-      value: Door
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4760b60c2089dcb4c83b19097f139e1b, type: 3}
