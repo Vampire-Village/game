@@ -21,7 +21,7 @@ public class TeleportAnimation : MonoBehaviour
             PlayAnimations();
         }
     }
-    void PlayAnimations()
+    public void PlayAnimations()
     {
         GetComponent<ParticleSystem>().Play(true);
     }

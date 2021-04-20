@@ -19,9 +19,13 @@ public class GamePlayer : BasePlayer
     public VampireLord vampireLord { get; private set; }
     public Infected infected { get; private set; }
 
+    public Ghost ghost { get; private set; }
+
     private SphereCollider sphereCollider;
 
     private GameManager gameManager;
+
+    private BloodHunt bloodHuntScript;
 #endregion
 
 #region Unity Methods
@@ -32,7 +36,9 @@ public class GamePlayer : BasePlayer
         villager = GetComponent<Villager>();
         vampireLord = GetComponent<VampireLord>();
         infected = GetComponent<Infected>();
+        ghost = GetComponent<Ghost>();
         sphereCollider = GetComponent<SphereCollider>();
+        bloodHuntScript = GetComponent<BloodHunt>();
     }
 #endregion
 
@@ -86,6 +92,7 @@ public class GamePlayer : BasePlayer
                 break;
             case Role.VampireLord:
                 vampireLord.enabled = true;
+                //bloodHuntScript.enabled = true;
                 break;
             case Role.Infected:
                 infected.enabled = true;
