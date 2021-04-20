@@ -9,10 +9,12 @@ public class GamePlayer : BasePlayer
     public new static GamePlayer local;
 
     public new static UnityEvent OnPlayerSpawned = new UnityEvent();
-    public static UnityEvent OnRoleUpdated = new UnityEvent();
+    public static UnityEvent OnLocalRoleUpdated = new UnityEvent();
     
     [SyncVar(hook = nameof(SetRole))]
     public Role role = Role.None;
+
+    public UnityEvent OnRoleUpdated = new UnityEvent();
 
     public Controller controller { get; private set; }
     public Villager villager { get; private set; }
@@ -104,9 +106,10 @@ public class GamePlayer : BasePlayer
 
         if (hasAuthority)
         {
-            OnRoleUpdated?.Invoke();
+            OnLocalRoleUpdated?.Invoke();
             GameLogger.LogClient($"Player is now {newRole.ToString()}!");
         }
+        OnRoleUpdated?.Invoke();
     }
 #endregion
 }
