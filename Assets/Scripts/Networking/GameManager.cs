@@ -231,7 +231,7 @@ namespace VampireVillage.Network
             leaveGameButton.onClick.AddListener(LeaveGame);
 
             // Announce player role at the start.
-            GamePlayer.OnRoleUpdated.AddListener(AnnouncePlayerRole);
+            GamePlayer.OnLocalRoleUpdated.AddListener(AnnouncePlayerRole);
             AnnouncePlayerRole();
         }
 
@@ -292,7 +292,7 @@ namespace VampireVillage.Network
 
         public override void OnStopClient()
         {
-            GamePlayer.OnRoleUpdated.RemoveListener(AnnouncePlayerRole);
+            GamePlayer.OnLocalRoleUpdated.RemoveListener(AnnouncePlayerRole);
         }
 #endregion
     }
