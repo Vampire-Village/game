@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: VampireOnly
+    uniqueID: 3229823789
+    locked: 0
