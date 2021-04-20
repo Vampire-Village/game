@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using System.Linq;
+using VampireVillage.Network;
 //ATTACH SCRIPT TO THE VAMPIRE LORD PREFAB. This script will activate/deactivate trail renderers of player of tag "Player" depending on their distance to the vampire lord.
 //NOTE: CURRENTLY DOES NOT SUPPORT PLAYERS THAT JOIN THE SCENE AFTER THIS SCRIPT HAS STARTED. Will change if needed. Fixed 4/19, might be inefficient fix though.
 //Script must be activated during role assignment
