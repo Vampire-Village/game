@@ -2165,6 +2165,9 @@ MonoBehaviour:
   playerName: 
   nameText: {fileID: 398708917}
   role: 0
+  OnRoleUpdated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1673654222
 Transform:
   m_ObjectHideFlags: 0
@@ -2817,6 +2820,29 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &2141825887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1115018013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2141825888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141825887}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de05adca5d619546aa8b70d4c4e3168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  secondsBloodLasts: 5
+  playersInScene: []
+  playerInRange: []
+  trail: {fileID: 0}
 --- !u!1001 &221769448346334372
 PrefabInstance:
   m_ObjectHideFlags: 0

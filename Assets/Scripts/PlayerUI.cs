@@ -18,7 +18,7 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         GamePlayer.OnPlayerSpawned.AddListener(SetPlayer);
-        GamePlayer.OnRoleUpdated.AddListener(SetUI);
+        GamePlayer.OnLocalRoleUpdated.AddListener(SetUI);
 
         infectButton.onClick.AddListener(Infect);
         reportButton.onClick.AddListener(Report);
@@ -94,7 +94,7 @@ public class PlayerUI : MonoBehaviour
     private void OnDestroy()
     {
         GamePlayer.OnPlayerSpawned.RemoveListener(SetPlayer);
-        GamePlayer.OnRoleUpdated.RemoveListener(SetUI);
+        GamePlayer.OnLocalRoleUpdated.RemoveListener(SetUI);
 
         infectButton.onClick.RemoveListener(Infect);
         reportButton.onClick.RemoveListener(Report);

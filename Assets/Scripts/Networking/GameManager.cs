@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using Mirror;
 using TMPro;
 
@@ -26,6 +27,9 @@ namespace VampireVillage.Network
         public TMP_Text winText;
         public TMP_Text announcementText;
 #endregion
+
+        public SyncList<GameObject> players = new SyncList<GameObject>();
+        public UnityEvent OnPlayerListUpdated = new UnityEvent();
 
         private MeetingManager meetingManager;
         private VampireVillageNetwork network;
@@ -102,6 +106,7 @@ namespace VampireVillage.Network
                 GameObject gamePlayerInstance = network.InstantiateGamePlayer(gameObject, player);
                 GamePlayer gamePlayer = gamePlayerInstance.GetComponent<GamePlayer>();
                 gamePlayers.Add(player, gamePlayer);
+                players.Add(gamePlayerInstance);
                 gamePlayer.RegisterGameManager(this);
                 gamePlayer.role = i == vampireLordIndex ? Role.VampireLord : Role.Villager;
 
@@ -129,6 +134,7 @@ namespace VampireVillage.Network
             // Get the game player and remove it from the game players list.
             GamePlayer gamePlayer = gamePlayers[player];
             gamePlayers.Remove(player);
+            players.Remove(gamePlayer.gameObject);
 
             // Also remove the player from its role list.
             if (gamePlayer.role == Role.Villager)
@@ -230,8 +236,10 @@ namespace VampireVillage.Network
 
             leaveGameButton.onClick.AddListener(LeaveGame);
 
+            players.Callback += OnPlayersUpdated;
+
             // Announce player role at the start.
-            GamePlayer.OnRoleUpdated.AddListener(AnnouncePlayerRole);
+            GamePlayer.OnLocalRoleUpdated.AddListener(AnnouncePlayerRole);
             AnnouncePlayerRole();
         }
 
@@ -290,9 +298,14 @@ namespace VampireVillage.Network
             lightSystem.DayNight(isDay);
         }
 
+        private void OnPlayersUpdated(SyncList<GameObject>.Operation op, int index, GameObject newPlayer, GameObject oldPlayer)
+        {
+            OnPlayerListUpdated?.Invoke();
+        }
+
         public override void OnStopClient()
         {
-            GamePlayer.OnRoleUpdated.RemoveListener(AnnouncePlayerRole);
+            GamePlayer.OnLocalRoleUpdated.RemoveListener(AnnouncePlayerRole);
         }
 #endregion
     }

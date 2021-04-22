@@ -9,19 +9,25 @@ public class GamePlayer : BasePlayer
     public new static GamePlayer local;
 
     public new static UnityEvent OnPlayerSpawned = new UnityEvent();
-    public static UnityEvent OnRoleUpdated = new UnityEvent();
+    public static UnityEvent OnLocalRoleUpdated = new UnityEvent();
     
     [SyncVar(hook = nameof(SetRole))]
     public Role role = Role.None;
+
+    public UnityEvent OnRoleUpdated = new UnityEvent();
 
     public Controller controller { get; private set; }
     public Villager villager { get; private set; }
     public VampireLord vampireLord { get; private set; }
     public Infected infected { get; private set; }
 
+    public Ghost ghost { get; private set; }
+
     private SphereCollider sphereCollider;
 
     private GameManager gameManager;
+
+    private BloodHunt bloodHuntScript;
 #endregion
 
 #region Unity Methods
@@ -32,7 +38,9 @@ public class GamePlayer : BasePlayer
         villager = GetComponent<Villager>();
         vampireLord = GetComponent<VampireLord>();
         infected = GetComponent<Infected>();
+        ghost = GetComponent<Ghost>();
         sphereCollider = GetComponent<SphereCollider>();
+        bloodHuntScript = GetComponent<BloodHunt>();
     }
 #endregion
 
@@ -86,6 +94,7 @@ public class GamePlayer : BasePlayer
                 break;
             case Role.VampireLord:
                 vampireLord.enabled = true;
+                //bloodHuntScript.enabled = true;
                 break;
             case Role.Infected:
                 infected.enabled = true;
@@ -97,9 +106,10 @@ public class GamePlayer : BasePlayer
 
         if (hasAuthority)
         {
-            OnRoleUpdated?.Invoke();
+            OnLocalRoleUpdated?.Invoke();
             GameLogger.LogClient($"Player is now {newRole.ToString()}!");
         }
+        OnRoleUpdated?.Invoke();
     }
 #endregion
 }
