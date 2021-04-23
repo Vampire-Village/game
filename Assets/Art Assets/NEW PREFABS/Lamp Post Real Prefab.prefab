@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 7861163608387534436}
   - component: {fileID: 5403336517059496622}
   - component: {fileID: -3898476785205614730}
+  - component: {fileID: 4014686285463901955}
   m_Layer: 0
   m_Name: Lamp Post Real Prefab
   m_TagString: Untagged
@@ -118,14 +119,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5907734933385112443}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 131.7, y: 0.65848124, z: -43.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3952609078970527079}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &7861163608387534436
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -188,3 +189,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 0d82aa55111ed1345ac6f719f06a116c, type: 3}
+--- !u!114 &4014686285463901955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907734933385112443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b611f70c7778df54eadcd312c8dd3afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onMaterial: {fileID: 2100000, guid: 4d19ca487f2f7cf4aa3782f5b1ff87dc, type: 2}
+  offMaterial: {fileID: 2100000, guid: 207552ab9dbf4b4418b08630aa87c180, type: 2}
+  lamp: {fileID: 5403336517059496622}
+  light: {fileID: 4864291657101375232}
