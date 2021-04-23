@@ -43,7 +43,7 @@ public class BloodHunt : MonoBehaviour
     }
     void Update_PlayerList()
     {
-        playerList = gameManager.players;
+        playerList = gameManager.players.ToArray();
     }
     void Update_Player_In_Range()
     {
