@@ -56,6 +56,7 @@ namespace VampireVillage.Network
         private GamePlayer vampireLord;
         private readonly List<GamePlayer> vampires = new List<GamePlayer>();
         private readonly List<GamePlayer> villagers = new List<GamePlayer>();
+        private readonly List<GamePlayer> ghosts = new List<GamePlayer>();
 #endif
 #endregion
 #endregion
@@ -77,6 +78,8 @@ namespace VampireVillage.Network
             foreach (Transform spawnPoint in spawnPointGroup.transform)
                 spawnPoints.Add(spawnPoint.gameObject);
             StartNight();
+
+            players.Callback += OnPlayersUpdated;
         }
         
         /// <summary>
@@ -145,6 +148,10 @@ namespace VampireVillage.Network
             {
                 vampires.Remove(gamePlayer);
             }
+            else if (gamePlayer.role == Role.Ghost)
+            {
+                ghosts.Remove(gamePlayer);
+            }
 
             // Check the winning condition if game is not over yet.
             if (!isGameOver)
@@ -173,10 +180,27 @@ namespace VampireVillage.Network
                 villagers.Remove(player);
                 vampires.Add(player);
             }
+            if (oldRole == Role.Villager && newRole == Role.Ghost)
+            {
+                villagers.Remove(player);
+                ghosts.Add(player);
+            }
+            else if (oldRole == Role.Infected && newRole == Role.Ghost)
+            {
+                vampires.Remove(player);
+                ghosts.Add(player);
+            }
+            else
+            {
+                GameLogger.LogServer($"Wrong player role update on room {room.code}!\nBefore: {oldRole}\nAfter:{newRole}");
+            }
 
             // Check for win condition.
             if (villagers.Count <= 1)
                 GameOver(Team.Vampires);
+
+            // TODO: Handle ghosts here?
+            // if (newRole == Role.Ghost) {}
         }
 
         /// <summary>
@@ -225,6 +249,12 @@ namespace VampireVillage.Network
 
             // Make it look like day in the game.
             RpcToggleDayNight(true);
+        }
+
+        public override void OnStopServer()
+        {
+            base.OnStopServer();
+            players.Callback -= OnPlayersUpdated;
         }
 #endif
 #endregion
@@ -306,6 +336,7 @@ namespace VampireVillage.Network
         public override void OnStopClient()
         {
             GamePlayer.OnLocalRoleUpdated.RemoveListener(AnnouncePlayerRole);
+            players.Callback -= OnPlayersUpdated;
         }
 #endregion
     }

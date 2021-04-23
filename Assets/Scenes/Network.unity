@@ -286,7 +286,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1576988694}
-  networkAddress: 4.tcp.ngrok.io
+  networkAddress: localhost
   maxConnections: 64
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
@@ -296,8 +296,8 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
-  networkPort: 10227
-  forceClient: 1
+  networkPort: 7777
+  forceClient: 0
   networkScene: Network
   menuScene: StartMenu
   lobbyScene: Lobby
@@ -334,5 +334,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codeLength: 4
-  minPlayers: 4
+  minPlayers: 2
   maxPlayers: 10

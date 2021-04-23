@@ -59,10 +59,7 @@ public class GamePlayer : BasePlayer
         role = targetRole;
 
         // Report to the game manager to switch team.
-        if (oldRole == Role.Villager && targetRole == Role.Infected)
-        {
-            gameManager.UpdatePlayerTeam(this, oldRole, targetRole);
-        }
+        gameManager.UpdatePlayerTeam(this, oldRole, targetRole);
 #endif
     }
 
