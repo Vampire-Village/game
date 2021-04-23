@@ -11,11 +11,13 @@ public class BeamController : MonoBehaviour
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.enabled = false;
     }
     void OnDisable()
     {
         target = false;
         meshRenderer.enabled = false;
+        upCheck = false;
     }
     // Update is called once per frame
 

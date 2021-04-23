@@ -128,10 +128,15 @@ public class MeetingManager : NetworkBehaviour
             int playerIndex = playerList.IndexOf(GamePlayer.local.gameObject);
             GamePlayer.local.GetComponent<Controller>().moveable = false;
             GamePlayer.local.gameObject.transform.position = warpPoints[playerIndex].transform.position;
-            if(GamePlayer.local.role != Role.Ghost)
+        for (var i = 0; i < playerList.Count; i++)
+        {
+
+
+            if (playerList[i].GetComponent<GamePlayer>().role != Role.Ghost)//also vampire
             {
-                lightBeams[playerIndex].SetActive(true);
+                lightBeams[i].SetActive(true);
             }
+        }
 
         //}
         // TODO: start timer to talley
