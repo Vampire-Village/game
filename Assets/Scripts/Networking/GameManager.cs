@@ -77,6 +77,8 @@ namespace VampireVillage.Network
             foreach (Transform spawnPoint in spawnPointGroup.transform)
                 spawnPoints.Add(spawnPoint.gameObject);
             StartNight();
+
+            players.Callback += OnPlayersUpdated;
         }
         
         /// <summary>
@@ -226,6 +228,12 @@ namespace VampireVillage.Network
             // Make it look like day in the game.
             RpcToggleDayNight(true);
         }
+
+        public override void OnStopServer()
+        {
+            base.OnStopServer();
+            players.Callback -= OnPlayersUpdated;
+        }
 #endif
 #endregion
 
@@ -306,6 +314,7 @@ namespace VampireVillage.Network
         public override void OnStopClient()
         {
             GamePlayer.OnLocalRoleUpdated.RemoveListener(AnnouncePlayerRole);
+            players.Callback -= OnPlayersUpdated;
         }
 #endregion
     }
