@@ -13,6 +13,9 @@ public class MeetingManager : NetworkBehaviour
     private List<GameObject> playerList;
     public GameObject warpPointGroup;
     private readonly List<GameObject> warpPoints = new List<GameObject>();
+    public GameObject lightBeamGroup;
+    private readonly List<GameObject> lightBeams = new List<GameObject>();
+    private Dictionary<int, int> meetingTally = new Dictionary<int, int>();
     
 
 
@@ -29,6 +32,8 @@ public class MeetingManager : NetworkBehaviour
         
         foreach (Transform warpPoint in warpPointGroup.transform)
             warpPoints.Add(warpPoint.gameObject);
+        foreach (Transform lightBeam in lightBeamGroup.transform)
+            lightBeams.Add(lightBeam.gameObject);
     }
     private void updatePlayerList()
     {
@@ -53,6 +58,36 @@ public class MeetingManager : NetworkBehaviour
         RpcOnMeetingStart();
 
         // TODO: Initialize meeting stuff.
+        // TODO: Add skip vote
+        meetingTally = new Dictionary<int, int>();
+        for (var i = 0; i < playerList.Count; i++)
+        {
+            GamePlayer playerReference = playerList[i].GetComponent<GamePlayer>();
+            if (playerReference.role != Role.VampireLord || playerReference.role != Role.Ghost)
+            {
+                meetingTally.Add(i, 0);
+            }
+        }
+        // TODO: Start timer to end meeting
+    }
+
+    public int TallyAllVotes()
+    {
+        int greatestIndex = -1;
+        int greatestValue = 0;
+        foreach(int i in meetingTally.Keys)
+        {
+            if(meetingTally[i] > greatestValue)
+            {
+                greatestIndex = i;
+                greatestValue = meetingTally[i];
+            }
+            else if(meetingTally[i] == greatestValue)
+            {
+                greatestIndex = -1;
+            }
+        }
+        return greatestIndex;
     }
 
     /// <summary>
@@ -62,7 +97,8 @@ public class MeetingManager : NetworkBehaviour
     public void StopMeeting()
     {
         // TODO: Calculate vote and announce result.
-
+        int killTarget = TallyAllVotes();
+        GameLogger.LogClient(killTarget);
         // TODO: Kill the voted-off player.
 
         // Restart the night cycle.
@@ -86,12 +122,19 @@ public class MeetingManager : NetworkBehaviour
         // TODO: Disable player movement. should be done
         // TODO: Play sound effect
         // TODO: Wait 1-2 seconds
+        // TODO: Have the code skip the vampire without visual issues
         //if(GamePlayer.local.role != Role.VampireLord)
         //{
+            int playerIndex = playerList.IndexOf(GamePlayer.local.gameObject);
             GamePlayer.local.GetComponent<Controller>().moveable = false;
-            GamePlayer.local.gameObject.transform.position = warpPoints[playerList.IndexOf(GamePlayer.local.gameObject)].transform.position;
+            GamePlayer.local.gameObject.transform.position = warpPoints[playerIndex].transform.position;
+            if(GamePlayer.local.role != Role.Ghost)
+            {
+                lightBeams[playerIndex].SetActive(true);
+            }
 
         //}
+        // TODO: start timer to talley
         
         
         // TODO: Show UI like Among Us emergency meeting announcement?
@@ -106,9 +149,15 @@ public class MeetingManager : NetworkBehaviour
         GameLogger.LogClient("The meeting has ended.");
 
         // TODO: Enable player movement.
-
+        GamePlayer.local.GetComponent<Controller>().moveable = true;
         // Hide the chat button.
         chatButton.SetActive(false);
+    }
+
+    [Command(ignoreAuthority = true)]
+    public void CmdTallyVote(int indexValue)
+    {
+        meetingTally[indexValue] += 1;
     }
 #endregion
 }

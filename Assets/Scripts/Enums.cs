@@ -3,7 +3,8 @@
     None,
     Villager,
     VampireLord,
-    Infected
+    Infected,
+    Ghost
 }
 
 public enum Team
