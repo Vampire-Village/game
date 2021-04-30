@@ -970,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 1525008401411973460, guid: de33e4ed180bf34479b9552c98c31185,
         type: 3}
       propertyPath: m_text
-      value: Report
+      value: Ping
       objectReference: {fileID: 0}
     - target: {fileID: 6644620185336113962, guid: de33e4ed180bf34479b9552c98c31185,
         type: 3}
@@ -1080,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: 9100369952719302046, guid: de33e4ed180bf34479b9552c98c31185,
         type: 3}
       propertyPath: m_Name
-      value: Report Button
+      value: Ping Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de33e4ed180bf34479b9552c98c31185, type: 3}
