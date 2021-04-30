@@ -263,8 +263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infectButton: {fileID: 2744185583238921574}
   infectText: {fileID: 7160102729746152833}
-  reportButton: {fileID: 1439844875799515033}
-  reportText: {fileID: 6247581241128030078}
+  pingButton: {fileID: 1439844875799515033}
+  pingText: {fileID: 6247581241128030078}
   interactButton: {fileID: 8184236702500678028}
   vampInfMinimap: {fileID: 4893467344891710383}
   villagerMinimap: {fileID: 8978435294938988906}

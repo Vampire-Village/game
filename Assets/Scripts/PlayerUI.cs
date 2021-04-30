@@ -6,8 +6,8 @@ public class PlayerUI : MonoBehaviour
 {
     public Button infectButton;
     public TMP_Text infectText;
-    public Button reportButton;
-    public TMP_Text reportText;
+    public Button pingButton;
+    public TMP_Text pingText;
     public Button interactButton;
 
     public GameObject vampInfMinimap;
@@ -21,7 +21,7 @@ public class PlayerUI : MonoBehaviour
         GamePlayer.OnLocalRoleUpdated.AddListener(SetUI);
 
         infectButton.onClick.AddListener(Infect);
-        reportButton.onClick.AddListener(Report);
+        pingButton.onClick.AddListener(Ping);
         interactButton.onClick.AddListener(Interact);
     }
 
@@ -34,7 +34,7 @@ public class PlayerUI : MonoBehaviour
     private void SetUI()
     {
         infectButton.gameObject.SetActive(false);
-        reportButton.gameObject.SetActive(false);
+        pingButton.gameObject.SetActive(false);
         interactButton.gameObject.SetActive(false);
 
         vampInfMinimap.gameObject.SetActive(false);
@@ -54,7 +54,7 @@ public class PlayerUI : MonoBehaviour
                 break;
             case Role.Infected:
                 interactButton.gameObject.SetActive(true);
-                reportButton.gameObject.SetActive(true);
+                pingButton.gameObject.SetActive(true);
                 vampInfMinimap.gameObject.SetActive(true);
                 AssignVampMinimap();
                 break;
@@ -81,9 +81,9 @@ public class PlayerUI : MonoBehaviour
         player.vampireLord.Infect();
     }
 
-    private void Report()
+    private void Ping()
     {
-        player.infected.Report();
+        player.infected.Ping();
     }
 
     private void Interact()
@@ -97,7 +97,7 @@ public class PlayerUI : MonoBehaviour
         GamePlayer.OnLocalRoleUpdated.RemoveListener(SetUI);
 
         infectButton.onClick.RemoveListener(Infect);
-        reportButton.onClick.RemoveListener(Report);
+        pingButton.onClick.RemoveListener(Ping);
         interactButton.onClick.RemoveListener(Interact);
     }
 }
