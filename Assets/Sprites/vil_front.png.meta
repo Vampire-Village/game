@@ -1,12 +1,111 @@
 fileFormatVersion: 2
 guid: a96c801bf78003a4fb5aa24c02ace267
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3683819192328398270
+    second: vil_front_0
+  - first:
+      213: 2295715137142268740
+    second: vil_front_1
+  - first:
+      213: -3237671916134729737
+    second: vil_front_2
+  - first:
+      213: -520469757726826626
+    second: vil_front_3
+  - first:
+      213: -550324932996034395
+    second: vil_front_4
+  - first:
+      213: -80046079265509502
+    second: vil_front_5
+  - first:
+      213: 3531208458778916997
+    second: vil_front_6
+  - first:
+      213: -2646097069703867421
+    second: vil_front_7
+  - first:
+      213: 513676156784194249
+    second: vil_front_8
+  - first:
+      213: 8629642200064908960
+    second: vil_front_9
+  - first:
+      213: -404890963652706511
+    second: vil_front_10
+  - first:
+      213: -5980871165263927451
+    second: vil_front_11
+  - first:
+      213: -2639370519438459558
+    second: vil_front_12
+  - first:
+      213: -2006140656101085012
+    second: vil_front_13
+  - first:
+      213: 6262866859003874188
+    second: vil_front_14
+  - first:
+      213: 8142556639024644283
+    second: vil_front_15
+  - first:
+      213: 5502986011963028368
+    second: vil_front_16
+  - first:
+      213: -3611920126249473739
+    second: vil_front_17
+  - first:
+      213: 7010410841583313057
+    second: vil_front_18
+  - first:
+      213: 2701515033142803177
+    second: vil_front_19
+  - first:
+      213: -4727546433181338651
+    second: vil_front_20
+  - first:
+      213: 5078213412436874847
+    second: vil_front_21
+  - first:
+      213: 6620975053734027413
+    second: vil_front_22
+  - first:
+      213: -1376906365799256765
+    second: vil_front_23
+  - first:
+      213: -3457836484226599774
+    second: vil_front_24
+  - first:
+      213: 6211740264545767649
+    second: vil_front_25
+  - first:
+      213: -1011558988262520317
+    second: vil_front_26
+  - first:
+      213: 8115639806460105305
+    second: vil_front_27
+  - first:
+      213: -5738824398302723132
+    second: vil_front_28
+  - first:
+      213: 6132996047059410830
+    second: vil_front_29
+  - first:
+      213: 9020210966382659489
+    second: vil_front_30
+  - first:
+      213: -6729660428726471435
+    second: vil_front_31
+  - first:
+      213: 9060130055162498096
+    second: vil_front_32
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,13 +133,13 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,9 +148,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -64,7 +163,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -73,11 +184,704 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: vil_front_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 2074
+        width: 589
+        height: 991
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb52087a90e8f1330800000000000000
+      internalID: 3683819192328398270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_1
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 2074
+        width: 590
+        height: 989
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4432ad601c40cdf10800000000000000
+      internalID: 2295715137142268740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_2
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 2071
+        width: 593
+        height: 989
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7f783db8a7113d0800000000000000
+      internalID: -3237671916134729737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_3
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 2071
+        width: 593
+        height: 985
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fdb5e438be6c8f0800000000000000
+      internalID: -520469757726826626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_4
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 2068
+        width: 597
+        height: 985
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a01bb1a36adc58f0800000000000000
+      internalID: -550324932996034395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_5
+      rect:
+        serializedVersion: 2
+        x: 3198
+        y: 2068
+        width: 596
+        height: 981
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f67b7d38e93eef0800000000000000
+      internalID: -80046079265509502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_6
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 2068
+        width: 600
+        height: 975
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5883f55526f510130800000000000000
+      internalID: 3531208458778916997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_7
+      rect:
+        serializedVersion: 2
+        x: 4466
+        y: 2068
+        width: 604
+        height: 967
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e359171cbc274bd0800000000000000
+      internalID: -2646097069703867421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_8
+      rect:
+        serializedVersion: 2
+        x: 5101
+        y: 2068
+        width: 607
+        height: 957
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2b5b63eb1f02700800000000000000
+      internalID: 513676156784194249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_9
+      rect:
+        serializedVersion: 2
+        x: 5735
+        y: 2068
+        width: 607
+        height: 961
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aed691fbd5a2c770800000000000000
+      internalID: 8629642200064908960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_10
+      rect:
+        serializedVersion: 2
+        x: 6373
+        y: 2068
+        width: 600
+        height: 968
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ff6b250d9816af0800000000000000
+      internalID: -404890963652706511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_11
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1045
+        width: 600
+        height: 968
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567211bfc5daffca0800000000000000
+      internalID: -5980871165263927451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_12
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1045
+        width: 600
+        height: 975
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5d7b3e1f721f5bd0800000000000000
+      internalID: -2639370519438459558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_13
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 1045
+        width: 595
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca030a7c3b1c824e0800000000000000
+      internalID: -2006140656101085012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_14
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 1048
+        width: 593
+        height: 982
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b0e76e93c2ae650800000000000000
+      internalID: 6262866859003874188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_15
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 1048
+        width: 593
+        height: 986
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb000904f1c200170800000000000000
+      internalID: 8142556639024644283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_16
+      rect:
+        serializedVersion: 2
+        x: 3199
+        y: 1048
+        width: 591
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093fffe2f988e5c40800000000000000
+      internalID: 5502986011963028368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_17
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 1048
+        width: 593
+        height: 989
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539e0dd28c1efddc0800000000000000
+      internalID: -3611920126249473739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_18
+      rect:
+        serializedVersion: 2
+        x: 4466
+        y: 1045
+        width: 593
+        height: 989
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a0ee16848bf94160800000000000000
+      internalID: 7010410841583313057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_19
+      rect:
+        serializedVersion: 2
+        x: 5101
+        y: 1045
+        width: 593
+        height: 985
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eabad10c95bd7520800000000000000
+      internalID: 2701515033142803177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_20
+      rect:
+        serializedVersion: 2
+        x: 5735
+        y: 1042
+        width: 593
+        height: 985
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3bf0f0191646eb0800000000000000
+      internalID: -4727546433181338651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_21
+      rect:
+        serializedVersion: 2
+        x: 6366
+        y: 1042
+        width: 597
+        height: 981
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f569ced6130797640800000000000000
+      internalID: 5078213412436874847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_22
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 15
+        width: 600
+        height: 975
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5902a806bbd62eb50800000000000000
+      internalID: 6620975053734027413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_23
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 16
+        width: 604
+        height: 968
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34daf8994fe34ece0800000000000000
+      internalID: -1376906365799256765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_24
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 19
+        width: 610
+        height: 954
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a4b94ab90c4300d0800000000000000
+      internalID: -3457836484226599774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_25
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 16
+        width: 606
+        height: 967
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0dd310cd8843650800000000000000
+      internalID: 6211740264545767649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_26
+      rect:
+        serializedVersion: 2
+        x: 2553
+        y: 15
+        width: 603
+        height: 975
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a424ba57836f1f0800000000000000
+      internalID: -1011558988262520317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_27
+      rect:
+        serializedVersion: 2
+        x: 3191
+        y: 15
+        width: 599
+        height: 982
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952131dc76b80a070800000000000000
+      internalID: 8115639806460105305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_28
+      rect:
+        serializedVersion: 2
+        x: 3828
+        y: 15
+        width: 597
+        height: 986
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c342d68d999b50b0800000000000000
+      internalID: -5738824398302723132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_29
+      rect:
+        serializedVersion: 2
+        x: 4466
+        y: 15
+        width: 594
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8fd9d92967cc1550800000000000000
+      internalID: 6132996047059410830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_30
+      rect:
+        serializedVersion: 2
+        x: 5101
+        y: 19
+        width: 593
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a74252351a3e2d70800000000000000
+      internalID: 9020210966382659489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_31
+      rect:
+        serializedVersion: 2
+        x: 5738
+        y: 22
+        width: 590
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f471cece717b92a0800000000000000
+      internalID: -6729660428726471435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_front_32
+      rect:
+        serializedVersion: 2
+        x: 6373
+        y: 23
+        width: 590
+        height: 991
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c0dc4584c0cbd70800000000000000
+      internalID: 9060130055162498096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cbc9cd1aaad220348b278fd48169e2f3
     internalID: 0
     vertices: []
     indices: 
