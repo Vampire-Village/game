@@ -1,0 +1,896 @@
+fileFormatVersion: 2
+guid: f0c9ab715e329724e8a1a56dfee7700c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -495361669599587998
+    second: vamp_back_0
+  - first:
+      213: 1831998073809541758
+    second: vamp_back_1
+  - first:
+      213: -7501994496721405385
+    second: vamp_back_2
+  - first:
+      213: 7598848069733148157
+    second: vamp_back_3
+  - first:
+      213: -3280364084679755377
+    second: vamp_back_4
+  - first:
+      213: 38495577371642242
+    second: vamp_back_5
+  - first:
+      213: -6355079975654965113
+    second: vamp_back_6
+  - first:
+      213: -4098702544493817719
+    second: vamp_back_7
+  - first:
+      213: 3164590620670635640
+    second: vamp_back_8
+  - first:
+      213: -5052776659997951329
+    second: vamp_back_9
+  - first:
+      213: 7302448066365573381
+    second: vamp_back_10
+  - first:
+      213: 5866440161328002685
+    second: vamp_back_11
+  - first:
+      213: 2500570686693845744
+    second: vamp_back_12
+  - first:
+      213: -3546170023661399749
+    second: vamp_back_13
+  - first:
+      213: -8919153967568096029
+    second: vamp_back_14
+  - first:
+      213: -5619458041277665784
+    second: vamp_back_15
+  - first:
+      213: -5018523576170253149
+    second: vamp_back_16
+  - first:
+      213: -4682430726492063624
+    second: vamp_back_17
+  - first:
+      213: -3847394900695752458
+    second: vamp_back_18
+  - first:
+      213: -7631430552153194372
+    second: vamp_back_19
+  - first:
+      213: -2592940491687906457
+    second: vamp_back_20
+  - first:
+      213: -7873531249782353252
+    second: vamp_back_21
+  - first:
+      213: 6157337117649959264
+    second: vamp_back_22
+  - first:
+      213: 2152053659608339335
+    second: vamp_back_23
+  - first:
+      213: 6725155438949870697
+    second: vamp_back_24
+  - first:
+      213: 5554061188342336131
+    second: vamp_back_25
+  - first:
+      213: 5921201971163571514
+    second: vamp_back_26
+  - first:
+      213: -468115103669584823
+    second: vamp_back_27
+  - first:
+      213: 8446047718443492692
+    second: vamp_back_28
+  - first:
+      213: 4784196235158285709
+    second: vamp_back_29
+  - first:
+      213: -2529190059333193646
+    second: vamp_back_30
+  - first:
+      213: -7646862059680258307
+    second: vamp_back_31
+  - first:
+      213: 4710153287236410425
+    second: vamp_back_32
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vamp_back_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 2431
+        width: 743
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2611c20af2f1029f0800000000000000
+      internalID: -495361669599587998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_1
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 2425
+        width: 739
+        height: 1143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a1e92ba809c6910800000000000000
+      internalID: 1831998073809541758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_2
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 2419
+        width: 741
+        height: 1149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a3cf3a0cf83e790800000000000000
+      internalID: -7501994496721405385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_3
+      rect:
+        serializedVersion: 2
+        x: 2276
+        y: 2410
+        width: 743
+        height: 1157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df56b9a1f08847960800000000000000
+      internalID: 7598848069733148157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_4
+      rect:
+        serializedVersion: 2
+        x: 3035
+        y: 2402
+        width: 739
+        height: 1164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89b6bebe3ec972d0800000000000000
+      internalID: -3280364084679755377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_5
+      rect:
+        serializedVersion: 2
+        x: 3791
+        y: 2402
+        width: 742
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28909ae0683c88000800000000000000
+      internalID: 38495577371642242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_6
+      rect:
+        serializedVersion: 2
+        x: 4546
+        y: 2402
+        width: 743
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78043ebce683ec7a0800000000000000
+      internalID: -6355079975654965113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_7
+      rect:
+        serializedVersion: 2
+        x: 5305
+        y: 2402
+        width: 739
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980d47b60cb7e17c0800000000000000
+      internalID: -4098702544493817719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_8
+      rect:
+        serializedVersion: 2
+        x: 6060
+        y: 2402
+        width: 742
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e2b9c1762eaeb20800000000000000
+      internalID: 3164590620670635640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_9
+      rect:
+        serializedVersion: 2
+        x: 6816
+        y: 2402
+        width: 742
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9aff63066ee0e9b0800000000000000
+      internalID: -5052776659997951329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_10
+      rect:
+        serializedVersion: 2
+        x: 7571
+        y: 2406
+        width: 742
+        height: 1158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509457a83d1875560800000000000000
+      internalID: 7302448066365573381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_11
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1217
+        width: 743
+        height: 1157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d767a08be38c96150800000000000000
+      internalID: 5866440161328002685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_12
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 1221
+        width: 743
+        height: 1155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa242c7acfc3b220800000000000000
+      internalID: 2500570686693845744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_13
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 1229
+        width: 742
+        height: 1148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b311682e62979cec0800000000000000
+      internalID: -3546170023661399749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_14
+      rect:
+        serializedVersion: 2
+        x: 2276
+        y: 1225
+        width: 743
+        height: 1153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e47612e8bcc83480800000000000000
+      internalID: -8919153967568096029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_15
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 1225
+        width: 743
+        height: 1153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80eae634faca302b0800000000000000
+      internalID: -5619458041277665784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_16
+      rect:
+        serializedVersion: 2
+        x: 3787
+        y: 1225
+        width: 742
+        height: 1153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4f271956f9a5ab0800000000000000
+      internalID: -5018523576170253149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_17
+      rect:
+        serializedVersion: 2
+        x: 4542
+        y: 1220
+        width: 743
+        height: 1158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 878f016101aa40fb0800000000000000
+      internalID: -4682430726492063624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_18
+      rect:
+        serializedVersion: 2
+        x: 5297
+        y: 1216
+        width: 743
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f06161e8be4b9ac0800000000000000
+      internalID: -3847394900695752458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_19
+      rect:
+        serializedVersion: 2
+        x: 6052
+        y: 1213
+        width: 743
+        height: 1164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7088da8856b71690800000000000000
+      internalID: -7631430552153194372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_20
+      rect:
+        serializedVersion: 2
+        x: 6808
+        y: 1212
+        width: 742
+        height: 1164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 763373d5c56040cd0800000000000000
+      internalID: -2592940491687906457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_21
+      rect:
+        serializedVersion: 2
+        x: 7563
+        y: 1208
+        width: 742
+        height: 1166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9219c84b099bb290800000000000000
+      internalID: -7873531249782353252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_22
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 14
+        width: 742
+        height: 1170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0697adb4c71437550800000000000000
+      internalID: 6157337117649959264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_23
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 14
+        width: 743
+        height: 1170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 783d88eb661addd10800000000000000
+      internalID: 2152053659608339335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_24
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 10
+        width: 742
+        height: 1174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ca4e58d3d845d50800000000000000
+      internalID: 6725155438949870697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_25
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 18
+        width: 743
+        height: 1166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38acdef593df31d40800000000000000
+      internalID: 5554061188342336131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_26
+      rect:
+        serializedVersion: 2
+        x: 3027
+        y: 27
+        width: 741
+        height: 1157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a352c8622d55c2250800000000000000
+      internalID: 5921201971163571514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_27
+      rect:
+        serializedVersion: 2
+        x: 3782
+        y: 35
+        width: 743
+        height: 1149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c77cb1bcbe089f0800000000000000
+      internalID: -468115103669584823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_28
+      rect:
+        serializedVersion: 2
+        x: 4542
+        y: 43
+        width: 739
+        height: 1143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455a2dd96a3663570800000000000000
+      internalID: 8446047718443492692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_29
+      rect:
+        serializedVersion: 2
+        x: 5297
+        y: 47
+        width: 742
+        height: 1140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8dee5cc021e46240800000000000000
+      internalID: 4784196235158285709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_30
+      rect:
+        serializedVersion: 2
+        x: 6052
+        y: 47
+        width: 743
+        height: 1140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250feff8a0386ecd0800000000000000
+      internalID: -2529190059333193646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_31
+      rect:
+        serializedVersion: 2
+        x: 6812
+        y: 47
+        width: 739
+        height: 1141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6a856b873e0e590800000000000000
+      internalID: -7646862059680258307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vamp_back_32
+      rect:
+        serializedVersion: 2
+        x: 7567
+        y: 51
+        width: 742
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c5d539573dd5140800000000000000
+      internalID: 4710153287236410425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4bd002d7e68359e41a07b07298a6e0c8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -263,8 +263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infectButton: {fileID: 2744185583238921574}
   infectText: {fileID: 7160102729746152833}
-  reportButton: {fileID: 1439844875799515033}
-  reportText: {fileID: 6247581241128030078}
+  pingButton: {fileID: 1439844875799515033}
+  pingText: {fileID: 6247581241128030078}
   interactButton: {fileID: 8184236702500678028}
   vampInfMinimap: {fileID: 4893467344891710383}
   villagerMinimap: {fileID: 8978435294938988906}
@@ -970,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 1525008401411973460, guid: de33e4ed180bf34479b9552c98c31185,
         type: 3}
       propertyPath: m_text
-      value: Report
+      value: Ping
       objectReference: {fileID: 0}
     - target: {fileID: 6644620185336113962, guid: de33e4ed180bf34479b9552c98c31185,
         type: 3}
@@ -1080,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: 9100369952719302046, guid: de33e4ed180bf34479b9552c98c31185,
         type: 3}
       propertyPath: m_Name
-      value: Report Button
+      value: Ping Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de33e4ed180bf34479b9552c98c31185, type: 3}

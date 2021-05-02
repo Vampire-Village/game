@@ -1,0 +1,896 @@
+fileFormatVersion: 2
+guid: 84be6b81887190845be08327a0ce5739
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6787835707667089809
+    second: vil_side_left_0
+  - first:
+      213: 7339910649448119730
+    second: vil_side_left_1
+  - first:
+      213: -4668071061284469297
+    second: vil_side_left_2
+  - first:
+      213: 1856555604490574766
+    second: vil_side_left_3
+  - first:
+      213: -8038115910068351953
+    second: vil_side_left_4
+  - first:
+      213: 6150422256369489649
+    second: vil_side_left_5
+  - first:
+      213: -5218034582867076364
+    second: vil_side_left_6
+  - first:
+      213: 7716516548488601062
+    second: vil_side_left_7
+  - first:
+      213: 4434639782691211213
+    second: vil_side_left_8
+  - first:
+      213: 5774619516086184564
+    second: vil_side_left_9
+  - first:
+      213: 1668889601622815934
+    second: vil_side_left_10
+  - first:
+      213: -2387809056691885858
+    second: vil_side_left_11
+  - first:
+      213: -4897734328917609615
+    second: vil_side_left_12
+  - first:
+      213: -3440274344939313129
+    second: vil_side_left_13
+  - first:
+      213: -999260202477311131
+    second: vil_side_left_14
+  - first:
+      213: -5296837448847432402
+    second: vil_side_left_15
+  - first:
+      213: -6854929953944171368
+    second: vil_side_left_16
+  - first:
+      213: 255626631487140388
+    second: vil_side_left_17
+  - first:
+      213: -2874569586114449358
+    second: vil_side_left_18
+  - first:
+      213: -1312989587093206592
+    second: vil_side_left_19
+  - first:
+      213: 7135944677642814003
+    second: vil_side_left_20
+  - first:
+      213: 6014432368211179685
+    second: vil_side_left_21
+  - first:
+      213: -2900084640136700693
+    second: vil_side_left_22
+  - first:
+      213: -6606503346650280506
+    second: vil_side_left_23
+  - first:
+      213: 4685565614077836655
+    second: vil_side_left_24
+  - first:
+      213: -5994677054889814932
+    second: vil_side_left_25
+  - first:
+      213: -6528968951823319806
+    second: vil_side_left_26
+  - first:
+      213: 1712496672029745051
+    second: vil_side_left_27
+  - first:
+      213: -1632023377654977094
+    second: vil_side_left_28
+  - first:
+      213: 5201471636983934349
+    second: vil_side_left_29
+  - first:
+      213: -1011800273372435029
+    second: vil_side_left_30
+  - first:
+      213: 5061995752656937389
+    second: vil_side_left_31
+  - first:
+      213: -1532448482457508789
+    second: vil_side_left_32
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vil_side_left_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 3966
+        width: 535
+        height: 951
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f667aca2363ccc1a0800000000000000
+      internalID: -6787835707667089809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 3961
+        width: 536
+        height: 951
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd367fd8d99cd560800000000000000
+      internalID: 7339910649448119730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_2
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 3961
+        width: 534
+        height: 948
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5cbdd2a1ea73fb0800000000000000
+      internalID: -4668071061284469297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_3
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 3964
+        width: 536
+        height: 941
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabdb6f5c7fc3c910800000000000000
+      internalID: 1856555604490574766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_4
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 3966
+        width: 536
+        height: 934
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2cc5f4ea20e27090800000000000000
+      internalID: -8038115910068351953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_5
+      rect:
+        serializedVersion: 2
+        x: 2769
+        y: 3973
+        width: 534
+        height: 924
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f65f81b470ba5550800000000000000
+      internalID: 6150422256369489649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_6
+      rect:
+        serializedVersion: 2
+        x: 3320
+        y: 3973
+        width: 536
+        height: 920
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa11867131d597b0800000000000000
+      internalID: -5218034582867076364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_7
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2989
+        width: 535
+        height: 929
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed1610cae2961b60800000000000000
+      internalID: 7716516548488601062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_8
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 2989
+        width: 536
+        height: 934
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7002af2610b8d30800000000000000
+      internalID: 4434639782691211213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_9
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 2991
+        width: 534
+        height: 936
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47aea59cad1932050800000000000000
+      internalID: 5774619516086184564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_10
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 2991
+        width: 536
+        height: 939
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb432122046192710800000000000000
+      internalID: 1668889601622815934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_11
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 2993
+        width: 536
+        height: 942
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed86b68605cccded0800000000000000
+      internalID: -2387809056691885858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_12
+      rect:
+        serializedVersion: 2
+        x: 2769
+        y: 2996
+        width: 534
+        height: 943
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17331a0c390c70cb0800000000000000
+      internalID: -4897734328917609615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_13
+      rect:
+        serializedVersion: 2
+        x: 3320
+        y: 2986
+        width: 536
+        height: 949
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 718a00ce5b0b140d0800000000000000
+      internalID: -3440274344939313129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_14
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2002
+        width: 535
+        height: 935
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ba721e32ae122f0800000000000000
+      internalID: -999260202477311131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_15
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 2002
+        width: 536
+        height: 931
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e256674776add76b0800000000000000
+      internalID: -5296837448847432402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_16
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 2002
+        width: 534
+        height: 926
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89c09fe96856ed0a0800000000000000
+      internalID: -6854929953944171368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_17
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 2002
+        width: 536
+        height: 922
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422bbe4211b2c8300800000000000000
+      internalID: 255626631487140388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_18
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 2004
+        width: 536
+        height: 917
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230b189013a7b18d0800000000000000
+      internalID: -2874569586114449358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_19
+      rect:
+        serializedVersion: 2
+        x: 2769
+        y: 2002
+        width: 534
+        height: 922
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9c5835de257cde0800000000000000
+      internalID: -1312989587093206592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_20
+      rect:
+        serializedVersion: 2
+        x: 3320
+        y: 2002
+        width: 536
+        height: 926
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3324dbf50e7f70360800000000000000
+      internalID: 7135944677642814003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_21
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1003
+        width: 535
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8b6d08f5e877350800000000000000
+      internalID: 6014432368211179685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_22
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1007
+        width: 536
+        height: 951
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: becd5169264d0c7d0800000000000000
+      internalID: -2900084640136700693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_23
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 1012
+        width: 534
+        height: 951
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd0b7f753cf054a0800000000000000
+      internalID: -6606503346650280506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_24
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1019
+        width: 536
+        height: 949
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6df4eec919760140800000000000000
+      internalID: 4685565614077836655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_25
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 1019
+        width: 536
+        height: 944
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c649b10daf0aecca0800000000000000
+      internalID: -5994677054889814932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_26
+      rect:
+        serializedVersion: 2
+        x: 2769
+        y: 1017
+        width: 534
+        height: 941
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d340d84517465a0800000000000000
+      internalID: -6528968951823319806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_27
+      rect:
+        serializedVersion: 2
+        x: 3320
+        y: 1017
+        width: 536
+        height: 939
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f1f5766a204c710800000000000000
+      internalID: 1712496672029745051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_28
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 26
+        width: 534
+        height: 923
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abdedb58263e959e0800000000000000
+      internalID: -1632023377654977094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_29
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 23
+        width: 536
+        height: 929
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d62bf25e65f2840800000000000000
+      internalID: 5201471636983934349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_30
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 18
+        width: 536
+        height: 939
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad2ef9130d55f1f0800000000000000
+      internalID: -1011800273372435029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_31
+      rect:
+        serializedVersion: 2
+        x: 2769
+        y: 18
+        width: 534
+        height: 944
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da127a34152df3640800000000000000
+      internalID: 5061995752656937389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vil_side_left_32
+      rect:
+        serializedVersion: 2
+        x: 3320
+        y: 13
+        width: 536
+        height: 951
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44a8867936abbae0800000000000000
+      internalID: -1532448482457508789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e41e3c9d45c1bcf4283213bd758ec69c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

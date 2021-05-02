@@ -26,7 +26,7 @@ public class Infected : MonoBehaviour
         this.playerUI = playerUI;
     }
 
-    public void Report()
+    public void Ping()
     {
         //if (cdSec == 0)
         //{
@@ -47,12 +47,12 @@ public class Infected : MonoBehaviour
         while (cdSec > 0)
         {
             // Change button text
-            playerUI.reportText.text = "Report (" + cdSec + ")";
+            playerUI.pingText.text = "Ping (" + cdSec + ")";
 
             yield return new WaitForSeconds(1);
             cdSec -= 1;
         }
-        playerUI.reportText.text = "Report";
+        playerUI.pingText.text = "Ping";
     }
 
 }
