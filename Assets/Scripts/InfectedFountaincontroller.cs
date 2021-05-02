@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class ImposterFountainController : Task
+public class InfectedFountaincontroller : Task
 {
-    public GameObject BusketOfRock;
+    public GameObject Busket;
+    public GameObject Rocks;
     private int Rocknum;
     public bool taskComplete = false;
     public Item slowdownTimer;
-    public GameObject playerReference;
 
 
     public void Start()
