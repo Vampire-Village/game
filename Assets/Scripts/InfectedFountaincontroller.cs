@@ -7,8 +7,12 @@ using UnityEngine.EventSystems;
 
 public class InfectedFountaincontroller : Task
 {
-    public GameObject Busket;
-    public GameObject Rocks;
+    public GameObject Rock1;
+    public GameObject Rock2;
+    public GameObject Rock3;
+    public GameObject Rock4;
+    public GameObject Rock5;
+    public GameObject Rock6;
     private int Rocknum;
     public bool taskComplete = false;
     public Item slowdownTimer;
@@ -19,19 +23,18 @@ public class InfectedFountaincontroller : Task
         Rocknum = 0;
     }
 
-    public void OnGUI()
+    public void updatestat(int tke)
     {
-        if (!taskComplete)
+        Rocknum = tke;
+        Debug.Log(Rocknum.ToString());
+        if (Rocknum == 6)
         {
-            Rocknum += 1;
-            if (Rocknum > 5)
-            {
-                taskComplete = true;
-                CompleteTask(gameObject, slowdownTimer);
-            }
+            Debug.Log("finish");
+            taskComplete = true;
+            CompleteTask(gameObject, slowdownTimer);
+            Rocknum = 0;
         }
     }
-
 
 
 
