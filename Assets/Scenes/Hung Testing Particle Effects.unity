@@ -1605,6 +1605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5577769601882554105, guid: 240493a0de164bd4990cc1e33ca4a33a,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
     - target: {fileID: 7844542241749530217, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
       propertyPath: sceneId
@@ -1909,7 +1914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   secondsBloodLasts: 5
-  playersInScene: []
+  playerList: []
   playerInRange: []
   trail: {fileID: 0}
 --- !u!65 &1639485257
@@ -2372,7 +2377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hair: 0
-  frontSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  frontSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 3}
   backSprite: {fileID: 0}
 --- !u!212 &1730961564
 SpriteRenderer:
@@ -2455,7 +2460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hair: 0
-  frontSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  frontSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 3}
   backSprite: {fileID: 0}
 --- !u!212 &1861199597
 SpriteRenderer:
@@ -2840,7 +2845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   secondsBloodLasts: 5
-  playersInScene: []
+  playerList: []
   playerInRange: []
   trail: {fileID: 0}
 --- !u!1001 &221769448346334372
@@ -2923,11 +2928,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lamp Post
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907734933385112443, guid: b0522f03b94d4c747947f79da92e40f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6536883821007450561, guid: b0522f03b94d4c747947f79da92e40f3,
         type: 3}
