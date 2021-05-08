@@ -12,6 +12,7 @@ public class Controller : NetworkBehaviour
     public bool inTask = false;
     public Item heldItem;
     public bool moveable = true;
+    public Animator animator;
 
     private PlayerAudio audioManager;
 
@@ -25,31 +26,49 @@ public class Controller : NetworkBehaviour
 
     void Update()
     {
-        if (hasAuthority)
+        if (hasAuthority && moveable)
+        {
+            float moveXAxis = Input.GetAxis("Horizontal");
+            float moveZAxis = Input.GetAxis("Vertical");
+
+            Vector3 movement = new Vector3(moveXAxis, 0, moveZAxis);
+
+            movement = Vector3.ClampMagnitude(movement, 1f);
+
+            if (!inTask)
+            {
+                //Amy's new movement
+                animator.SetFloat("Horizontal", movement.x);
+                //Debug.Log(movement.x);
+                animator.SetFloat("Vertical", movement.z);
+                animator.SetFloat("Speed", movement.magnitude);
+
+                transform.Translate(movement * speed * Time.deltaTime);
+
+                if (moveXAxis != 0 || moveZAxis != 0)
+                {
+                    audioManager.PlayFootsteps();
+                }
+            }
+        }
+
+
+                if (hasAuthority)
         {
             if (Input.GetButtonDown("Interact"))
             {
                 Interact();
             }
         }
+
     }
     void FixedUpdate()
     {
         if (hasAuthority && moveable)
         {
-            float moveXAxis = Input.GetAxis("Horizontal");
-            float moveZAxis = Input.GetAxis("Vertical");
-            spriteFlip(moveZAxis);
-            Vector3 movement = new Vector3(moveXAxis, 0, moveZAxis);
-            movement = Vector3.ClampMagnitude(movement, 1f);
-
             if (!inTask)
-            {
-                transform.Translate(movement * speed * Time.deltaTime);
-                if (moveXAxis != 0 || moveZAxis != 0)
-                {
-                    audioManager.PlayFootsteps();
-                }
+            {           
+
             }
         }
     }
@@ -103,7 +122,7 @@ public class Controller : NetworkBehaviour
     {
         if (!inTask)
         {
-            if (moveZAxis > 0.01 && this.isFrontFacing != false)
+            if (moveZAxis > 0.01 && this.isFrontFacing != false)// z is
             {
                 CmdSpriteUpdate(false);
             }
