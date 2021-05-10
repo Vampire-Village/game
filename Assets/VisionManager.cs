@@ -14,9 +14,11 @@ public class VisionManager : MonoBehaviour
     int vampireViewable = 10;
     void Start()
     {
-        camera = GetComponentInChildren<Camera>();
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        //Unsure if line above works
         gamePlayer = GamePlayer.local;
         gamePlayer.OnRoleUpdated.AddListener(UpdateVisualsForRole);
+        parentSprite = GamePlayer.local.transform;
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class VisionManager : MonoBehaviour
     void SetSpriteLayer(LayerMask layer)
     {
         //set children of the parent sprite to specific layer
+        parentSprite.gameObject.layer = layer;
         foreach(Transform sprite in parentSprite)
         {
             sprite.gameObject.layer = layer;
