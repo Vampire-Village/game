@@ -37,6 +37,7 @@ namespace VampireVillage.Network
         public TMP_Text roomCodeText;
         public TMP_Text playerCountText;
         public Button startGameButton;
+        private TMP_Text startGameButtonText;
         public Button leaveLobbyButton;
         public GameObject popupPanel;
         public TMP_Text popupText;
@@ -154,6 +155,7 @@ namespace VampireVillage.Network
             startGameButton.onClick.AddListener(StartGame);
             leaveLobbyButton.onClick.AddListener(LeaveRoom);
             popupButton.onClick.AddListener(() => popupPanel.SetActive(false));
+            startGameButtonText = startGameButton.GetComponentInChildren<TMP_Text>();
 
             // Set the player count text.
             playerCountText.text = $"{players.Count.ToString()}/10";
@@ -177,6 +179,7 @@ namespace VampireVillage.Network
         public void RpcOnGameStarting()
         {
             GameLogger.LogClient("Game is starting soon!");
+            startGameButtonText.text = "Game starting...";
             startGameButton.interactable = false;
             leaveLobbyButton.interactable = false;
         }
