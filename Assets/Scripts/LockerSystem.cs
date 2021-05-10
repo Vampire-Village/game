@@ -21,7 +21,7 @@ public class LockerSystem : NetworkBehaviour
     private Door door;
 
     [SerializeField]
-    private GameManager gameManager;
+    private GameManager gameManager = null;
 
     private VampireVillageNetwork network;
 
