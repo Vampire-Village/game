@@ -23,11 +23,12 @@ public class VisionManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             UpdateVisualsForRole();
         }
+        */
     }
 
     void SetSpriteLayer(LayerMask layer)
