@@ -4801,7 +4801,7 @@ MonoBehaviour:
   syncInterval: 0.1
   playerName: 
   nameText: {fileID: 7744660429036767748}
-  role: 1
+  role: 0
   OnRoleUpdated:
     m_PersistentCalls:
       m_Calls: []

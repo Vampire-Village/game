@@ -17,6 +17,12 @@ public class Infected : NetworkBehaviour
     private float pingHeight = 20;
     private float pingZoffset = 1.1f;
 
+    GameManager gameManager = null;
+
+    private void Start()
+    {
+        gameManager = GameManager.local;
+    }
     public void RegisterUI(PlayerUI playerUI)
     {
         this.playerUI = playerUI;
@@ -24,19 +30,18 @@ public class Infected : NetworkBehaviour
 
     public void Ping()
     {
-        
         Debug.Log("*ping*");
         //minimap = GameObject.Find("/UI Canvas/VampireMinimap"); // move to start when testing actual game
         xPos = GetComponent<Transform>().position.x;
         zPos = GetComponent<Transform>().position.z;
         GameObject ping = Instantiate(pingSprite, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
         //ping.transform.parent = minimap.transform;
-        CmdPing(ping);
+        //CmdPing(ping);
     }
 
     [Command]
     private void CmdPing(GameObject ping)
     {
-        GameManager.local.Ping(ping);
+        gameManager.Ping(ping);
     }
 }
