@@ -1855,6 +1855,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2141825888, guid: 240493a0de164bd4990cc1e33ca4a33a, type: 3}
+      propertyPath: secondsBloodLasts
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141825888, guid: 240493a0de164bd4990cc1e33ca4a33a, type: 3}
+      propertyPath: range
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 379157041769675408, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1914,11 +1922,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5577769601882554105, guid: 240493a0de164bd4990cc1e33ca4a33a,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 823
       objectReference: {fileID: 0}
     - target: {fileID: 7844542241749530217, guid: 240493a0de164bd4990cc1e33ca4a33a,
         type: 3}
@@ -2443,6 +2446,8 @@ MonoBehaviour:
   eyes:
   - {fileID: 1730961561}
   - {fileID: 1861199595}
+  animator: {fileID: 0}
+  vampireVisual: {fileID: 0}
 --- !u!114 &1673654215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2507,6 +2512,7 @@ MonoBehaviour:
   inTask: 0
   heldItem: {fileID: 11400000, guid: 3866f0ea7e1782348a7dd825782118ed, type: 2}
   moveable: 1
+  animator: {fileID: 0}
   isFrontFacing: 1
 --- !u!54 &1673654219
 Rigidbody:
@@ -3209,29 +3215,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &2141825887 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1115018013}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2141825888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141825887}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5de05adca5d619546aa8b70d4c4e3168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 10
-  secondsBloodLasts: 5
-  playerList: []
-  playerInRange: []
-  trail: {fileID: 0}
 --- !u!1001 &221769448346334372
 PrefabInstance:
   m_ObjectHideFlags: 0

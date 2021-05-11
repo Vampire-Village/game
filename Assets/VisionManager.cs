@@ -14,7 +14,7 @@ public class VisionManager : MonoBehaviour
     int vampireViewable = 10;
     void Start()
     {
-        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        camera = this.GetComponent<Camera>();
         //Unsure if line above works
         gamePlayer = GamePlayer.local;
         gamePlayer.OnRoleUpdated.AddListener(UpdateVisualsForRole);
