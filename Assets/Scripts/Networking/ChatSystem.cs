@@ -19,6 +19,8 @@ namespace VampireVillage.Network
         private readonly List<ServerPlayer> players = new List<ServerPlayer>();
         private readonly List<GameObject> chatObjects = new List<GameObject>();
 
+        private Controller playerController = null;
+
         private VampireVillageNetwork network;
 #endregion
 
@@ -73,6 +75,11 @@ namespace VampireVillage.Network
         public void ToggleChat()
         {
             chatPanel.SetActive(!chatPanel.activeSelf);
+
+            if (playerController == null)
+                playerController = BasePlayer.local.GetComponent<Controller>();
+            
+            playerController.moveable = !chatPanel.activeSelf;
         }
 
         public void SendChat()
