@@ -17,10 +17,15 @@ public class Infected : MonoBehaviour
 
     private PlayerUI playerUI;
 
-    private float pingHeight = 20;
+    private float pingHeight = 14;
     private float pingZoffset = 1.1f;
 
 
+    private void Start()
+    {
+        pingSprite = Resources.Load("Ping") as GameObject;
+        gameManager = GameManager.local;
+    }
     public void RegisterUI(PlayerUI playerUI)
     {
         this.playerUI = playerUI;
@@ -28,31 +33,19 @@ public class Infected : MonoBehaviour
 
     public void Ping()
     {
-        //if (cdSec == 0)
-        //{
-            //cdSec = cooldown;
-            //StartCoroutine(LowerCooldown());
-            Debug.Log("*ping*");
-            minimap = GameObject.Find("/UI Canvas/VampireMinimap"); // move to start when testing actual game
-            xPos = GetComponent<Transform>().position.x;
-            zPos = GetComponent<Transform>().position.z;
-            // may need to adjust y/z positions
-            GameObject ping = Instantiate(pingSprite, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
-            ping.transform.parent = minimap.transform;
-        //}
+        Debug.Log("*ping*");
+        xPos = GetComponent<Transform>().position.x;
+        zPos = GetComponent<Transform>().position.z;
+
+        CmdPing(pingSprite, xPos, zPos);
     }
 
-    IEnumerator LowerCooldown()
+    [Command]
+    private void CmdPing(GameObject pingSprite, float xPos,float zPos)
     {
-        while (cdSec > 0)
-        {
-            // Change button text
-            playerUI.pingText.text = "Ping (" + cdSec + ")";
-
-            yield return new WaitForSeconds(1);
-            cdSec -= 1;
-        }
-        playerUI.pingText.text = "Ping";
+        GameObject ping = Instantiate(pingSprite, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
+        Debug.Log(ping);
+        gameManager.Ping(ping);
     }
 
 }
