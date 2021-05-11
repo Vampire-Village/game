@@ -16,11 +16,14 @@ public class VisionManager : MonoBehaviour
     {
         camera = this.GetComponent<Camera>();
         //Unsure if line above works
+        GamePlayer.OnPlayerSpawned.AddListener(InitializePlayer);
+    }
+    void InitializePlayer()
+    {
         gamePlayer = GamePlayer.local;
         gamePlayer.OnRoleUpdated.AddListener(UpdateVisualsForRole);
         parentSprite = GamePlayer.local.transform;
     }
-
     // Update is called once per frame
     void Update()
     {/*
