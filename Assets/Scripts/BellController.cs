@@ -9,7 +9,7 @@ public class BellController : Interactable
     //private MeetingManager meetingManager;
     public void Start()
     {
-        //meetingManager = ; 
+        //meetingManager = ;
     }
     public override void Interact(GameObject player)
     {
