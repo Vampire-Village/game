@@ -12,7 +12,9 @@ public class TeleportGraves : Interactable
 
     public override void Interact(GameObject player)
     {
-        StartCoroutine(WaitToTeleport(player));
+        Role role = GamePlayer.local.role;
+        if (role == Role.VampireLord)
+            StartCoroutine(WaitToTeleport(player));
     }
 
     // Start is called before the first frame update
