@@ -15,6 +15,6 @@ public class BellController : Interactable
     {
         Role role = GamePlayer.local.role;
         if (role == Role.Villager || role == Role.Infected)
-        GameManager.local.GetComponent<MeetingManager>().StartMeeting();
+            GameManager.local.GetComponent<MeetingManager>().StartMeeting();
     }
 }
