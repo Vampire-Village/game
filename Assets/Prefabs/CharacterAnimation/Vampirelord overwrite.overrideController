@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vampirelord overwrite
+  m_Controller: {fileID: 9100000, guid: a78b2f8fd8f28d24cbeb40c3adc6f897, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 51bbe67f9887701408e8c0cdd78d2863, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 10fc7df71684e6f43b6476dd95f93a76, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d247ee53b85d6544a9cb85bf5248a17, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 669a5eba192939348a5a9fe3e8527eff, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b21aff1fe2f5ea44c9e92a6654753dc2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7a2e9779eb7ea204e8e13ccaeaf15f17, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fc423b5c014121f4aa6521e84f47002b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 19cd852cb6360ef43a56b3d7ae754b79, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bc3a3652ec6e2a9448b0baf905a1ff7c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 99f619be05f74b04398ba0288591641e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a25f57a69bff3ba499afd65d157edfc5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0b56a5aba8fabae4e9aa188e5700e6ff, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 76fff88757bc39348966527d03c476e5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 59222b21f494eb24a85940b6c26b1aad, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 95027e1207150d043afa3825ca3ddcb7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 71c1c847b4ec12943af98c20ef2a5365, type: 2}
