@@ -43,6 +43,7 @@ public class PlayerUI : MonoBehaviour
         switch (player.role)
         {
             case Role.VampireLord:
+                interactButton.gameObject.SetActive(true);
                 infectButton.gameObject.SetActive(true);
                 vampInfMinimap.gameObject.SetActive(true);
                 AssignVampMinimap();

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Lights : MonoBehaviour
 {
-    private Light light;
-    [SerializeField] [Range(0f,0.1f)] float transitionTime;
+    private Light m_light;
+    [SerializeField] [Range(0f,0.1f)] float transitionTime = 0;
     public Color activeColor;
     public Color dayLight;
     public Color nightLight;
@@ -15,14 +15,14 @@ public class Lights : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        light = GetComponent<Light>();
+        m_light = GetComponent<Light>();
         DayNight(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        light.color = Color.Lerp(light.color, activeColor, transitionTime);
+        m_light.color = Color.Lerp(m_light.color, activeColor, transitionTime);
         RenderSettings.fogColor = Color.Lerp(RenderSettings.fogColor, activeFog, transitionTime);
     }
 

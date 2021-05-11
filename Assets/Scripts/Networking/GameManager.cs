@@ -351,6 +351,7 @@ namespace VampireVillage.Network
             for (int i = 0; i < vampires.Count; i++)
             {
                 TargetSpawnPing(vampires[i].connectionToClient, ping);
+                Debug.Log("VAMP TEAM " + i);
             }
         }
 
