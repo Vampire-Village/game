@@ -18,15 +18,11 @@ public class WellController : Interactable
     // Update is called once per frame
     public override void Interact(GameObject player)
     {
-        Role role = GamePlayer.local.role;
-        if (role == Role.Villager || role == Role.Infected)
-        {
-            Controller playerController = player.GetComponent<Controller>();
-            //currentItemCompletion = playerController.heldItem.completionValue;
-            //totalCompletionProgress += playerController.heldItem.completionValue;
-            wellManager.CmdDepoItem(playerController.heldItem.completionValue);//will probably eventually send the whole item data, in the case of special item effects
-            playerController.heldItem = emptyItem;
-            //Debug.Log(totalCompletionProgress);
-        }
+        Controller playerController = player.GetComponent<Controller>();
+        //currentItemCompletion = playerController.heldItem.completionValue;
+        //totalCompletionProgress += playerController.heldItem.completionValue;
+        wellManager.CmdDepoItem(playerController.heldItem.completionValue);//will probably eventually send the whole item data, in the case of special item effects
+        playerController.heldItem = emptyItem;
+        //Debug.Log(totalCompletionProgress);
     }
 }

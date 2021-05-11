@@ -192,11 +192,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
-    - target: {fileID: 7980430306697768535, guid: 1d342a007d0d56248b82ba2bd7ddbcc9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d342a007d0d56248b82ba2bd7ddbcc9, type: 3}
 --- !u!224 &4888994886137801537 stripped
@@ -330,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 3896449365820789634, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414e8961ddd04e546b83eaf3aa1a3611, type: 3}

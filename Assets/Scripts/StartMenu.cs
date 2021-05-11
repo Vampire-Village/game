@@ -14,11 +14,7 @@ public class StartMenu : MonoBehaviour
     [Header("Online State")]
     public GameObject onlinePanel;
     public Button hostButton;
-    private TMP_Text hostButtonText;
-    private string hostButtonInitialText;
     public Button joinButton;
-    private TMP_Text joinButtonText;
-    private string joinButtonInitialText;
     public TMP_InputField roomInput;
 
     [Header("Offline State")]
@@ -38,10 +34,6 @@ public class StartMenu : MonoBehaviour
         // Get references.
         network = VampireVillageNetwork.singleton as VampireVillageNetwork;
         codeLength = network.roomManager.codeLength;
-        hostButtonText = hostButton.GetComponentInChildren<TMP_Text>();
-        hostButtonInitialText = hostButtonText.text;
-        joinButtonText = joinButton.GetComponentInChildren<TMP_Text>();
-        joinButtonInitialText = joinButtonText.text;
 
         // Show menu depending on current network state.
         if (network.isNetworkActive)
@@ -127,7 +119,6 @@ public class StartMenu : MonoBehaviour
 
     private void HostRoom()
     {
-        hostButtonText.text = "Creating Room...";
         SetInputsAndButtonsActive(false);
         SetName();
         Client.local.HostRoom(OnHostRoomError);
@@ -135,7 +126,6 @@ public class StartMenu : MonoBehaviour
 
     private void OnHostRoomError(string errorMessage)
     {
-        hostButtonText.text = hostButtonInitialText;
         ShowPopup(errorMessage);
         SetInputsAndButtonsActive(true);
     }
@@ -143,7 +133,6 @@ public class StartMenu : MonoBehaviour
     private void JoinRoom()
     {
         string roomCode = roomInput.text;
-        joinButtonText.text = "Joining room...";
         SetInputsAndButtonsActive(false);
         SetName();
         Client.local.JoinRoom(roomCode, OnJoinRoomError);
@@ -151,7 +140,6 @@ public class StartMenu : MonoBehaviour
 
     private void OnJoinRoomError(string errorMessage)
     {
-        joinButtonText.text = joinButtonInitialText;
         ShowPopup(errorMessage);
         SetInputsAndButtonsActive(true);
     }

@@ -14,18 +14,14 @@ public class TaskSpawner : Interactable
 
     public override void Interact(GameObject player)
     {
-        Role role = GamePlayer.local.role;
-        if (role == Role.Villager || role == Role.Infected)
+        playerObject = player;
+        Controller playerController = playerObject.GetComponent<Controller>();
+        if (!playerController.inTask)
         {
-            playerObject = player;
-            Controller playerController = playerObject.GetComponent<Controller>();
-            if (!playerController.inTask)
-            {
-                playerController.StartTask();
-                GameObject taskObject;
-                taskObject = Instantiate(taskPrefab);
-                //taskObject.playerReference = playerObject;
-            }
+            playerController.StartTask();
+            GameObject taskObject;
+            taskObject = Instantiate(taskPrefab);
+            //taskObject.playerReference = playerObject;
         }
     }
     //public GameObject currentPlayer()

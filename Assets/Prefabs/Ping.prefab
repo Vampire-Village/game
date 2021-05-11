@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2126934896108815685}
   - component: {fileID: 2126934896108815686}
   - component: {fileID: 5981474077209621880}
-  - component: {fileID: -7284537109971577078}
   m_Layer: 0
   m_Name: Ping
   m_TagString: Untagged
@@ -72,12 +71,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3cc84bfd5ea993f4691e544ef3867aed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4053118ae6e3af34a8fca9341e5000ac, type: 3}
   m_Color: {r: 1, g: 0.10588236, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 35.079998, y: 35.079998}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -96,19 +95,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 3
---- !u!114 &-7284537109971577078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126934896108815687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0

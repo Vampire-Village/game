@@ -6,15 +6,13 @@ public class TeleportGraves : Interactable
 {
     public GameObject teleportTo;
     public int secondsToTeleport = 1;
-    public TeleportAnimation teleportAnimation;
+    public TeleportAnimation animation;
     private float graveX;
     private float graveZ;
 
     public override void Interact(GameObject player)
     {
-        Role role = GamePlayer.local.role;
-        if (role == Role.VampireLord)
-            StartCoroutine(WaitToTeleport(player));
+        StartCoroutine(WaitToTeleport(player));
     }
 
     // Start is called before the first frame update
@@ -22,14 +20,14 @@ public class TeleportGraves : Interactable
     {
         graveX = teleportTo.GetComponent<Transform>().position.x;
         graveZ = teleportTo.GetComponent<Transform>().position.z;
-        teleportAnimation = GetComponentInChildren<TeleportAnimation>();
+        animation = GetComponentInChildren<TeleportAnimation>();
     }
 
     IEnumerator WaitToTeleport(GameObject player)
     {
         Controller controller = player.GetComponent<Controller>();
         controller.inTask = true;
-        teleportAnimation.PlayAnimations();
+        animation.PlayAnimations();
         yield return new WaitForSeconds(secondsToTeleport);
         float playerY = controller.transform.position.y;
         controller.transform.position = new Vector3(graveX, playerY, graveZ - 2);

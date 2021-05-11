@@ -29,8 +29,7 @@ public class Door : Interactable
 
     public override void Interact(GameObject player)
     {
-        Role role = GamePlayer.local.role;
-        if (!moving && (role == Role.Villager || role == Role.Infected))
+        if (!moving)
             lockerSystem.ActivateLocker();
     }
 

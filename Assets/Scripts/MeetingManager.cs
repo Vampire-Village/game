@@ -20,7 +20,7 @@ public class MeetingManager : NetworkBehaviour
 
 
     [SerializeField]
-    private GameObject chatButton = null;
+    private GameObject chatButton;
 #endregion
 
 #region Unity Methods

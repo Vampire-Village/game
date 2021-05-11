@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,16 +12,9 @@ public class VampireLord : MonoBehaviour
 
     private PlayerUI playerUI;
 
-    public Animator animator; 
-    public AnimatorOverrideController vampireVisual;
-
     public void OnEnable()
     {
-
-    // change animator for vampirelord
-    animator.runtimeAnimatorController = vampireVisual;
-
-    foreach (var eye in eyes)
+        foreach (var eye in eyes)
         {
             eye.SetActive(true);
         }

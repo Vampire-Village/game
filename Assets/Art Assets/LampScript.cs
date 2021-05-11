@@ -11,7 +11,7 @@ public class LampScript : MonoBehaviour
     public Material onMaterial;
     public Material offMaterial;
     public MeshRenderer lamp;
-    public GameObject m_light;
+    public GameObject light;
     bool lighton = true;
     void Start()
     {
@@ -34,12 +34,12 @@ public class LampScript : MonoBehaviour
         if (lighton)
         {
             lamp.materials[1] = offMaterial;
-            m_light.SetActive(false);
+            light.SetActive(false);
         }
         else
         {
             lamp.materials[1] = onMaterial;
-            m_light.SetActive(true);
+            light.SetActive(true);
         }
     }
 

@@ -44,7 +44,7 @@ RectTransform:
   m_GameObject: {fileID: 4928970625598000134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5038328515102887803}
   - {fileID: 452128626724679439}
@@ -77,14 +77,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.76862746}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2394280968984208235, guid: 8db42922c966df0439826c903c646226,
-    type: 3}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -121,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 50
-    m_Right: 50
+    m_Left: 16
+    m_Right: 16
     m_Top: 8
     m_Bottom: 8
   m_ChildAlignment: 0
@@ -217,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 1535670457704668560, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1535670457704668560, guid: 414e8961ddd04e546b83eaf3aa1a3611,
         type: 3}

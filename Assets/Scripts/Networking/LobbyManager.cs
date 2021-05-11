@@ -177,7 +177,6 @@ namespace VampireVillage.Network
         public void RpcOnGameStarting()
         {
             GameLogger.LogClient("Game is starting soon!");
-            roomCodeText.text = "Game starting...";
             startGameButton.interactable = false;
             leaveLobbyButton.interactable = false;
         }

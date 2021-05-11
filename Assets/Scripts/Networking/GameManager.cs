@@ -338,23 +338,6 @@ namespace VampireVillage.Network
             GamePlayer.OnLocalRoleUpdated.RemoveListener(AnnouncePlayerRole);
             players.Callback -= OnPlayersUpdated;
         }
-
-        [TargetRpc]
-        void TargetSpawnPing(NetworkConnection conn, GameObject ping)
-        {
-            NetworkServer.Spawn(ping, conn);
-            Debug.Log("ping spawned");
-        }
-
-        public void Ping(GameObject ping)
-        {
-            for (int i = 0; i < vampires.Count; i++)
-            {
-                TargetSpawnPing(vampires[i].connectionToClient, ping);
-                Debug.Log("VAMP TEAM " + i);
-            }
-        }
-
-        #endregion
+#endregion
     }
 }
