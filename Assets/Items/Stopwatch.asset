@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9050314d78adff4cb6eee6d8a3b60c8, type: 3}
-  m_Name: Empty
+  m_Name: Stopwatch
   m_EditorClassIdentifier: 
-  displayName: None
+  displayName: Stopwatch
+  completionValue: -6

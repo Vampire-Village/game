@@ -9,7 +9,6 @@ public class DropItem : MonoBehaviour, IDropHandler
     public InfectedFountaincontroller infectedfountaincontroller;
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Ondrop");
         if (eventData.pointerDrag != null)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
