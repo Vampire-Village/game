@@ -27,6 +27,7 @@ namespace VampireVillage.Network
         public TMP_Text winText;
         public TMP_Text announcementText;
         public ChatSystem chatSystem;
+        public GameObject pingPrefab;
 #endregion
 
         public SyncList<GameObject> players = new SyncList<GameObject>();
@@ -255,6 +256,14 @@ namespace VampireVillage.Network
             RpcToggleDayNight(true);
         }
 
+        public void Ping(float xPos, float pingHeight, float zPos, float pingZoffset)
+        {
+            for (int i = 0; i < vampires.Count; i++)
+            {
+                TargetSpawnPing(vampires[i].connectionToClient, xPos, pingHeight, zPos, pingZoffset);
+            }
+        }
+
         public override void OnStopServer()
         {
             base.OnStopServer();
@@ -346,20 +355,11 @@ namespace VampireVillage.Network
         [TargetRpc]
         void TargetSpawnPing(NetworkConnection target, float xPos, float pingHeight, float zPos, float pingZoffset)
         {
-            //GameObject ping = Instantiate(pingPrefab, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
-            GameObject ping = network.InstantiatePing(xPos, pingHeight, zPos, pingZoffset);
-            NetworkServer.Spawn(ping, target);
+            GameObject ping = Instantiate(pingPrefab, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
+            // GameObject ping = network.InstantiatePing(xPos, pingHeight, zPos, pingZoffset);
+            // NetworkServer.Spawn(ping, target);
             Debug.Log("Ping spawned.");
         }
-
-        public void Ping(float xPos, float pingHeight, float zPos, float pingZoffset)
-        {
-            for (int i = 0; i < vampires.Count; i++)
-            {
-                TargetSpawnPing(vampires[i].connectionToClient, xPos, pingHeight, zPos, pingZoffset);
-            }
-        }
-
-        #endregion
+#endregion
     }
 }

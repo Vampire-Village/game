@@ -7,14 +7,14 @@ public class VisionManager : MonoBehaviour
 {
     //Attach this script to the parent prefab. Make sure to assign the parentSprite via drag and click!
     // Start is called before the first frame update
-    public Camera camera;
+    public Camera m_camera;
     public GamePlayer gamePlayer;
     public Transform parentSprite;
     int ghostViewable = 11;
     int vampireViewable = 10;
     void Start()
     {
-        camera = this.GetComponent<Camera>();
+        m_camera = this.GetComponent<Camera>();
         //Unsure if line above works
         GamePlayer.OnPlayerSpawned.AddListener(InitializePlayer);
     }
@@ -51,13 +51,13 @@ public class VisionManager : MonoBehaviour
         switch (gamePlayer.role)
         {
             case Role.VampireLord:
-                camera.cullingMask = ~(1 << ghostViewable);
+                m_camera.cullingMask = ~(1 << ghostViewable);
                 break;
             case Role.Ghost:
                 SetSpriteLayer(ghostViewable);
                 break;
             default:
-                camera.cullingMask = ~((1 << ghostViewable) | (1 << vampireViewable));
+                m_camera.cullingMask = ~((1 << ghostViewable) | (1 << vampireViewable));
                 break;
         }
     }

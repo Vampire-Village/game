@@ -43,6 +43,22 @@ public class MeetingManager : NetworkBehaviour
 #endregion
 
 #region Server Methods
+    [Command(ignoreAuthority=true)]
+    public void CmdStartMeeting()
+    {
+#if UNITY_SERVER || UNITY_EDITOR
+        StartMeeting();
+#endif
+    }
+
+    [Command(ignoreAuthority = true)]
+    public void CmdTallyVote(int indexValue)
+    {
+#if UNITY_SERVER || UNITY_EDITOR
+        meetingTally[indexValue] += 1;
+#endif
+    }
+
 #if UNITY_SERVER || UNITY_EDITOR
     /// <summary>
     /// Starts a meeting at the town hall.
@@ -157,12 +173,6 @@ public class MeetingManager : NetworkBehaviour
         GamePlayer.local.GetComponent<Controller>().moveable = true;
         // Hide the chat button.
         chatButton.SetActive(false);
-    }
-
-    [Command(ignoreAuthority = true)]
-    public void CmdTallyVote(int indexValue)
-    {
-        meetingTally[indexValue] += 1;
     }
 #endregion
 }

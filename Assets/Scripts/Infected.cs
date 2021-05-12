@@ -37,6 +37,8 @@ public class Infected : NetworkBehaviour
     [Command]
     private void CmdPing(float xPos, float pingHeight, float zPos, float pingZoffset)
     {
+#if UNITY_SERVER || UNITY_EDITOR
         gameManager.Ping(xPos, pingHeight, zPos, pingZoffset);
+#endif
     }
 }
