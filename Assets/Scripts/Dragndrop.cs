@@ -14,25 +14,21 @@ public class Dragndrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup.blocksRaycasts = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown");
     }
 
 }
