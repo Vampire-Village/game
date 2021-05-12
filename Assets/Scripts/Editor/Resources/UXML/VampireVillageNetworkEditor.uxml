@@ -27,6 +27,7 @@
             <ue:PropertyField binding-path="playerPrefab" label="Client" />
             <ue:PropertyField binding-path="lobbyPlayerPrefab" label="Lobby Player" />
             <ue:PropertyField binding-path="gamePlayerPrefab" label="Game Player" />
+			<ue:PropertyField binding-path="pingPrefab" label="Ping" />
         </ui:VisualElement>
     </ui:VisualElement>
 </UXML>

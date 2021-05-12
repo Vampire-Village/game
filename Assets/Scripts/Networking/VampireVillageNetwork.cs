@@ -34,6 +34,7 @@ namespace VampireVillage.Network
 #region Prefabs
         public GameObject lobbyPlayerPrefab;
         public GameObject gamePlayerPrefab;
+        public GameObject pingPrefab;
 #endregion
 
 #region Network Events
@@ -69,6 +70,7 @@ namespace VampireVillage.Network
             // Register custom prefabs.
             spawnPrefabs.Add(lobbyPlayerPrefab);
             spawnPrefabs.Add(gamePlayerPrefab);
+            spawnPrefabs.Add(pingPrefab);
 
             base.Awake();
         }
@@ -338,6 +340,12 @@ namespace VampireVillage.Network
         {
             // TODO: Remove any reference to the game player.
             NetworkServer.Destroy(gamePlayerInstance);
+        }
+
+        public GameObject InstantiatePing(float xPos, float pingHeight, float zPos, float pingZoffset)
+        {
+            GameObject pingInstance = Instantiate(pingPrefab, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
+            return pingInstance;
         }
 
         public override void OnServerDisconnect(NetworkConnection conn)

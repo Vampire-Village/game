@@ -179,6 +179,7 @@ namespace VampireVillage.Network
             {
                 villagers.Remove(player);
                 vampires.Add(player);
+                player.GetComponent<Infected>().RegisterGameManager(this);
             }
             if (oldRole == Role.Villager && newRole == Role.Ghost)
             {
@@ -340,18 +341,19 @@ namespace VampireVillage.Network
         }
 
         [TargetRpc]
-        void TargetSpawnPing(NetworkConnection conn, GameObject ping)
+        void TargetSpawnPing(NetworkConnection target, float xPos, float pingHeight, float zPos, float pingZoffset)
         {
-            NetworkServer.Spawn(ping, conn);
-            Debug.Log("ping spawned");
+            //GameObject ping = Instantiate(pingPrefab, new Vector3(xPos, pingHeight, zPos + pingZoffset), Quaternion.Euler(90, 0, 0)) as GameObject;
+            GameObject ping = network.InstantiatePing(xPos, pingHeight, zPos, pingZoffset);
+            NetworkServer.Spawn(ping, target);
+            Debug.Log("Ping spawned.");
         }
 
-        public void Ping(GameObject ping)
+        public void Ping(float xPos, float pingHeight, float zPos, float pingZoffset)
         {
             for (int i = 0; i < vampires.Count; i++)
             {
-                TargetSpawnPing(vampires[i].connectionToClient, ping);
-                Debug.Log("VAMP TEAM " + i);
+                TargetSpawnPing(vampires[i].connectionToClient, xPos, pingHeight, zPos, pingZoffset);
             }
         }
 

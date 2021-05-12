@@ -306,6 +306,8 @@ MonoBehaviour:
     type: 3}
   gamePlayerPrefab: {fileID: 379157041769675410, guid: 240493a0de164bd4990cc1e33ca4a33a,
     type: 3}
+  pingPrefab: {fileID: 2126934896108815687, guid: e3506423ef535d24cb2e62e93d4f663a,
+    type: 3}
   roomManager: {fileID: 0}
 --- !u!4 &1576988696
 Transform:
