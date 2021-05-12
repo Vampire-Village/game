@@ -297,7 +297,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs: []
   networkPort: 7777
-  forceClient: 1
+  forceClient: 0
   networkScene: Network
   menuScene: StartMenu
   lobbyScene: Lobby
