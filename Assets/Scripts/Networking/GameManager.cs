@@ -26,6 +26,7 @@ namespace VampireVillage.Network
         public GameObject gameOverCanvas;
         public TMP_Text winText;
         public TMP_Text announcementText;
+        public ChatSystem chatSystem;
 #endregion
 
         public SyncList<GameObject> players = new SyncList<GameObject>();
@@ -110,6 +111,7 @@ namespace VampireVillage.Network
                 GamePlayer gamePlayer = gamePlayerInstance.GetComponent<GamePlayer>();
                 gamePlayers.Add(player, gamePlayer);
                 players.Add(gamePlayerInstance);
+                chatSystem.AddPlayer(player);
                 gamePlayer.RegisterGameManager(this);
                 gamePlayer.role = i == vampireLordIndex ? Role.VampireLord : Role.Villager;
 
@@ -138,6 +140,7 @@ namespace VampireVillage.Network
             GamePlayer gamePlayer = gamePlayers[player];
             gamePlayers.Remove(player);
             players.Remove(gamePlayer.gameObject);
+            chatSystem.RemovePlayer(player);
 
             // Also remove the player from its role list.
             if (gamePlayer.role == Role.Villager)
