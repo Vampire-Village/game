@@ -6,6 +6,7 @@ public class TaskSpawner : Interactable
 {
     public GameObject taskPrefab;
     public GameObject playerObject;
+    public Role taskRole;
     
     void Start()
     {
@@ -14,8 +15,8 @@ public class TaskSpawner : Interactable
 
     public override void Interact(GameObject player)
     {
-        Role role = GamePlayer.local.role;
-        if (role == Role.Villager || role == Role.Infected)
+        Role playerRole = GamePlayer.local.role;
+        if (playerRole == taskRole)
         {
             playerObject = player;
             Controller playerController = playerObject.GetComponent<Controller>();
