@@ -50,6 +50,7 @@ MonoBehaviour:
   taskPrefab: {fileID: 1390246454110019960, guid: f233d1fd05ed80741b356f2c616d17df,
     type: 3}
   playerObject: {fileID: 0}
+  taskRole: 1
 --- !u!1 &3353617433198309519
 GameObject:
   m_ObjectHideFlags: 0

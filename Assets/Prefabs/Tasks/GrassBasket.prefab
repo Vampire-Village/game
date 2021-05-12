@@ -124,4 +124,4 @@ MonoBehaviour:
   taskPrefab: {fileID: 6979571530027320758, guid: 859e90f863715d94c928de68c813c46d,
     type: 3}
   playerObject: {fileID: 0}
-  taskRole: 0
+  taskRole: 1

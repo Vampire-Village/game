@@ -102,7 +102,7 @@ MonoBehaviour:
   taskPrefab: {fileID: 1390246454110019960, guid: 2b43c7b5d18192f48b15e19d62eb2e68,
     type: 3}
   playerObject: {fileID: 0}
-  taskRole: 0
+  taskRole: 3
 --- !u!135 &3738462424876767830
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1073584316759698795}
   - component: {fileID: 1073584316759698804}
   m_Layer: 0
-  m_Name: DustPile (1)
+  m_Name: DustPile
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,4 +123,4 @@ MonoBehaviour:
   taskPrefab: {fileID: 2101886641291401007, guid: 76219b8111f8b594795be88ad62aa649,
     type: 3}
   playerObject: {fileID: 0}
-  taskRole: 0
+  taskRole: 1
